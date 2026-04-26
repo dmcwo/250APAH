@@ -3,159 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AP Art History — Image Recall</title>
+  <title>AP Art History — Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="home-body">
 
-  <!-- ── Header ────────────────────────────────────────────────── -->
   <header class="app-header">
     <div class="header-left">
       <span class="app-title">AP Art History</span>
-      <span class="app-mode">Image → Recall</span>
-    </div>
-    <div class="header-right">
-      <div class="stat-pill">
-        <span class="stat-label">Session Score</span>
-        <span class="stat-value" id="hdr-session-score">0</span>
-      </div>
-      <div class="stat-pill">
-        <span class="stat-label">Studied</span>
-        <span class="stat-value"><span id="hdr-studied">0</span> cards</span>
-      </div>
+      <span class="app-mode">Study Modes</span>
     </div>
   </header>
 
-  <!-- ── Screen: Question ──────────────────────────────────────── -->
-  <main id="screen-question" class="screen active">
-    <div class="question-layout">
+  <main class="home-main">
 
-      <!-- Left: artwork image -->
-      <div class="artwork-panel">
-        <div class="artwork-frame">
-          <img id="q-image" class="artwork-img" src="" alt="Artwork to identify">
+    <div class="home-hero">
+      <h1 class="home-heading">What would you like to practice?</h1>
+      <p class="home-sub">250 required works · spaced repetition · no account needed</p>
+    </div>
+
+    <div class="mode-grid">
+
+      <!-- Mode 1: Image → Recall -->
+      <a href="image-recall.html" class="mode-card">
+        <div class="mode-card-icon mode-icon--recall">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="4" y="8" width="28" height="22" rx="3" fill="currentColor" opacity=".15"/>
+            <rect x="4" y="8" width="28" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
+            <line x1="36" y1="12" x2="44" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="36" y1="18" x2="44" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="36" y1="24" x2="41" y2="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="36" y1="30" x2="44" y2="30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="17" r="4" fill="currentColor" opacity=".4"/>
+            <path d="M6 26 Q12 20 18 26" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".4"/>
+          </svg>
         </div>
-      </div>
-
-      <!-- Right: recall form -->
-      <div class="form-panel">
-        <div class="form-header">
-          <h2 class="prompt-text">Identify and describe this work.</h2>
-          <p class="prompt-sub">Fill in as many fields as you can, then check your answers.</p>
+        <div class="mode-card-body">
+          <h2 class="mode-card-title">Image → Recall</h2>
+          <p class="mode-card-desc">See an artwork image and recall its title, artist, date, place, and cultural significance. Scored field-by-field with spaced repetition.</p>
+          <div class="mode-card-meta">
+            <span class="mode-tag">250 works</span>
+            <span class="mode-tag">7 fields</span>
+            <span class="mode-tag">21 pts per card</span>
+          </div>
         </div>
+        <div class="mode-card-arrow">→</div>
+      </a>
 
-        <div class="fields-container">
-
-          <div class="field-group required">
-            <label class="field-label" for="f-title">Title</label>
-            <input id="f-title" class="field-input" type="text"
-                   placeholder="Title of the work…" autocomplete="off" spellcheck="false">
-          </div>
-
-          <div class="field-group">
-            <div class="field-label-row">
-              <label class="field-label" for="f-artist">Artist(s)</label>
-              <button type="button" id="btn-unknown-artist" class="quick-fill-btn">Unknown</button>
-            </div>
-            <input id="f-artist" class="field-input" type="text"
-                   placeholder="Artist(s) or 'Unknown'…" autocomplete="off" spellcheck="false">
-          </div>
-
-          <div class="field-group">
-            <label class="field-label" for="f-dates">Dates</label>
-            <input id="f-dates" class="field-input" type="text"
-                   placeholder="e.g. c. 1503 C.E. or 14,000 B.C.E.…" autocomplete="off">
-          </div>
-
-          <div class="field-group">
-            <label class="field-label" for="f-place">Place</label>
-            <input id="f-place" class="field-input" type="text"
-                   placeholder="Location or origin…" autocomplete="off" spellcheck="false">
-          </div>
-
-          <div class="field-group">
-            <label class="field-label" for="f-period">Period / Culture / Style</label>
-            <input id="f-period" class="field-input" type="text"
-                   placeholder="e.g. Neolithic; Minoan; High Renaissance…" autocomplete="off">
-          </div>
-
-          <div class="field-group">
-            <label class="field-label" for="f-type">Artwork Type / Materials</label>
-            <input id="f-type" class="field-input" type="text"
-                   placeholder="e.g. oil on canvas; bronze sculpture…" autocomplete="off">
-          </div>
-
-          <div class="field-group">
-            <label class="field-label" for="f-significance">Significance</label>
-            <textarea id="f-significance" class="field-input field-textarea"
-                      placeholder="Why is this work historically or culturally significant?…"
-                      rows="3" spellcheck="true"></textarea>
-          </div>
-
-        </div><!-- /fields-container -->
-
-        <div class="form-footer">
-          <button id="btn-learn" class="btn btn-ghost">Learn this</button>
-          <button id="btn-check" class="btn btn-primary">Check Answers</button>
+      <!-- Mode 2: Themes -->
+      <a href="themes.html" class="mode-card">
+        <div class="mode-card-icon mode-icon--themes">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="10" fill="currentColor" opacity=".15"/>
+            <circle cx="24" cy="24" r="10" stroke="currentColor" stroke-width="2"/>
+            <circle cx="24" cy="10" r="4" fill="currentColor" opacity=".5"/>
+            <circle cx="37" cy="31" r="4" fill="currentColor" opacity=".5"/>
+            <circle cx="11" cy="31" r="4" fill="currentColor" opacity=".5"/>
+            <line x1="24" y1="14" x2="24" y2="20" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="34" y1="29" x2="29" y2="26" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="14" y1="29" x2="19" y2="26" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
         </div>
-      </div><!-- /form-panel -->
+        <div class="mode-card-body">
+          <h2 class="mode-card-title">Themes</h2>
+          <p class="mode-card-desc">See a key AP Art History theme and name as many connected works as you can. Practice thinking across cultures and periods.</p>
+          <div class="mode-card-meta">
+            <span class="mode-tag">11 themes</span>
+            <span class="mode-tag">250 works</span>
+            <span class="mode-tag">5 recall slots</span>
+          </div>
+        </div>
+        <div class="mode-card-arrow">→</div>
+      </a>
 
-    </div><!-- /question-layout -->
+    </div><!-- /mode-grid -->
+
   </main>
 
-  <!-- ── Screen: Review ────────────────────────────────────────── -->
-  <main id="screen-review" class="screen">
-    <div class="review-layout">
-
-      <!-- Left sidebar: image + scores -->
-      <aside class="review-sidebar">
-        <div class="review-artwork-frame">
-          <img id="r-image" class="review-artwork-img" src="" alt="Artwork">
-        </div>
-
-        <div class="score-card">
-          <div class="score-card-label">Card Score</div>
-          <div class="score-card-value" id="card-score-display">0 / 21</div>
-          <div class="score-bar-track">
-            <div class="score-bar-fill" id="score-bar-fill"></div>
-          </div>
-        </div>
-
-        <div class="score-card score-card--session">
-          <div class="score-card-label">Session Total</div>
-          <div class="score-card-value" id="review-session-score">0 pts</div>
-        </div>
-
-        <button id="btn-next" class="btn btn-primary btn-next">Next Card →</button>
-      </aside>
-
-      <!-- Right: review table -->
-      <div class="review-main">
-        <div class="review-table-wrap">
-          <table class="review-table">
-            <thead>
-              <tr>
-                <th class="col-field">Field</th>
-                <th class="col-user">Your Answer</th>
-                <th class="col-correct">Correct Answer</th>
-                <th class="col-grade">Grade</th>
-              </tr>
-            </thead>
-            <tbody id="review-tbody">
-              <!-- Rows injected by app.js -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-    </div><!-- /review-layout -->
-  </main>
-
-  <script src="js/data.js"></script>
-  <script src="js/deck.js"></script>
-  <script src="js/app.js"></script>
 </body>
 </html>

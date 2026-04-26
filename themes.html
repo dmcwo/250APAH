@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AP Art History — Themes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── Header ────────────────────────────────────────────────── -->
+  <header class="app-header">
+    <div class="header-left">
+      <a href="index.html" class="header-home-link">AP Art History</a>
+      <span class="app-mode">Themes</span>
+    </div>
+    <div class="header-right">
+      <div class="stat-pill">
+        <span class="stat-label">Session Score</span>
+        <span class="stat-value" id="hdr-session-score">0</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Studied</span>
+        <span class="stat-value"><span id="hdr-studied">0</span> themes</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Screen: Question ──────────────────────────────────────── -->
+  <main id="screen-question" class="screen active">
+    <div class="theme-question-layout">
+
+      <!-- Left: theme context + featured artwork -->
+      <div class="theme-info-panel">
+        <div class="theme-badge-wrap">
+          <span class="theme-badge" id="t-theme-badge">Power &amp; Authority</span>
+        </div>
+        <p class="theme-definition" id="t-theme-definition"></p>
+        <div class="theme-featured-frame">
+          <div class="theme-featured-img-wrap">
+            <img id="t-featured-image" class="theme-featured-img" src="" alt="Representative artwork">
+          </div>
+          <div class="theme-featured-caption" id="t-featured-caption"></div>
+        </div>
+      </div>
+
+      <!-- Right: recall inputs -->
+      <div class="theme-recall-panel">
+        <div class="form-header">
+          <h2 class="prompt-text">Name other artworks that connect to this theme.</h2>
+          <p class="prompt-sub" id="t-count-hint">Loading…</p>
+        </div>
+
+        <div class="theme-inputs-container">
+
+          <div class="theme-input-row">
+            <span class="theme-input-num">1</span>
+            <input type="text" class="field-input theme-input" data-index="0"
+                   placeholder="Artwork title…" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="theme-input-row">
+            <span class="theme-input-num">2</span>
+            <input type="text" class="field-input theme-input" data-index="1"
+                   placeholder="Artwork title…" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="theme-input-row">
+            <span class="theme-input-num">3</span>
+            <input type="text" class="field-input theme-input" data-index="2"
+                   placeholder="Artwork title…" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="theme-input-row">
+            <span class="theme-input-num">4</span>
+            <input type="text" class="field-input theme-input" data-index="3"
+                   placeholder="Artwork title…" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="theme-input-row">
+            <span class="theme-input-num">5</span>
+            <input type="text" class="field-input theme-input" data-index="4"
+                   placeholder="Artwork title…" autocomplete="off" spellcheck="false">
+          </div>
+
+        </div><!-- /theme-inputs-container -->
+
+        <div class="form-footer">
+          <button id="btn-learn" class="btn btn-ghost">Learn this</button>
+          <button id="btn-check" class="btn btn-primary">Check Answers</button>
+        </div>
+      </div><!-- /theme-recall-panel -->
+
+    </div><!-- /theme-question-layout -->
+  </main>
+
+  <!-- ── Screen: Review ────────────────────────────────────────── -->
+  <main id="screen-review" class="screen">
+    <div class="theme-review-layout">
+
+      <!-- Sidebar -->
+      <aside class="theme-review-sidebar">
+
+        <div class="theme-review-badge-wrap">
+          <span class="theme-badge theme-badge--sm" id="r-theme-badge"></span>
+        </div>
+
+        <div class="score-card">
+          <div class="score-card-label">Your Answers</div>
+          <div class="score-card-value" id="r-correct-count">0 / 5</div>
+          <div class="score-bar-track">
+            <div class="score-bar-fill" id="score-bar-fill"></div>
+          </div>
+        </div>
+
+        <div class="score-card score-card--session">
+          <div class="score-card-label">Session Total</div>
+          <div class="score-card-value" id="review-session-score">0 pts</div>
+        </div>
+
+        <!-- User answer list -->
+        <div class="theme-answer-list" id="theme-answer-list">
+          <!-- Injected by themes_app.js -->
+        </div>
+
+        <button id="btn-next" class="btn btn-primary btn-next">Next Theme →</button>
+
+      </aside>
+
+      <!-- Main: full mosaic -->
+      <div class="theme-review-main">
+        <div class="theme-mosaic-header">
+          <span class="theme-mosaic-title">All works for this theme</span>
+          <span class="theme-mosaic-count" id="r-theme-total"></span>
+        </div>
+        <div class="theme-mosaic" id="theme-mosaic">
+          <!-- Thumbnails injected by themes_app.js -->
+        </div>
+      </div>
+
+    </div><!-- /theme-review-layout -->
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/deck.js"></script>
+  <script src="js/themes_data.js"></script>
+  <script src="js/themes_app.js"></script>
+</body>
+</html>
