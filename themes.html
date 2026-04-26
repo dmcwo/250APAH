@@ -81,6 +81,21 @@
             <input type="text" class="field-input theme-input" data-index="4"
                    placeholder="Artwork title…" autocomplete="off" spellcheck="false">
           </div>
+          <div class="theme-input-row">
+            <span class="theme-input-num">6</span>
+            <input type="text" class="field-input theme-input" data-index="5"
+                   placeholder="Artwork title…" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="theme-input-row">
+            <span class="theme-input-num">7</span>
+            <input type="text" class="field-input theme-input" data-index="6"
+                   placeholder="Artwork title…" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="theme-input-row">
+            <span class="theme-input-num">8</span>
+            <input type="text" class="field-input theme-input" data-index="7"
+                   placeholder="Artwork title…" autocomplete="off" spellcheck="false">
+          </div>
 
         </div><!-- /theme-inputs-container -->
 
@@ -106,7 +121,7 @@
 
         <div class="score-card">
           <div class="score-card-label">Your Answers</div>
-          <div class="score-card-value" id="r-correct-count">0 / 5</div>
+          <div class="score-card-value" id="r-correct-count">0 / 8</div>
           <div class="score-bar-track">
             <div class="score-bar-fill" id="score-bar-fill"></div>
           </div>
@@ -120,6 +135,11 @@
         <!-- User answer list -->
         <div class="theme-answer-list" id="theme-answer-list">
           <!-- Injected by themes_app.js -->
+        </div>
+
+        <!-- Shown instead of scores in learn mode -->
+        <div class="learn-mode-note">
+          <p>Click any work to learn about it and how it connects to this theme.</p>
         </div>
 
         <button id="btn-next" class="btn btn-primary btn-next">Next Theme →</button>
@@ -139,6 +159,26 @@
 
     </div><!-- /theme-review-layout -->
   </main>
+
+  <div id="mosaic-tooltip" class="mosaic-tooltip-portal" aria-hidden="true"></div>
+
+  <div id="artwork-modal" class="artwork-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="artwork-modal-backdrop"></div>
+    <div class="artwork-modal-panel">
+      <button class="artwork-modal-close" id="artwork-modal-close" aria-label="Close">✕</button>
+      <div class="artwork-modal-body">
+        <div class="artwork-modal-img-wrap">
+          <img id="artwork-modal-img" src="" alt="">
+        </div>
+        <div class="artwork-modal-info">
+          <div id="artwork-modal-theme-badge" class="theme-badge theme-badge--sm"></div>
+          <h2 class="artwork-modal-title" id="artwork-modal-title"></h2>
+          <dl class="artwork-modal-meta" id="artwork-modal-meta"></dl>
+          <p class="artwork-modal-significance" id="artwork-modal-significance"></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/data.js"></script>
   <script src="js/deck.js"></script>

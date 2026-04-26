@@ -36,6 +36,31 @@ function titleMatchScore(userInput, artTitle) {
 }
 
 /**
+ * Returns the highest raw match score for userText against unmatched artworks,
+ * without applying the 0.5 acceptance threshold. Used for "getting close" UI.
+ */
+function bestRawScore(userText, artworks, usedIds) {
+  if (!userText.trim()) return 0;
+  let best = 0;
+  for (const art of artworks) {
+    if (usedIds.has(art.id)) continue;
+    const s = titleMatchScore(userText, art.title);
+    if (s > best) best = s;
+  }
+  return best;
+}
+
+/**
+ * Returns true if userText (≥3 chars) appears as a substring in any
+ * unmatched artwork's normalized title — used for "getting close" state.
+ */
+function isSubstringClose(userText, artworks, usedIds) {
+  const q = normTitle(userText.trim());
+  if (q.length < 3) return false;
+  return artworks.some(art => !usedIds.has(art.id) && normTitle(art.title).includes(q));
+}
+
+/**
  * Given user text and an artwork array, return the best-matching artwork
  * (score >= 0.5) or null. Adds matched id to usedIds to prevent double-match.
  */
@@ -87,25 +112,109 @@ const ThemesApp = {
   _themeKey: null,
   _themeArtworks: [],
   _featuredId: null,
+  _topPickIds: new Set(),
   _results: [],
-  _isLearning: false,
+  _liveDebounceTimer: null,
+  _reviewThemeKey: null,
 
   init() {
     this.deck = new Deck(Object.keys(THEMES_DATA));
     this._bindEvents();
+    this._initTooltip();
+    this._initModal();
     this._showQuestion();
+  },
+
+  // ── Modal ──────────────────────────────────────────────────────
+
+  _initModal() {
+    const modal = document.getElementById('artwork-modal');
+    document.getElementById('artwork-modal-close')
+      .addEventListener('click', () => this._closeModal());
+    modal.querySelector('.artwork-modal-backdrop')
+      .addEventListener('click', () => this._closeModal());
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') this._closeModal();
+    });
+  },
+
+  _openModal(art, themeKey) {
+    const modal = document.getElementById('artwork-modal');
+    document.getElementById('artwork-modal-img').src = art.image_url;
+    document.getElementById('artwork-modal-img').alt = art.title;
+    document.getElementById('artwork-modal-title').textContent = art.title;
+
+    const badge = document.getElementById('artwork-modal-theme-badge');
+    badge.textContent = THEMES_DATA[themeKey].label;
+    applyThemeColor(badge, themeKey);
+
+    const meta = document.getElementById('artwork-modal-meta');
+    meta.innerHTML = '';
+    const fields = [
+      ['Artist', art.artist],
+      ['Date',   art.dates],
+      ['Place',  art.place],
+      ['Period', art.period_culture_style],
+    ];
+    fields.forEach(([label, val]) => {
+      if (!val || val.toLowerCase() === 'unknown') return;
+      meta.innerHTML +=
+        `<dt>${this._esc(label)}</dt><dd>${this._esc(val)}</dd>`;
+    });
+
+    document.getElementById('artwork-modal-significance').textContent =
+      art.significance || '';
+
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('artwork-modal-close').focus();
+  },
+
+  _closeModal() {
+    document.getElementById('artwork-modal').setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  },
+
+  // ── Portal tooltip ─────────────────────────────────────────────
+
+  _initTooltip() {
+    const tooltip = document.getElementById('mosaic-tooltip');
+    const MARGIN = 12;
+    const mosaic = document.getElementById('theme-mosaic');
+
+    mosaic.addEventListener('mouseover', e => {
+      const item = e.target.closest('.mosaic-item');
+      if (!item) return;
+      const card = item.querySelector('.mosaic-hover-card');
+      if (!card) return;
+      tooltip.innerHTML = card.innerHTML;
+      tooltip.classList.add('is-visible');
+    });
+
+    mosaic.addEventListener('mousemove', e => {
+      if (!tooltip.classList.contains('is-visible')) return;
+      const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+      let x = e.clientX + MARGIN, y = e.clientY - th - MARGIN;
+      if (x + tw > window.innerWidth)  x = e.clientX - tw - MARGIN;
+      if (y < 0)                        y = e.clientY + MARGIN;
+      tooltip.style.left = x + 'px';
+      tooltip.style.top  = y + 'px';
+    });
+
+    mosaic.addEventListener('mouseout', e => {
+      if (e.target.closest('.mosaic-item')) tooltip.classList.remove('is-visible');
+    });
   },
 
   // ── Event binding ──────────────────────────────────────────────
 
   _bindEvents() {
-    document.getElementById('btn-check').addEventListener('click', () => {
-      if (this._isLearning) this._advanceLearned();
-      else this._checkAnswers();
-    });
+    document.getElementById('btn-check').addEventListener('click', () => this._checkAnswers());
 
     document.getElementById('btn-learn').addEventListener('click', () => this._learnThis());
     document.getElementById('btn-next').addEventListener('click', () => this._nextTheme());
+
+    this._bindLiveFeedback();
 
     // Enter → advance to next input, or trigger check on last
     document.querySelectorAll('.theme-input').forEach((input, i, all) => {
@@ -118,6 +227,48 @@ const ThemesApp = {
     });
   },
 
+  // ── Live feedback ──────────────────────────────────────────────
+
+  _bindLiveFeedback() {
+    document.querySelectorAll('.theme-input').forEach(inp => {
+      inp.addEventListener('input', () => {
+        clearTimeout(this._liveDebounceTimer);
+        this._liveDebounceTimer = setTimeout(() => this._updateLiveFeedback(), 300);
+      });
+    });
+  },
+
+  _updateLiveFeedback() {
+    const inputs = Array.from(document.querySelectorAll('.theme-input'));
+    const usedIds = new Set();
+    inputs.forEach((inp, i) => {
+      const val = inp.value.trim();
+      const matched = findBestMatch(val, this._themeArtworks, usedIds);
+      const num = inp.closest('.theme-input-row').querySelector('.theme-input-num');
+      const hasText = val.length > 0;
+
+      // Determine state: match → close → no-match
+      const isClose = !matched && hasText &&
+        (bestRawScore(val, this._themeArtworks, usedIds) >= 0.2 ||
+         isSubstringClose(val, this._themeArtworks, usedIds));
+
+      inp.classList.toggle('live-match',    !!matched);
+      inp.classList.toggle('live-close',    isClose);
+      inp.classList.toggle('live-no-match', !matched && !isClose && hasText);
+
+      num.classList.toggle('live-match', !!matched);
+      num.classList.toggle('live-close', isClose);
+
+      if (matched) {
+        num.textContent = this._topPickIds.has(matched.id) ? '★' : '✓';
+      } else if (isClose) {
+        num.textContent = '~';
+      } else {
+        num.textContent = String(i + 1);
+      }
+    });
+  },
+
   // ── Question screen ────────────────────────────────────────────
 
   _showQuestion() {
@@ -127,6 +278,8 @@ const ThemesApp = {
     this._themeArtworks = theme.artworks
       .map(id => ART_DATA.find(a => a.id === id))
       .filter(Boolean);
+
+    this._topPickIds = new Set(theme.top_picks || []);
 
     const featured = this._themeArtworks[0] || null;
     this._featuredId = featured ? featured.id : null;
@@ -144,12 +297,6 @@ const ThemesApp = {
       img.src = featured.image_url;
       img.alt = featured.title;
 
-      const artistStr = featured.artist && featured.artist.toLowerCase() !== 'unknown'
-        ? featured.artist : 'Unknown artist';
-      document.getElementById('t-featured-caption').innerHTML =
-        `<strong>${this._esc(featured.title)}</strong><br>` +
-        `${this._esc(artistStr)}` +
-        (featured.dates ? ` · ${this._esc(featured.dates)}` : '');
     }
 
     // Count hint
@@ -157,21 +304,20 @@ const ThemesApp = {
       `This theme connects to <strong>${this._themeArtworks.length}</strong> of the 250 ` +
       `required works — how many can you name?`;
 
-    // Clear inputs
-    document.querySelectorAll('.theme-input').forEach(inp => {
+    // Clear inputs and reset all live-feedback state
+    document.querySelectorAll('.theme-input').forEach((inp, i) => {
       inp.value = '';
-      inp.classList.remove('learn-filled');
+      inp.classList.remove('learn-filled', 'live-match', 'live-close', 'live-no-match');
       inp.disabled = false;
+      const num = inp.closest('.theme-input-row').querySelector('.theme-input-num');
+      num.classList.remove('live-match', 'live-close');
+      num.textContent = String(i + 1);
     });
+    clearTimeout(this._liveDebounceTimer);
 
     // Reset buttons
-    const btnLearn = document.getElementById('btn-learn');
-    const btnCheck = document.getElementById('btn-check');
-    btnLearn.textContent = 'Learn this';
-    btnLearn.classList.remove('hidden', 'btn-learn-done');
-    btnCheck.textContent = 'Check Answers';
-    btnCheck.classList.remove('hidden');
-    this._isLearning = false;
+    document.getElementById('btn-learn').textContent = 'Learn this';
+    document.getElementById('btn-check').textContent = 'Check Answers';
 
     // Switch screens
     document.getElementById('screen-question').classList.add('active');
@@ -183,29 +329,12 @@ const ThemesApp = {
   // ── Learn this ─────────────────────────────────────────────────
 
   _learnThis() {
-    if (this._isLearning) return;
-    this._isLearning = true;
-
-    const samples = this._themeArtworks
-      .filter(a => a.id !== this._featuredId)
-      .slice(0, 5);
-
-    document.querySelectorAll('.theme-input').forEach((inp, i) => {
-      inp.value = samples[i] ? samples[i].title : '';
-      inp.classList.add('learn-filled');
-      inp.disabled = true;
-    });
-
-    document.getElementById('btn-learn').classList.add('hidden');
-    const btnCheck = document.getElementById('btn-check');
-    btnCheck.textContent = 'Got it, Next Theme →';
-    btnCheck.classList.add('btn-learn-done');
-  },
-
-  _advanceLearned() {
-    this.deck.advanceLearn();  // increments studiedCount internally
+    const learnThemeKey = this._themeKey;
+    const learnArtworks = this._themeArtworks;
+    this._results = [];
+    this.deck.advanceLearn();
     this._updateHeader();
-    this._showQuestion();
+    this._showReview(0, 0, 0, learnThemeKey, learnArtworks, true);
   },
 
   // ── Check answers ──────────────────────────────────────────────
@@ -221,9 +350,17 @@ const ThemesApp = {
     });
 
     const correct = this._results.filter(r => r.isCorrect).length;
-    const score21 = Math.round((correct / 5) * 21);
+    const score21 = Math.round((correct / 8) * 21);
 
-    this.sessionScore += score21;
+    // Award bonus session points for top picks
+    let bonusPoints = 0;
+    this._results.forEach(r => {
+      if (r.isCorrect && r.matched && this._topPickIds.has(r.matched.id)) {
+        r.isTopPick = true;
+        bonusPoints++;
+      }
+    });
+    this.sessionScore += score21 + bonusPoints;
 
     // Capture state for review before advancing deck
     const reviewThemeKey = this._themeKey;
@@ -231,13 +368,18 @@ const ThemesApp = {
 
     this.deck.advance(score21);
     this._updateHeader();
-    this._showReview(correct, score21, reviewThemeKey, reviewArtworks);
+    this._showReview(correct, score21, bonusPoints, reviewThemeKey, reviewArtworks);
   },
 
   // ── Review screen ──────────────────────────────────────────────
 
-  _showReview(correct, score21, themeKey, artworks) {
+  _showReview(correct, score21, bonusPoints, themeKey, artworks, isLearn = false) {
+    this._reviewThemeKey = themeKey;
     const theme = THEMES_DATA[themeKey];
+
+    // Sidebar mode
+    document.querySelector('.theme-review-sidebar')
+      .classList.toggle('is-learn-mode', isLearn);
 
     // Badge
     const badge = document.getElementById('r-theme-badge');
@@ -245,8 +387,10 @@ const ThemesApp = {
     applyThemeColor(badge, themeKey);
 
     // Scores
-    document.getElementById('r-correct-count').textContent = `${correct} / 5`;
-    document.getElementById('review-session-score').textContent = `${this.sessionScore} pts`;
+    document.getElementById('r-correct-count').textContent = `${correct} / 8`;
+    const bonusLabel = bonusPoints > 0 ? ` (+${bonusPoints} bonus)` : '';
+    document.getElementById('review-session-score').textContent =
+      `${this.sessionScore} pts${bonusLabel}`;
     document.getElementById('r-theme-total').textContent = `${artworks.length} works`;
 
     // Score bar
@@ -272,8 +416,10 @@ const ThemesApp = {
         (r.isCorrect ? 'answer-correct' : r.userText ? 'answer-wrong' : 'answer-blank');
 
       const icon = r.isCorrect ? '✓' : r.userText ? '✗' : '–';
+      const starBadge = r.isTopPick
+        ? ' <span class="answer-top-pick-badge">★ top pick</span>' : '';
       const label = r.isCorrect
-        ? this._esc(r.matched.title)
+        ? this._esc(r.matched.title) + starBadge
         : r.userText
           ? `<span class="answer-user-text">${this._esc(r.userText)}</span>`
           : '<span class="answer-blank-text">—</span>';
@@ -294,38 +440,59 @@ const ThemesApp = {
       this._results.filter(r => r.isCorrect && r.matched).map(r => r.matched.id)
     );
 
-    artworks.forEach(art => {
-      const item = document.createElement('div');
-      item.className = 'mosaic-item' + (correctIds.has(art.id) ? ' mosaic-item--found' : '');
+    const topPicks = artworks.filter(a => this._topPickIds.has(a.id));
+    const others   = artworks.filter(a => !this._topPickIds.has(a.id));
 
-      if (correctIds.has(art.id)) {
-        const badge = document.createElement('div');
-        badge.className = 'mosaic-found-badge';
-        badge.textContent = '✓';
-        item.appendChild(badge);
-      }
+    const addHeader = (text) => {
+      const h = document.createElement('div');
+      h.className = 'mosaic-section-header';
+      h.innerHTML = text;
+      mosaic.appendChild(h);
+    };
 
-      const img = document.createElement('img');
-      img.className = 'mosaic-thumb';
-      img.src = art.image_url;
-      img.alt = art.title;
-      img.loading = 'lazy';
-      item.appendChild(img);
+    const groups = topPicks.length
+      ? [{ label: '<span class="mosaic-section-star">★</span> Top Picks', items: topPicks },
+         { label: 'Other related works', items: others }]
+      : [{ label: null, items: artworks }];
 
-      const card = document.createElement('div');
-      card.className = 'mosaic-hover-card';
-      const artistStr = art.artist && art.artist.toLowerCase() !== 'unknown'
-        ? art.artist : 'Unknown artist';
-      card.innerHTML =
-        `<div class="mosaic-card-title">${this._esc(art.title)}</div>` +
-        `<div class="mosaic-card-meta">${this._esc(artistStr)}</div>` +
-        (art.dates ? `<div class="mosaic-card-meta">${this._esc(art.dates)}</div>` : '') +
-        (art.period_culture_style
-          ? `<div class="mosaic-card-period">${this._esc(art.period_culture_style)}</div>`
-          : '');
-      item.appendChild(card);
+    groups.forEach(({ label, items }) => {
+      if (label) addHeader(label);
+      items.forEach(art => {
+        const item = document.createElement('div');
+        item.className = 'mosaic-item' + (correctIds.has(art.id) ? ' mosaic-item--found' : '');
 
-      mosaic.appendChild(item);
+        if (correctIds.has(art.id)) {
+          const badge = document.createElement('div');
+          badge.className = 'mosaic-found-badge';
+          badge.textContent = '✓';
+          item.appendChild(badge);
+        }
+
+        const img = document.createElement('img');
+        img.className = 'mosaic-thumb';
+        img.src = art.image_url;
+        img.alt = art.title;
+        img.loading = 'lazy';
+        item.appendChild(img);
+
+        const card = document.createElement('div');
+        card.className = 'mosaic-hover-card';
+        const artistStr = art.artist && art.artist.toLowerCase() !== 'unknown'
+          ? art.artist : 'Unknown artist';
+        card.innerHTML =
+          `<div class="mosaic-card-title">${this._esc(art.title)}</div>` +
+          `<div class="mosaic-card-meta">${this._esc(artistStr)}</div>` +
+          (art.dates ? `<div class="mosaic-card-meta">${this._esc(art.dates)}</div>` : '') +
+          (art.period_culture_style
+            ? `<div class="mosaic-card-period">${this._esc(art.period_culture_style)}</div>`
+            : '');
+        item.appendChild(card);
+
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', () => this._openModal(art, this._reviewThemeKey));
+
+        mosaic.appendChild(item);
+      });
     });
   },
 

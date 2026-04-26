@@ -464,19 +464,43 @@ def main():
     for t in theme_artworks:
         theme_artworks[t].sort()
 
+    # Count cross-references: how many OTHER files mention each artwork via "→ #NN"
+    from collections import Counter
+    ref_counts = Counter()
+    for f in md_files:
+        text = f.read_text(encoding='utf-8')
+        # Extract the source file's own image_num so we don't count self-references
+        own_fm = re.search(r'^image_num:\s*(\d+)', text, re.MULTILINE)
+        own_num = int(own_fm.group(1)) if own_fm else -1
+        seen = set()
+        for r in re.findall(r'→ #(\d+)', text):
+            rid = int(r)
+            if rid != own_num and rid not in seen:
+                ref_counts[rid] += 1
+                seen.add(rid)
+
     # Print summary
     print("\nTheme counts:")
     for key in THEMES:
         ids = theme_artworks.get(key, [])
         print(f"  {key:35s} {len(ids):3d} works")
 
-    # Build output object
+    print("\nTop cross-referenced works overall:")
+    for num, count in ref_counts.most_common(10):
+        print(f"  #{num:3d}  {artwork_titles.get(num, '?'):40s}  cited {count}x")
+
+    # Build output object with top_picks per theme
+    TOP_N = 5
     out = {}
     for key, meta in THEMES.items():
+        ids = theme_artworks.get(key, [])
+        # top picks = theme members sorted by cross-reference count, take top N
+        top_picks = sorted(ids, key=lambda i: ref_counts.get(i, 0), reverse=True)[:TOP_N]
         out[key] = {
             'label': meta['label'],
             'definition': meta['definition'],
-            'artworks': theme_artworks.get(key, []),
+            'artworks': ids,
+            'top_picks': top_picks,
         }
 
     # Write JS file

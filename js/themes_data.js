@@ -89,6 +89,13 @@ const THEMES_DATA = {
       246,
       247,
       250
+    ],
+    "top_picks": [
+      18,
+      171,
+      5,
+      23,
+      45
     ]
   },
   "religion_ritual": {
@@ -234,6 +241,13 @@ const THEMES_DATA = {
       235,
       241,
       246
+    ],
+    "top_picks": [
+      35,
+      46,
+      39,
+      171,
+      175
     ]
   },
   "human_experience": {
@@ -273,6 +287,13 @@ const THEMES_DATA = {
       232,
       235,
       236
+    ],
+    "top_picks": [
+      63,
+      83,
+      22,
+      41,
+      215
     ]
   },
   "identity": {
@@ -335,6 +356,13 @@ const THEMES_DATA = {
       244,
       246,
       247
+    ],
+    "top_picks": [
+      18,
+      171,
+      107,
+      68,
+      95
     ]
   },
   "architecture_space": {
@@ -402,6 +430,13 @@ const THEMES_DATA = {
       240,
       246,
       249
+    ],
+    "top_picks": [
+      35,
+      46,
+      39,
+      192,
+      45
     ]
   },
   "trade_exchange": {
@@ -440,6 +475,13 @@ const THEMES_DATA = {
       245,
       246,
       250
+    ],
+    "top_picks": [
+      30,
+      182,
+      237,
+      244,
+      53
     ]
   },
   "death_afterlife": {
@@ -492,6 +534,13 @@ const THEMES_DATA = {
       239,
       241,
       248
+    ],
+    "top_picks": [
+      18,
+      5,
+      209,
+      17,
+      21
     ]
   },
   "art_innovation_materials": {
@@ -571,6 +620,13 @@ const THEMES_DATA = {
       246,
       249,
       250
+    ],
+    "top_picks": [
+      126,
+      5,
+      63,
+      98,
+      50
     ]
   },
   "nature_body": {
@@ -642,6 +698,13 @@ const THEMES_DATA = {
       230,
       242,
       247
+    ],
+    "top_picks": [
+      201,
+      34,
+      171,
+      175,
+      5
     ]
   },
   "conflict_resistance": {
@@ -694,6 +757,13 @@ const THEMES_DATA = {
       242,
       244,
       250
+    ],
+    "top_picks": [
+      45,
+      83,
+      22,
+      95,
+      98
     ]
   },
   "narrative_storytelling": {
@@ -764,6 +834,13 @@ const THEMES_DATA = {
       246,
       247,
       248
+    ],
+    "top_picks": [
+      175,
+      23,
+      45,
+      63,
+      107
     ]
   }
 };
