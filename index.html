@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AP Art History — Image Recall</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── Header ────────────────────────────────────────────────── -->
+  <header class="app-header">
+    <div class="header-left">
+      <span class="app-title">AP Art History</span>
+      <span class="app-mode">Image → Recall</span>
+    </div>
+    <div class="header-right">
+      <div class="stat-pill">
+        <span class="stat-label">Session Score</span>
+        <span class="stat-value" id="hdr-session-score">0</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Studied</span>
+        <span class="stat-value"><span id="hdr-studied">0</span> cards</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Screen: Question ──────────────────────────────────────── -->
+  <main id="screen-question" class="screen active">
+    <div class="question-layout">
+
+      <!-- Left: artwork image -->
+      <div class="artwork-panel">
+        <div class="artwork-frame">
+          <img id="q-image" class="artwork-img" src="" alt="Artwork to identify">
+        </div>
+      </div>
+
+      <!-- Right: recall form -->
+      <div class="form-panel">
+        <div class="form-header">
+          <h2 class="prompt-text">Identify and describe this work.</h2>
+          <p class="prompt-sub">Fill in as many fields as you can, then check your answers.</p>
+        </div>
+
+        <div class="fields-container">
+
+          <div class="field-group required">
+            <label class="field-label" for="f-title">Title</label>
+            <input id="f-title" class="field-input" type="text"
+                   placeholder="Title of the work…" autocomplete="off" spellcheck="false">
+          </div>
+
+          <div class="field-group">
+            <div class="field-label-row">
+              <label class="field-label" for="f-artist">Artist(s)</label>
+              <button type="button" id="btn-unknown-artist" class="quick-fill-btn">Unknown</button>
+            </div>
+            <input id="f-artist" class="field-input" type="text"
+                   placeholder="Artist(s) or 'Unknown'…" autocomplete="off" spellcheck="false">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-dates">Dates</label>
+            <input id="f-dates" class="field-input" type="text"
+                   placeholder="e.g. c. 1503 C.E. or 14,000 B.C.E.…" autocomplete="off">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-place">Place</label>
+            <input id="f-place" class="field-input" type="text"
+                   placeholder="Location or origin…" autocomplete="off" spellcheck="false">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-period">Period / Culture / Style</label>
+            <input id="f-period" class="field-input" type="text"
+                   placeholder="e.g. Neolithic; Minoan; High Renaissance…" autocomplete="off">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-type">Artwork Type / Materials</label>
+            <input id="f-type" class="field-input" type="text"
+                   placeholder="e.g. oil on canvas; bronze sculpture…" autocomplete="off">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-significance">Significance</label>
+            <textarea id="f-significance" class="field-input field-textarea"
+                      placeholder="Why is this work historically or culturally significant?…"
+                      rows="3" spellcheck="true"></textarea>
+          </div>
+
+        </div><!-- /fields-container -->
+
+        <div class="form-footer">
+          <button id="btn-learn" class="btn btn-ghost">Learn this</button>
+          <button id="btn-check" class="btn btn-primary">Check Answers</button>
+        </div>
+      </div><!-- /form-panel -->
+
+    </div><!-- /question-layout -->
+  </main>
+
+  <!-- ── Screen: Review ────────────────────────────────────────── -->
+  <main id="screen-review" class="screen">
+    <div class="review-layout">
+
+      <!-- Left sidebar: image + scores -->
+      <aside class="review-sidebar">
+        <div class="review-artwork-frame">
+          <img id="r-image" class="review-artwork-img" src="" alt="Artwork">
+        </div>
+
+        <div class="score-card">
+          <div class="score-card-label">Card Score</div>
+          <div class="score-card-value" id="card-score-display">0 / 21</div>
+          <div class="score-bar-track">
+            <div class="score-bar-fill" id="score-bar-fill"></div>
+          </div>
+        </div>
+
+        <div class="score-card score-card--session">
+          <div class="score-card-label">Session Total</div>
+          <div class="score-card-value" id="review-session-score">0 pts</div>
+        </div>
+
+        <button id="btn-next" class="btn btn-primary btn-next">Next Card →</button>
+      </aside>
+
+      <!-- Right: review table -->
+      <div class="review-main">
+        <div class="review-table-wrap">
+          <table class="review-table">
+            <thead>
+              <tr>
+                <th class="col-field">Field</th>
+                <th class="col-user">Your Answer</th>
+                <th class="col-correct">Correct Answer</th>
+                <th class="col-grade">Grade</th>
+              </tr>
+            </thead>
+            <tbody id="review-tbody">
+              <!-- Rows injected by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /review-layout -->
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/deck.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
