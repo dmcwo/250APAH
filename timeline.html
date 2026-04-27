@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AP Art History — Timeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-left">
+      <a href="index.html" class="header-home-link">AP Art History</a>
+      <span class="app-mode">Timeline</span>
+    </div>
+    <div class="header-right">
+      <div class="stat-pill">
+        <span class="stat-label">Session Score</span>
+        <span class="stat-value" id="tl-hdr-score">0</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Rounds done</span>
+        <span class="stat-value" id="tl-hdr-rounds">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Screen 1: Order ─────────────────────────────────────── -->
+  <main id="screen-order" class="screen active">
+    <div class="tl-order-wrap">
+
+      <div class="tl-order-header">
+        <div>
+          <h2 class="tl-prompt">Place these works in chronological order</h2>
+          <p class="tl-sub">
+            Earlier works on the left ·
+            <strong><span id="tl-correct-count">0</span> of 8</strong> in place
+          </p>
+        </div>
+        <button id="btn-mode-toggle" class="btn btn-ghost btn-sm">Use click-to-swap</button>
+      </div>
+
+      <div class="tl-track-wrap">
+        <div class="tl-track" id="tl-track">
+          <!-- Cards injected by JS -->
+        </div>
+      </div>
+
+      <div class="tl-axis-labels">
+        <span>← Earlier</span>
+        <span>Later →</span>
+      </div>
+
+      <div class="tl-order-footer">
+        <button id="btn-continue" class="btn btn-primary" disabled>
+          All in order — Continue →
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Screen 2: Recall ────────────────────────────────────── -->
+  <main id="screen-recall" class="screen">
+    <div class="tl-recall-wrap">
+
+      <div class="tl-section-header">
+        <h2 class="tl-prompt">Now recall the details</h2>
+        <p class="tl-sub">Enter the dates and period / culture / style for each work</p>
+      </div>
+
+      <div class="tl-recall-list" id="tl-recall-list">
+        <!-- Rows injected by JS -->
+      </div>
+
+      <div class="tl-recall-footer">
+        <button id="btn-tl-learn" class="btn btn-ghost">Learn this</button>
+        <button id="btn-tl-check" class="btn btn-primary">Check Answers</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Screen 3: Review ────────────────────────────────────── -->
+  <main id="screen-tl-review" class="screen">
+    <div class="tl-review-wrap">
+
+      <div class="tl-section-header">
+        <h2 class="tl-prompt">Review your answers</h2>
+        <div class="tl-score-summary">
+          <span class="tl-score-pill">Round: <strong id="tl-round-score">—</strong></span>
+          <span class="tl-score-pill">Session: <strong id="tl-session-score-review">0 pts</strong></span>
+        </div>
+      </div>
+
+      <div class="tl-review-list" id="tl-review-list">
+        <!-- Items injected by JS -->
+      </div>
+
+      <div class="tl-review-footer">
+        <button id="btn-next-round" class="btn btn-primary">Next Round →</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/timeline_app.js"></script>
+</body>
+</html>
