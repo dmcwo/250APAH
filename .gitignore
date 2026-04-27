@@ -1,0 +1,5 @@
+# Local reference material — not uploaded to GitLab
+_resources/
+
+# macOS
+.DS_Store
