@@ -11,11 +11,12 @@
 class Deck {
   /**
    * @param {Object[]} data - Array of artwork records (from ART_DATA)
+   * @param {boolean}  skipInitialShuffle - Pass true if data is already ordered (e.g. weighted)
    */
-  constructor(data) {
+  constructor(data, skipInitialShuffle = false) {
     this.cards = [...data];       // working copy
     this.studiedCount = 0;        // cards reviewed this session
-    this._shuffle();
+    if (!skipInitialShuffle) this._shuffle();
   }
 
   // ── Public getters ─────────────────────────────────────────

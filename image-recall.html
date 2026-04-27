@@ -95,6 +95,16 @@
                       rows="3" spellcheck="true"></textarea>
           </div>
 
+          <div class="field-group" id="themes-field-group">
+            <div class="field-label-row">
+              <label class="field-label">Themes</label>
+              <span id="themes-count-hint" class="quick-fill-btn" style="pointer-events:none;opacity:.7"></span>
+            </div>
+            <div class="theme-pills-wrap" id="theme-pills-wrap">
+              <!-- Populated by app.js _renderThemePills() -->
+            </div>
+          </div>
+
         </div><!-- /fields-container -->
 
         <div class="form-footer">
@@ -118,7 +128,7 @@
 
         <div class="score-card">
           <div class="score-card-label">Card Score</div>
-          <div class="score-card-value" id="card-score-display">0 / 21</div>
+          <div class="score-card-value" id="card-score-display">0 / 24</div>
           <div class="score-bar-track">
             <div class="score-bar-fill" id="score-bar-fill"></div>
           </div>
@@ -155,6 +165,7 @@
   </main>
 
   <script src="js/data.js"></script>
+  <script src="js/themes_data.js"></script>
   <script src="js/deck.js"></script>
   <script src="js/app.js"></script>
 </body>

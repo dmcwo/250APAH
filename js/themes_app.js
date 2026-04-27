@@ -112,6 +112,7 @@ const ThemesApp = {
   _themeKey: null,
   _themeArtworks: [],
   _featuredId: null,
+  _essentialIds: new Set(),
   _topPickIds: new Set(),
   _results: [],
   _liveDebounceTimer: null,
@@ -162,8 +163,10 @@ const ThemesApp = {
         `<dt>${this._esc(label)}</dt><dd>${this._esc(val)}</dd>`;
     });
 
-    document.getElementById('artwork-modal-significance').textContent =
-      art.significance || '';
+    const themeData = THEMES_DATA[themeKey];
+    const connectionText = (themeData.connections && themeData.connections[String(art.id)])
+      || art.significance || '';
+    document.getElementById('artwork-modal-significance').textContent = connectionText;
 
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -215,9 +218,12 @@ const ThemesApp = {
     document.getElementById('btn-next').addEventListener('click', () => this._nextTheme());
 
     this._bindLiveFeedback();
+    this._bindEnterKey();
+  },
 
-    // Enter → advance to next input, or trigger check on last
-    document.querySelectorAll('.theme-input').forEach((input, i, all) => {
+  _bindEnterKey() {
+    const inputs = document.querySelectorAll('.theme-input');
+    inputs.forEach((input, i, all) => {
       input.addEventListener('keydown', e => {
         if (e.key !== 'Enter') return;
         e.preventDefault();
@@ -236,6 +242,28 @@ const ThemesApp = {
         this._liveDebounceTimer = setTimeout(() => this._updateLiveFeedback(), 300);
       });
     });
+  },
+
+  _renderInputs(n) {
+    const container = document.getElementById('theme-inputs-container');
+    container.innerHTML = '';
+    for (let i = 0; i < n; i++) {
+      const row = document.createElement('div');
+      row.className = 'theme-input-row';
+      const num = document.createElement('span');
+      num.className = 'theme-input-num';
+      num.textContent = String(i + 1);
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'field-input theme-input';
+      input.dataset.index = String(i);
+      input.placeholder = 'Artwork title…';
+      input.autocomplete = 'off';
+      input.spellcheck = false;
+      row.appendChild(num);
+      row.appendChild(input);
+      container.appendChild(row);
+    }
   },
 
   _updateLiveFeedback() {
@@ -260,10 +288,14 @@ const ThemesApp = {
       num.classList.toggle('live-close', isClose);
 
       if (matched) {
-        num.textContent = this._topPickIds.has(matched.id) ? '★' : '✓';
+        const isEssential = this._essentialIds.has(matched.id);
+        num.classList.toggle('live-essential', isEssential);
+        num.textContent = '★';
       } else if (isClose) {
+        num.classList.remove('live-essential');
         num.textContent = '~';
       } else {
+        num.classList.remove('live-essential');
         num.textContent = String(i + 1);
       }
     });
@@ -279,7 +311,8 @@ const ThemesApp = {
       .map(id => ART_DATA.find(a => a.id === id))
       .filter(Boolean);
 
-    this._topPickIds = new Set(theme.top_picks || []);
+    this._essentialIds = new Set(theme.essential || []);
+    this._topPickIds   = new Set(theme.top_picks  || []);
 
     const featured = this._themeArtworks[0] || null;
     this._featuredId = featured ? featured.id : null;
@@ -291,28 +324,24 @@ const ThemesApp = {
 
     document.getElementById('t-theme-definition').textContent = theme.definition;
 
-    // Featured image
-    if (featured) {
+    // Featured image (use first essential artwork)
+    const essentialArt = ART_DATA.find(a => (theme.essential || [])[0] === a.id) || featured;
+    if (essentialArt) {
       const img = document.getElementById('t-featured-image');
-      img.src = featured.image_url;
-      img.alt = featured.title;
-
+      img.src = essentialArt.image_url;
+      img.alt = essentialArt.title;
     }
 
     // Count hint
+    const n = (theme.essential || []).length;
     document.getElementById('t-count-hint').innerHTML =
-      `This theme connects to <strong>${this._themeArtworks.length}</strong> of the 250 ` +
-      `required works — how many can you name?`;
+      `Name the <strong>${n} essential works</strong> for this theme ` +
+      `— plus any of the ${this._themeArtworks.length} connected works you know.`;
 
-    // Clear inputs and reset all live-feedback state
-    document.querySelectorAll('.theme-input').forEach((inp, i) => {
-      inp.value = '';
-      inp.classList.remove('learn-filled', 'live-match', 'live-close', 'live-no-match');
-      inp.disabled = false;
-      const num = inp.closest('.theme-input-row').querySelector('.theme-input-num');
-      num.classList.remove('live-match', 'live-close');
-      num.textContent = String(i + 1);
-    });
+    // Render dynamic inputs and re-bind live events (minimum 6 for bonus top-pick attempts)
+    this._renderInputs(Math.max(n, 6));
+    this._bindLiveFeedback();
+    this._bindEnterKey();
     clearTimeout(this._liveDebounceTimer);
 
     // Reset buttons
@@ -323,7 +352,8 @@ const ThemesApp = {
     document.getElementById('screen-question').classList.add('active');
     document.getElementById('screen-review').classList.remove('active');
 
-    document.querySelector('.theme-input').focus();
+    const firstInput = document.querySelector('.theme-input');
+    if (firstInput) firstInput.focus();
   },
 
   // ── Learn this ─────────────────────────────────────────────────
@@ -345,30 +375,26 @@ const ThemesApp = {
 
     document.querySelectorAll('.theme-input').forEach(inp => {
       const userText = inp.value.trim();
-      const matched = findBestMatch(userText, this._themeArtworks, usedIds);
-      this._results.push({ userText, matched, isCorrect: !!matched });
+      const matched  = findBestMatch(userText, this._themeArtworks, usedIds);
+      const isCorrect   = !!matched;
+      const isEssential = isCorrect && this._essentialIds.has(matched.id);
+      const isTopPick   = isCorrect && this._topPickIds.has(matched.id);
+      this._results.push({ userText, matched, isCorrect, isEssential, isTopPick });
     });
 
-    const correct = this._results.filter(r => r.isCorrect).length;
-    const score21 = Math.round((correct / 8) * 21);
+    const n                = (THEMES_DATA[this._themeKey].essential || []).length;
+    const correctEssential = this._results.filter(r => r.isEssential).length;
+    const bonusPoints      = this._results.filter(r => r.isCorrect && r.isTopPick).length;
+    const score21          = Math.round((correctEssential / n) * 21);
 
-    // Award bonus session points for top picks
-    let bonusPoints = 0;
-    this._results.forEach(r => {
-      if (r.isCorrect && r.matched && this._topPickIds.has(r.matched.id)) {
-        r.isTopPick = true;
-        bonusPoints++;
-      }
-    });
     this.sessionScore += score21 + bonusPoints;
 
-    // Capture state for review before advancing deck
     const reviewThemeKey = this._themeKey;
     const reviewArtworks = this._themeArtworks;
 
     this.deck.advance(score21);
     this._updateHeader();
-    this._showReview(correct, score21, bonusPoints, reviewThemeKey, reviewArtworks);
+    this._showReview(correctEssential, score21, bonusPoints, reviewThemeKey, reviewArtworks);
   },
 
   // ── Review screen ──────────────────────────────────────────────
@@ -387,7 +413,8 @@ const ThemesApp = {
     applyThemeColor(badge, themeKey);
 
     // Scores
-    document.getElementById('r-correct-count').textContent = `${correct} / 8`;
+    const n = (THEMES_DATA[themeKey].essential || []).length;
+    document.getElementById('r-correct-count').textContent = `${correct} / ${n}`;
     const bonusLabel = bonusPoints > 0 ? ` (+${bonusPoints} bonus)` : '';
     document.getElementById('review-session-score').textContent =
       `${this.sessionScore} pts${bonusLabel}`;
@@ -416,10 +443,12 @@ const ThemesApp = {
         (r.isCorrect ? 'answer-correct' : r.userText ? 'answer-wrong' : 'answer-blank');
 
       const icon = r.isCorrect ? '✓' : r.userText ? '✗' : '–';
+      const essentialBadge = r.isEssential
+        ? ' <span class="answer-essential-badge">★ essential</span>' : '';
       const starBadge = r.isTopPick
         ? ' <span class="answer-top-pick-badge">★ top pick</span>' : '';
       const label = r.isCorrect
-        ? this._esc(r.matched.title) + starBadge
+        ? this._esc(r.matched.title) + essentialBadge + starBadge
         : r.userText
           ? `<span class="answer-user-text">${this._esc(r.userText)}</span>`
           : '<span class="answer-blank-text">—</span>';
@@ -440,23 +469,32 @@ const ThemesApp = {
       this._results.filter(r => r.isCorrect && r.matched).map(r => r.matched.id)
     );
 
-    const topPicks = artworks.filter(a => this._topPickIds.has(a.id));
-    const others   = artworks.filter(a => !this._topPickIds.has(a.id));
+    const theme = THEMES_DATA[this._reviewThemeKey];
+    const essentialSet = new Set(theme.essential || []);
+    const topPickSet   = new Set(theme.top_picks  || []);
 
-    const addHeader = (text) => {
+    const essentialArts = artworks.filter(a => essentialSet.has(a.id));
+    const topPickArts   = artworks.filter(a => !essentialSet.has(a.id) && topPickSet.has(a.id));
+    const relatedArts   = artworks.filter(a => !essentialSet.has(a.id) && !topPickSet.has(a.id));
+
+    const addHeader = (text, extraClass) => {
       const h = document.createElement('div');
-      h.className = 'mosaic-section-header';
+      h.className = 'mosaic-section-header' + (extraClass ? ' ' + extraClass : '');
       h.innerHTML = text;
       mosaic.appendChild(h);
     };
 
-    const groups = topPicks.length
-      ? [{ label: '<span class="mosaic-section-star">★</span> Top Picks', items: topPicks },
-         { label: 'Other related works', items: others }]
-      : [{ label: null, items: artworks }];
+    const groups = [
+      { label: '<span class="mosaic-section-star mosaic-section-star--essential">★</span> Essential',
+        items: essentialArts, cls: 'mosaic-section-header--essential' },
+      { label: '<span class="mosaic-section-star">★</span> Top Picks',
+        items: topPickArts,   cls: null },
+      { label: 'Related Works',
+        items: relatedArts,   cls: null },
+    ].filter(g => g.items.length > 0);
 
-    groups.forEach(({ label, items }) => {
-      if (label) addHeader(label);
+    groups.forEach(({ label, items, cls }) => {
+      if (label) addHeader(label, cls);
       items.forEach(art => {
         const item = document.createElement('div');
         item.className = 'mosaic-item' + (correctIds.has(art.id) ? ' mosaic-item--found' : '');

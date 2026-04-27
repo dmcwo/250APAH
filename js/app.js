@@ -59,7 +59,46 @@ const FIELDS = [
   },
 ];
 
-const MAX_SCORE = FIELDS.length * 3;   // 7 × 3 = 21
+const MAX_SCORE = (FIELDS.length + 1) * 3;   // 8 × 3 = 24 (7 fields + themes)
+
+// ══════════════════════════════════════════════════════════════
+// Theme-weighting helpers (uses THEMES_DATA from themes_data.js)
+// ══════════════════════════════════════════════════════════════
+
+/** Reverse lookup: artId → [themeKey, ...] (all tiers) */
+function buildArtworkThemes() {
+  const map = {};
+  for (const [key, theme] of Object.entries(THEMES_DATA)) {
+    for (const id of (theme.artworks || [])) {
+      if (!map[id]) map[id] = [];
+      map[id].push(key);
+    }
+  }
+  return map;
+}
+
+/** Weight map: essential→3, top-pick→2, else→1 */
+function buildWeightMap() {
+  const w = {};
+  for (const theme of Object.values(THEMES_DATA)) {
+    for (const id of (theme.essential  || [])) w[id] = Math.max(w[id] || 0, 3);
+    for (const id of (theme.top_picks  || [])) w[id] = Math.max(w[id] || 0, 2);
+  }
+  return w;
+}
+
+/** Weighted shuffle — higher-weight items tend to appear earlier in deck */
+function weightedShuffle(arr, weightMap) {
+  const pool = arr.map(art => ({ art, w: weightMap[art.id] || 1 }));
+  const result = [];
+  while (pool.length) {
+    const total = pool.reduce((s, x) => s + x.w, 0);
+    let r = Math.random() * total, i = 0;
+    while (r > pool[i].w && i < pool.length - 1) { r -= pool[i].w; i++; }
+    result.push(pool.splice(i, 1)[0].art);
+  }
+  return result;
+}
 
 // ══════════════════════════════════════════════════════════════
 // Fuzzy grader
@@ -252,15 +291,18 @@ const Fuzzy = (() => {
 // App state
 // ══════════════════════════════════════════════════════════════
 const App = {
-  deck:           null,
-  sessionScore:   0,
-  fieldResults:   [],   // [{field, userAnswer, correct, status, pts}]
-  _isLearning:    false,
+  deck:             null,
+  sessionScore:     0,
+  fieldResults:     [],   // [{field, userAnswer, correct, status, pts}]
+  _isLearning:      false,
+  _artworkThemes:   {},   // {artId: [themeKey, ...]}
+  _selectedThemes:  null, // Set of currently toggled theme keys
 
   // ── Initialise ────────────────────────────────────────────
 
   init() {
-    this.deck = new Deck(ART_DATA);
+    this._artworkThemes = buildArtworkThemes();
+    this.deck = new Deck(weightedShuffle(ART_DATA, buildWeightMap()), true);
     this._bindEvents();
     this._showQuestion();
   },
@@ -334,6 +376,9 @@ const App = {
     learnBtn.classList.remove('btn-learn-done');
     document.getElementById('btn-check').classList.remove('hidden');
 
+    // Render theme pills for this card
+    this._renderThemePills(card);
+
     // Focus title
     document.getElementById('f-title').focus();
 
@@ -341,6 +386,42 @@ const App = {
     this._updateHeader();
 
     this._showScreen('screen-question');
+  },
+
+  _renderThemePills(card) {
+    this._selectedThemes = new Set();
+    const wrap = document.getElementById('theme-pills-wrap');
+    if (!wrap) return;
+
+    // Update count hint
+    const hint = document.getElementById('themes-count-hint');
+    const correctKeys = this._artworkThemes[card.id] || [];
+    if (hint) {
+      if (correctKeys.length === 0) {
+        hint.textContent = 'No themes';
+      } else {
+        hint.textContent = `Select ${correctKeys.length}`;
+      }
+    }
+
+    wrap.innerHTML = '';
+    Object.keys(THEMES_DATA).forEach(key => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'recall-theme-pill';
+      btn.dataset.key = key;
+      btn.textContent = THEMES_DATA[key].label;
+      btn.addEventListener('click', () => {
+        if (this._selectedThemes.has(key)) {
+          this._selectedThemes.delete(key);
+          btn.classList.remove('recall-theme-pill--on');
+        } else {
+          this._selectedThemes.add(key);
+          btn.classList.add('recall-theme-pill--on');
+        }
+      });
+      wrap.appendChild(btn);
+    });
   },
 
   // ── Learn this ────────────────────────────────────────────
@@ -356,6 +437,15 @@ const App = {
         el.value = this._getCorrect(card, f);
         el.classList.add('learn-filled');
       }
+    });
+
+    // Auto-select correct theme pills
+    const correctKeys = this._artworkThemes[card.id] || [];
+    this._selectedThemes = new Set(correctKeys);
+    document.querySelectorAll('.recall-theme-pill').forEach(btn => {
+      const on = correctKeys.includes(btn.dataset.key);
+      btn.classList.toggle('recall-theme-pill--on', on);
+      btn.classList.toggle('recall-theme-pill--learn', on);
     });
 
     // Switch button to "Got it, Next Card →"
@@ -379,17 +469,37 @@ const App = {
   _checkAnswers() {
     const card = this.deck.current;
 
-    this.fieldResults = FIELDS.map((field, idx) => {
+    this.fieldResults = FIELDS.map((field) => {
       const el          = document.getElementById(field.inputId);
       const userAnswer  = el ? el.value.trim() : '';
       const correct     = this._getCorrect(card, field);
       const status      = this._gradeField(field, userAnswer, correct);
       const pts         = this._statusToPts(status);
-
       return { field, userAnswer, correct, status, pts };
     });
 
+    // Grade themes field
+    const correctThemeKeys = this._artworkThemes[card.id] || [];
+    const selectedKeys     = this._selectedThemes ? [...this._selectedThemes] : [];
+    const themeStatus      = this._gradeThemes(selectedKeys, correctThemeKeys);
+    this.fieldResults.push({
+      field:       { key: 'themes', label: 'Themes', isThemes: true },
+      userAnswer:  selectedKeys,
+      correct:     correctThemeKeys,
+      status:      themeStatus,
+      pts:         this._statusToPts(themeStatus),
+    });
+
     this._showReview();
+  },
+
+  _gradeThemes(selected, correctKeys) {
+    if (!correctKeys.length) return 'blank';
+    const hits = selected.filter(k => correctKeys.includes(k)).length;
+    const total = correctKeys.length;
+    if (hits === total && selected.length === hits) return 'correct';  // all right, no false positives
+    if (hits >= Math.ceil(total / 2)) return 'close';
+    return selected.length === 0 ? 'blank' : 'incorrect';
   },
 
   /** Get the correct answer string for a field + card combo. */
@@ -425,6 +535,7 @@ const App = {
 
   _showReview() {
     const card = this.deck.current;
+    this._reviewCardId = card.id;
 
     // Mirror image
     document.getElementById('r-image').src = card.image_url;
@@ -448,13 +559,37 @@ const App = {
       tr.dataset.fieldIndex = idx;
       tr.className = this._rowClass(result.status);
 
-      const userDisplay    = result.userAnswer || '—';
-      const userBlankClass = result.userAnswer ? '' : 'blank';
+      let userCell, correctCell;
+
+      if (result.field.isThemes) {
+        const sel = result.userAnswer;  // array of selected keys
+        const cor = result.correct;     // array of correct keys
+        userCell = sel.length
+          ? sel.map(k => {
+              const hit = cor.includes(k);
+              return `<span class="review-theme-chip ${hit ? 'chip-hit' : 'chip-fp'}">${this._esc(THEMES_DATA[k]?.label || k)}</span>`;
+            }).join('')
+          : '<span class="blank">—</span>';
+        const connectionTexts = cor.map(k => {
+          const theme = THEMES_DATA[k];
+          const conn = theme?.connections?.[String(this._reviewCardId)];
+          if (!conn) return '';
+          return `<p class="theme-connection-text"><strong>${this._esc(theme.label)}:</strong> ${this._esc(conn)}</p>`;
+        }).filter(Boolean).join('');
+        correctCell = cor.length
+          ? cor.map(k => `<span class="review-theme-chip chip-answer">${this._esc(THEMES_DATA[k]?.label || k)}</span>`).join('') + connectionTexts
+          : '<span class="blank">none</span>';
+      } else {
+        const userDisplay    = result.userAnswer || '—';
+        const userBlankClass = result.userAnswer ? '' : 'blank';
+        userCell    = `<span class="user-answer-text ${userBlankClass}">${this._esc(userDisplay)}</span>`;
+        correctCell = `<span class="correct-answer-text">${this._esc(result.correct)}</span>`;
+      }
 
       tr.innerHTML = `
         <td class="col-field-cell">${result.field.label}</td>
-        <td><span class="user-answer-text ${userBlankClass}">${this._esc(userDisplay)}</span></td>
-        <td><span class="correct-answer-text">${this._esc(result.correct)}</span></td>
+        <td>${userCell}</td>
+        <td>${correctCell}</td>
         <td class="grade-cell">
           <div class="grade-btn-group">
             <button class="grade-btn ${this._btnActiveClass(result.status, 'correct')}"

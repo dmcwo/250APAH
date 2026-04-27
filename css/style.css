@@ -307,6 +307,63 @@ img { display: block; max-width: 100%; }
   line-height: 1.6;
 }
 
+/* ── Theme pills (recall question screen) ───────────────────── */
+.theme-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 0;
+}
+
+.recall-theme-pill {
+  font-size: .78rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--neutral-border);
+  background: var(--neutral-bg);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background .12s, border-color .12s, color .12s;
+  white-space: nowrap;
+}
+.recall-theme-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.recall-theme-pill--on {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+.recall-theme-pill--learn {
+  background: var(--success-bg);
+  border-color: var(--success-border);
+  color: var(--success);
+}
+
+/* ── Theme chips (review table) ─────────────────────────────── */
+.review-theme-chip {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  margin: 2px 2px 2px 0;
+  white-space: nowrap;
+}
+.chip-hit     { background: var(--success-bg);  color: var(--success);  border: 1px solid var(--success-border); }
+.chip-fp      { background: var(--danger-bg);   color: var(--danger);   border: 1px solid var(--danger-border); }
+.chip-answer  { background: var(--gold-light);  color: var(--gold);     border: 1px solid var(--warn-border); }
+.theme-connection-text {
+  margin: 8px 0 2px;
+  font-size: .8rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
 /* ── Form footer ────────────────────────────────────────────── */
 .form-footer {
   padding: 16px 32px 24px;
@@ -915,6 +972,11 @@ img { display: block; max-width: 100%; }
   border-color: var(--warn-border);
   color: var(--warn);
 }
+.theme-input-num.live-essential {
+  background: var(--gold-light);
+  border-color: var(--warn-border);
+  color: var(--gold);
+}
 
 /* ═══════════════════════════════════════════════════════════════
    THEMES — REVIEW SCREEN
@@ -994,6 +1056,19 @@ img { display: block; max-width: 100%; }
   font-weight: 700;
   color: var(--gold);
   background: var(--gold-light);
+  border-radius: var(--radius-pill);
+  padding: 1px 7px;
+  margin-left: 6px;
+  vertical-align: middle;
+  letter-spacing: .02em;
+}
+.answer-essential-badge {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 700;
+  color: var(--gold);
+  background: var(--gold-light);
+  border: 1px solid var(--warn-border);
   border-radius: var(--radius-pill);
   padding: 1px 7px;
   margin-left: 6px;
@@ -1087,6 +1162,8 @@ img { display: block; max-width: 100%; }
 }
 .mosaic-section-header:first-child { padding-top: 0; }
 .mosaic-section-header .mosaic-section-star { color: var(--gold); }
+.mosaic-section-header--essential { color: var(--gold); border-bottom-color: var(--warn-border); }
+.mosaic-section-star--essential   { color: var(--gold); }
 
 /* ── Hover card (data stays in DOM; portal reads it) ──────────── */
 .mosaic-hover-card { display: none !important; }
@@ -1389,6 +1466,29 @@ img { display: block; max-width: 100%; }
 }
 .tl-card-wrap--correct .tl-card-num { color: var(--success); }
 .tl-card-wrap--selected .tl-card-num { color: var(--accent); }
+
+/* Circa badge — top-right corner of ordering card */
+.tl-circa-badge {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--gold);
+  opacity: .85;
+  pointer-events: none;
+  z-index: 3;
+  line-height: 1;
+}
+
+/* Circa hint — shown below the Dates input in the recall row */
+.tl-circa-hint {
+  font-size: .72rem;
+  color: var(--gold);
+  margin-top: 2px;
+  margin-bottom: 4px;
+  display: block;
+}
 
 /* ── Drop zones ───────────────────────────────────────────────── */
 .tl-drop-zone {

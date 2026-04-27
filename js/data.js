@@ -1,5 +1,8 @@
 // AP Art History — 250 Required Works
-// Auto-generated from data.json
+// Auto-generated from data.js
+// Added fields: date_start (int, signed year; BCE = negative),
+//               date_end   (int, signed year; equals date_start for single-point dates),
+//               date_circa (bool, true if original date string is approximate)
 
 const ART_DATA = 
 [
@@ -14,7 +17,10 @@ const ART_DATA =
     "material": "Stone",
     "technique": "Charcoal drawing on stone",
     "significance": "Among the oldest known figurative artworks in Africa; depict animal figures with possible human legs; named after the Apollo 11 moon landing occurring at the time of discovery.",
-    "image_url": "images/001.jpg"
+    "image_url": "images/001.jpg",
+    "date_start": -25500,
+    "date_end": -25300,
+    "date_circa": true
   },
   {
     "id": 2,
@@ -27,7 +33,10 @@ const ART_DATA =
     "material": "Natural pigments on limestone cave wall",
     "technique": "Polychrome rock painting using charcoal, ochre, hematite",
     "significance": "One of the most important Paleolithic cave painting sites; features hundreds of animal figures demonstrating sophisticated understanding of form and movement; possibly related to hunting rituals or shamanic practice.",
-    "image_url": "images/002.jpg"
+    "image_url": "images/002.jpg",
+    "date_start": -15000,
+    "date_end": -13000,
+    "date_circa": true
   },
   {
     "id": 3,
@@ -40,7 +49,10 @@ const ART_DATA =
     "material": "Camelid sacrum bone",
     "technique": "Carving and incising",
     "significance": "Earliest known work of art from the Americas; a naturally suggestive animal bone minimally modified to resemble a canine face; demonstrates early human tendency to recognize and enhance natural forms.",
-    "image_url": "images/003.jpg"
+    "image_url": "images/003.jpg",
+    "date_start": -14000,
+    "date_end": -7000,
+    "date_circa": true
   },
   {
     "id": 4,
@@ -53,7 +65,10 @@ const ART_DATA =
     "material": "Rock",
     "technique": "Pigment applied to rock surface",
     "significance": "Notable Neolithic rock painting from the Saharan region; depicts a horned female figure in motion; Tassili n'Ajjer contains one of the most important groupings of prehistoric rock art in the world.",
-    "image_url": "images/004.jpg"
+    "image_url": "images/004.jpg",
+    "date_start": -6000,
+    "date_end": -4000,
+    "date_circa": true
   },
   {
     "id": 5,
@@ -66,7 +81,10 @@ const ART_DATA =
     "material": "Terra cotta",
     "technique": "Painted (geometric and animal motifs)",
     "significance": "Example of sophisticated abstract design from early Iran; ibex horns form elegant circular patterns demonstrating advanced compositional thinking; among the finest examples of prehistoric Iranian pottery.",
-    "image_url": "images/005.jpg"
+    "image_url": "images/005.jpg",
+    "date_start": -4200,
+    "date_end": -3500,
+    "date_circa": true
   },
   {
     "id": 6,
@@ -79,7 +97,10 @@ const ART_DATA =
     "material": "Sandstone",
     "technique": "Carving",
     "significance": "Rare example of figurative sculpture from the Arabian Peninsula; features schematic human form with weapons; suggests burial or memorial function and early development of figurative art in the region.",
-    "image_url": "images/006.jpg"
+    "image_url": "images/006.jpg",
+    "date_start": -3999,
+    "date_end": -3000,
+    "date_circa": true
   },
   {
     "id": 7,
@@ -92,7 +113,10 @@ const ART_DATA =
     "material": "Carved jade",
     "technique": "Grinding, drilling, and polishing",
     "significance": "Square-outside, circle-inside form may symbolize Earth and Heaven; associated with elite burials; demonstrates extraordinary jade-working skill and symbolic complexity of Neolithic Chinese culture.",
-    "image_url": "images/007.jpg"
+    "image_url": "images/007.jpg",
+    "date_start": -3300,
+    "date_end": -2200,
+    "date_circa": true
   },
   {
     "id": 8,
@@ -105,7 +129,10 @@ const ART_DATA =
     "material": "Sarsen sandstone and bluestone",
     "technique": "Post-and-lintel construction; transported and erected stones",
     "significance": "One of the world's most iconic prehistoric monuments; stones align with summer solstice sunrise; likely served astronomical, ceremonial, and funerary purposes; represents extraordinary feat of Neolithic engineering.",
-    "image_url": "images/008.jpg"
+    "image_url": "images/008.jpg",
+    "date_start": -2500,
+    "date_end": -1600,
+    "date_circa": true
   },
   {
     "id": 9,
@@ -118,7 +145,10 @@ const ART_DATA =
     "material": "Greywacke",
     "technique": "Pecking and grinding",
     "significance": "Zoomorphic form resembling an echidna or anteater with anthropomorphic qualities; one of the oldest sculptures from the Pacific region; believed to have held ritual or spiritual significance.",
-    "image_url": "images/009.jpg"
+    "image_url": "images/009.jpg",
+    "date_start": -1500,
+    "date_end": -1500,
+    "date_circa": true
   },
   {
     "id": 10,
@@ -131,7 +161,10 @@ const ART_DATA =
     "material": "Ceramic",
     "technique": "Hand-modeled clay with incising and appliqué",
     "significance": "Features exaggerated female form with dual face; may relate to fertility, duality, or shamanistic transformation; represents the sophistication of early Mesoamerican ceramic traditions.",
-    "image_url": "images/010.jpg"
+    "image_url": "images/010.jpg",
+    "date_start": -1200,
+    "date_end": -900,
+    "date_circa": true
   },
   {
     "id": 11,
@@ -144,7 +177,10 @@ const ART_DATA =
     "material": "Terra cotta",
     "technique": "Incised geometric decoration",
     "significance": "Lapita pottery is key archaeological evidence for the migration of ancestral Polynesians across the Pacific; distinctive geometric patterns are traceable across a vast geographic area demonstrating cultural connectivity.",
-    "image_url": "images/011.jpg"
+    "image_url": "images/011.jpg",
+    "date_start": -1000,
+    "date_end": -1000,
+    "date_circa": true
   },
   {
     "id": 12,
@@ -157,7 +193,10 @@ const ART_DATA =
     "material": "Mud brick",
     "technique": "Mud brick construction on raised platform",
     "significance": "One of the earliest known monumental religious structures; elevated platform (ziggurat) elevates temple toward the heavens; dedicated to sky god Anu; establishes architectural tradition of ziggurat temple platforms.",
-    "image_url": "images/012.jpg"
+    "image_url": "images/012.jpg",
+    "date_start": -3500,
+    "date_end": -3000,
+    "date_circa": true
   },
   {
     "id": 13,
@@ -170,7 +209,10 @@ const ART_DATA =
     "material": "Greywacke (siltstone)",
     "technique": "Low-relief carving",
     "significance": "One of the earliest historical records; depicts the unification of Upper and Lower Egypt under King Narmer; establishes many canonical conventions of Egyptian art including hierarchical scale and composite figure.",
-    "image_url": "images/013.jpg"
+    "image_url": "images/013.jpg",
+    "date_start": -3000,
+    "date_end": -2920,
+    "date_circa": true
   },
   {
     "id": 14,
@@ -183,7 +225,10 @@ const ART_DATA =
     "material": "Gypsum with shell and black limestone inlay",
     "technique": "Carving and inlay",
     "significance": "Figures stand in eternal prayer on behalf of worshippers; wide eyes convey reverence and constant watchfulness before the deity; demonstrates the Sumerian practice of substitute worshippers.",
-    "image_url": "images/014.jpg"
+    "image_url": "images/014.jpg",
+    "date_start": -2700,
+    "date_end": -2700,
+    "date_circa": true
   },
   {
     "id": 15,
@@ -196,7 +241,10 @@ const ART_DATA =
     "material": "Painted limestone with crystal and alabaster eyes",
     "technique": "Carving and paint",
     "significance": "Rare Egyptian naturalistic depiction of a non-royal figure; the scribe's alert expression and individualized face contrast with idealized royal portraits; reflects high status of literacy in Egyptian society.",
-    "image_url": "images/015.jpg"
+    "image_url": "images/015.jpg",
+    "date_start": -2620,
+    "date_end": -2500,
+    "date_circa": true
   },
   {
     "id": 16,
@@ -209,7 +257,10 @@ const ART_DATA =
     "material": "Wood, shell, lapis lazuli, red limestone",
     "technique": "Mosaic inlay",
     "significance": "Two sides depict 'War' and 'Peace' (banquet) scenes in registers; one of the earliest known narrative works; provides detailed information about Sumerian military and social life; found in the Royal Cemetery at Ur.",
-    "image_url": "images/016.jpg"
+    "image_url": "images/016.jpg",
+    "date_start": -2600,
+    "date_end": -2400,
+    "date_circa": true
   },
   {
     "id": 17,
@@ -222,7 +273,10 @@ const ART_DATA =
     "material": "Cut limestone",
     "technique": "Ashlar masonry construction",
     "significance": "The only surviving Wonder of the Ancient World; each pyramid is a tomb for a pharaoh; the Sphinx guards the complex; demonstrate extraordinary engineering and the power of the pharaonic state.",
-    "image_url": "images/017.jpg"
+    "image_url": "images/017.jpg",
+    "date_start": -2550,
+    "date_end": -2490,
+    "date_circa": true
   },
   {
     "id": 18,
@@ -235,7 +289,10 @@ const ART_DATA =
     "material": "Greywacke",
     "technique": "Carving",
     "significance": "Idealized royal pair demonstrates canon of Egyptian sculpture; both figures exhibit youth, strength, and dignity regardless of actual age; the queen's embrace suggests intimacy while maintaining formal royal pose.",
-    "image_url": "images/018.jpg"
+    "image_url": "images/018.jpg",
+    "date_start": -2490,
+    "date_end": -2472,
+    "date_circa": true
   },
   {
     "id": 19,
@@ -248,7 +305,10 @@ const ART_DATA =
     "material": "Basalt",
     "technique": "Carving (relief and cuneiform inscription)",
     "significance": "One of the oldest deciphered legal codes; the relief at top depicts Hammurabi receiving authority from the sun god Shamash; 282 laws inscribed below; merges visual art with written law in a single monument.",
-    "image_url": "images/019.jpg"
+    "image_url": "images/019.jpg",
+    "date_start": -1792,
+    "date_end": -1750,
+    "date_circa": true
   },
   {
     "id": 20,
@@ -261,7 +321,10 @@ const ART_DATA =
     "material": "Cut sandstone and mud brick",
     "technique": "Hypostyle hall (forest of columns) construction",
     "significance": "Largest religious structure ever built; the Hypostyle Hall contains 134 massive columns; constructed over many dynasties; center of worship for Amun-Re, chief deity of the Egyptian empire.",
-    "image_url": "images/020.png"
+    "image_url": "images/020.png",
+    "date_start": -1550,
+    "date_end": -1250,
+    "date_circa": true
   },
   {
     "id": 21,
@@ -274,7 +337,10 @@ const ART_DATA =
     "material": "Sandstone; partially carved into rock cliff; red granite",
     "technique": "Rock-cut and freestanding construction with terraced ramps",
     "significance": "Built for female pharaoh Hatshepsut; three colonnaded terraces rise dramatically against the cliffs; celebrates her divine birth and trade expeditions; one of the best-preserved New Kingdom temples.",
-    "image_url": "images/021.jpg"
+    "image_url": "images/021.jpg",
+    "date_start": -1473,
+    "date_end": -1458,
+    "date_circa": true
   },
   {
     "id": 22,
@@ -287,7 +353,10 @@ const ART_DATA =
     "material": "Limestone",
     "technique": "Sunken relief carving with paint",
     "significance": "Radical departure from Egyptian artistic conventions under pharaoh Akhenaton; naturalistic, informal family scene with elongated figures bathed in rays of Aten (sun disk); reflects the revolutionary Amarna art style.",
-    "image_url": "images/022.jpg"
+    "image_url": "images/022.jpg",
+    "date_start": -1353,
+    "date_end": -1335,
+    "date_circa": true
   },
   {
     "id": 23,
@@ -300,7 +369,10 @@ const ART_DATA =
     "material": "Gold with enamel and semiprecious stone inlay",
     "technique": "Hammered gold, cloisonné enamel, inlay",
     "significance": "Innermost of three nested coffins; solid gold; depicts Tutankhamun in the guise of Osiris; its discovery in 1922 by Howard Carter was one of the most significant archaeological finds of the 20th century.",
-    "image_url": "images/023.jpg"
+    "image_url": "images/023.jpg",
+    "date_start": -1323,
+    "date_end": -1323,
+    "date_circa": true
   },
   {
     "id": 24,
@@ -313,7 +385,10 @@ const ART_DATA =
     "material": "Painted papyrus",
     "technique": "Tempera painting on papyrus",
     "significance": "Depicts the weighing of the heart ceremony from the Egyptian afterlife belief; Hu-Nefer's heart is weighed against the feather of Ma'at; Thoth records the result; Osiris presides; demonstrates Egyptian funerary beliefs.",
-    "image_url": "images/024.jpg"
+    "image_url": "images/024.jpg",
+    "date_start": -1275,
+    "date_end": -1275,
+    "date_circa": true
   },
   {
     "id": 25,
@@ -326,7 +401,10 @@ const ART_DATA =
     "material": "Alabaster (gypsum)",
     "technique": "High relief and in-the-round carving",
     "significance": "Human-headed winged bull; appears with 4 legs from side and 2 from front (total 5 legs); guarded palace entrances; combines strength (bull), swiftness (wings), and intelligence (human head); symbol of royal protection.",
-    "image_url": "images/025.jpg"
+    "image_url": "images/025.jpg",
+    "date_start": -720,
+    "date_end": -705,
+    "date_circa": true
   },
   {
     "id": 26,
@@ -339,7 +417,10 @@ const ART_DATA =
     "material": "Marble, limestone, bronze (multiple structures)",
     "technique": "City planning; architectural complex over multiple centuries",
     "significance": "The civic, commercial, and social center of ancient Athens; birthplace of democracy; home to law courts, temples, market stalls, and the Stoa of Attalos; demonstrates Greek urban planning values.",
-    "image_url": "images/026.jpg"
+    "image_url": "images/026.jpg",
+    "date_start": -600,
+    "date_end": -600,
+    "date_circa": true
   },
   {
     "id": 27,
@@ -352,7 +433,10 @@ const ART_DATA =
     "material": "Marble with remnants of paint",
     "technique": "Carving in the round",
     "significance": "Idealized nude male youth (kouros) used as grave marker; frontal pose with one foot forward echoes Egyptian influence; abstracted yet increasingly naturalistic; represents ideal beauty and athletic virtue.",
-    "image_url": "images/027.jpg"
+    "image_url": "images/027.jpg",
+    "date_start": -530,
+    "date_end": -530,
+    "date_circa": true
   },
   {
     "id": 28,
@@ -365,7 +449,10 @@ const ART_DATA =
     "material": "Marble (originally painted)",
     "technique": "Carving in the round with polychrome paint",
     "significance": "Female equivalent of the kouros; draped figure (kore) offered to Athena; the 'archaic smile' suggests idealized, life-like quality; traces of original paint survive; demonstrates the role of votive offerings in Greek religion.",
-    "image_url": "images/028.jpg"
+    "image_url": "images/028.jpg",
+    "date_start": -530,
+    "date_end": -530,
+    "date_circa": true
   },
   {
     "id": 29,
@@ -378,7 +465,10 @@ const ART_DATA =
     "material": "Terra cotta",
     "technique": "Modeled and fired clay",
     "significance": "Reclining husband and wife shown in an intimate banqueting pose atop their sarcophagus; demonstrates Etruscan views of afterlife as a continuation of pleasurable life; equal representation of the female figure is unusual for ancient cultures.",
-    "image_url": "images/029.jpg"
+    "image_url": "images/029.jpg",
+    "date_start": -520,
+    "date_end": -520,
+    "date_circa": true
   },
   {
     "id": 30,
@@ -391,7 +481,10 @@ const ART_DATA =
     "material": "Limestone",
     "technique": "Column and beam construction; relief sculpture on staircases",
     "significance": "Monumental audience hall of Persian kings; reliefs on staircases show delegations from across the empire bringing tribute; synthesizes artistic traditions from Egypt, Greece, and Mesopotamia; symbol of Persian imperial power.",
-    "image_url": "images/030.jpg"
+    "image_url": "images/030.jpg",
+    "date_start": -520,
+    "date_end": -465,
+    "date_circa": true
   },
   {
     "id": 31,
@@ -404,7 +497,10 @@ const ART_DATA =
     "material": "Temple: wood, mud brick, or tufa; Sculpture: terra cotta",
     "technique": "Architectural construction; modeled and fired clay with paint",
     "significance": "Temple roof was adorned with life-size terra cotta figures including the striding Apollo; Etruscan temples differed from Greek: wooden superstructure, high podium, single staircase entry; Apollo figure shows expressive energy.",
-    "image_url": "images/031.jpg"
+    "image_url": "images/031.jpg",
+    "date_start": -510,
+    "date_end": -500,
+    "date_circa": true
   },
   {
     "id": 32,
@@ -417,7 +513,10 @@ const ART_DATA =
     "material": "Tufa (rock) with fresco",
     "technique": "Fresco (buon fresco)",
     "significance": "Among the best-preserved Etruscan tomb paintings; depicts banqueting and dancing scenes of the afterlife; vivid color, expressive figures, and musicians; reflects Greek influence while maintaining distinct Etruscan character.",
-    "image_url": "images/032.jpg"
+    "image_url": "images/032.jpg",
+    "date_start": -480,
+    "date_end": -470,
+    "date_circa": true
   },
   {
     "id": 33,
@@ -430,7 +529,10 @@ const ART_DATA =
     "material": "Clay",
     "technique": "Red-figure technique with white highlights",
     "significance": "Innovative use of ground line to suggest spatial depth; figures placed at different heights on the vessel; depicts the slaying of the Niobids by Apollo and Artemis; marks a transition toward illusionistic space.",
-    "image_url": "images/033.jpg"
+    "image_url": "images/033.jpg",
+    "date_start": -460,
+    "date_end": -450,
+    "date_circa": true
   },
   {
     "id": 34,
@@ -443,7 +545,10 @@ const ART_DATA =
     "material": "Roman copy in marble (original in bronze)",
     "technique": "Carving (copy); lost-wax casting (original)",
     "significance": "Embodies Polykleitos's canon of ideal male proportions; contrapposto stance (weight shift) creates naturalistic sense of movement; head turns slightly countering hip shift; foundational work in Western figural sculpture.",
-    "image_url": "images/034.jpg"
+    "image_url": "images/034.jpg",
+    "date_start": -450,
+    "date_end": -440,
+    "date_circa": true
   },
   {
     "id": 35,
@@ -456,7 +561,10 @@ const ART_DATA =
     "material": "Pentelic marble",
     "technique": "Post-and-lintel Doric and Ionic construction; sculptural program",
     "significance": "Epitome of Classical Greek architecture; Parthenon used optical refinements (entasis, column inclination) to create impression of perfection; housed chryselephantine statue of Athena; symbol of Athenian democracy and civilization.",
-    "image_url": "images/035.jpg"
+    "image_url": "images/035.jpg",
+    "date_start": -447,
+    "date_end": -410,
+    "date_circa": true
   },
   {
     "id": 36,
@@ -469,7 +577,10 @@ const ART_DATA =
     "material": "Marble (originally painted)",
     "technique": "High-relief carving",
     "significance": "Exemplary Classical grave marker; Hegeso examines jewelry from a box held by her servant; restrained grief, elegant drapery, and naturalistic gesture; demonstrates the humanity and emotional depth of Classical Greek relief sculpture.",
-    "image_url": "images/036.jpg"
+    "image_url": "images/036.jpg",
+    "date_start": -410,
+    "date_end": -410,
+    "date_circa": true
   },
   {
     "id": 37,
@@ -482,7 +593,10 @@ const ART_DATA =
     "material": "Marble",
     "technique": "Carving; set on ship-prow base",
     "significance": "Nike (goddess of victory) alights on a ship prow; billowing drapery clings to body creating 'wet drapery' effect; sense of dynamic movement and energy; masterpiece of Hellenistic sculpture showing drama and naturalism.",
-    "image_url": "images/037.jpg"
+    "image_url": "images/037.jpg",
+    "date_start": -190,
+    "date_end": -190,
+    "date_circa": true
   },
   {
     "id": 38,
@@ -495,7 +609,10 @@ const ART_DATA =
     "material": "Marble",
     "technique": "Architectural construction with high-relief frieze sculpture",
     "significance": "Massive altar with elaborate Gigantomachy frieze (battle of gods vs. giants); figures spill onto the stairs; deeply carved, dynamic, emotionally intense; represents the apex of Hellenistic baroque sculptural style.",
-    "image_url": "images/038.jpg"
+    "image_url": "images/038.jpg",
+    "date_start": -175,
+    "date_end": -175,
+    "date_circa": true
   },
   {
     "id": 39,
@@ -508,7 +625,10 @@ const ART_DATA =
     "material": "Cut stone with fresco wall paintings",
     "technique": "Roman construction; Fourth Style fresco",
     "significance": "Wealthy merchant's house preserved by eruption of Vesuvius (79 C.E.); elaborate frescoes in Fourth Style (illusionistic architecture); demonstrates Roman domestic life, garden design, and the importance of wall painting.",
-    "image_url": "images/039.jpg"
+    "image_url": "images/039.jpg",
+    "date_start": 100,
+    "date_end": 199,
+    "date_circa": true
   },
   {
     "id": 40,
@@ -521,7 +641,10 @@ const ART_DATA =
     "material": "Tesserae (small stone/glass tiles)",
     "technique": "Opus vermiculatum mosaic",
     "significance": "Depicts Alexander the Great's victory over Darius III at the Battle of Issus (333 B.C.E.); extraordinary naturalism and sense of drama; shows foreshortening, shading, and emotional expression; one of the greatest works of ancient pictorial art.",
-    "image_url": "images/040.jpg"
+    "image_url": "images/040.jpg",
+    "date_start": -100,
+    "date_end": -100,
+    "date_circa": true
   },
   {
     "id": 41,
@@ -534,7 +657,10 @@ const ART_DATA =
     "material": "Bronze",
     "technique": "Lost-wax casting with copper inlay for wounds",
     "significance": "Psychologically intense portrait of a resting athlete showing the toll of combat; battered face, cauliflower ears, and wounds rendered in copper; moves beyond athletic idealism toward raw humanity; masterpiece of Hellenistic realism.",
-    "image_url": "images/041.jpg"
+    "image_url": "images/041.jpg",
+    "date_start": -100,
+    "date_end": -100,
+    "date_circa": true
   },
   {
     "id": 42,
@@ -547,7 +673,10 @@ const ART_DATA =
     "material": "Marble",
     "technique": "Carving",
     "significance": "Extreme verism (hyper-realism): wrinkles, sagging flesh, and individualized features preserved without idealization; reflects Republican Roman values of gravitas (dignity), virtus (virtue), and ancestral authority (mos maiorum).",
-    "image_url": "images/042.jpg"
+    "image_url": "images/042.jpg",
+    "date_start": -75,
+    "date_end": -50,
+    "date_circa": true
   },
   {
     "id": 43,
@@ -560,7 +689,10 @@ const ART_DATA =
     "material": "Marble (originally painted)",
     "technique": "Carving in the round",
     "significance": "Imperial propaganda in sculptural form; Augustus shown as military commander with divine associations (Cupid at feet); elaborately carved breastplate narrates political achievements; combines Greek idealism with Roman portraiture.",
-    "image_url": "images/043.jpg"
+    "image_url": "images/043.jpg",
+    "date_start": 1,
+    "date_end": 40,
+    "date_circa": true
   },
   {
     "id": 44,
@@ -573,7 +705,10 @@ const ART_DATA =
     "material": "Travertine limestone, tuff, concrete, and brick",
     "technique": "Arch and vault construction with engaged orders",
     "significance": "Largest amphitheater ever built; could seat 50,000–80,000 spectators; innovations include elevator systems and retractable awning; three orders stacked on exterior; symbol of Roman engineering and imperial power.",
-    "image_url": "images/044.jpg"
+    "image_url": "images/044.jpg",
+    "date_start": 70,
+    "date_end": 80,
+    "date_circa": true
   },
   {
     "id": 45,
@@ -586,7 +721,10 @@ const ART_DATA =
     "material": "Brick and concrete (architecture); marble (column)",
     "technique": "Roman concrete construction; continuous narrative spiral relief",
     "significance": "Trajan's Column features a continuous spiral frieze of over 150 scenes depicting the Dacian campaigns; innovative narrative strategy; the markets were one of the world's first shopping malls; celebrates Roman imperial triumph.",
-    "image_url": "images/045.png"
+    "image_url": "images/045.png",
+    "date_start": 106,
+    "date_end": 112,
+    "date_circa": true
   },
   {
     "id": 46,
@@ -599,7 +737,10 @@ const ART_DATA =
     "material": "Roman concrete with stone and brick facing",
     "technique": "Concrete dome construction with coffers; oculus",
     "significance": "Best preserved ancient Roman building; its unreinforced concrete dome (143 ft diameter) remained the world's largest until the 19th century; the oculus (opening at apex) is the sole light source; masterwork of Roman engineering.",
-    "image_url": "images/046.jpg"
+    "image_url": "images/046.jpg",
+    "date_start": 118,
+    "date_end": 125,
+    "date_circa": true
   },
   {
     "id": 47,
@@ -612,7 +753,10 @@ const ART_DATA =
     "material": "Marble",
     "technique": "High-relief carving (deep undercutting)",
     "significance": "Reflects shift from cremation to burial in Roman practice; densely packed, chaotic battle scene with Roman general at center; figures lack individual identity — confusion echoes violence of war; influenced later battle representations.",
-    "image_url": "images/047.jpg"
+    "image_url": "images/047.jpg",
+    "date_start": 250,
+    "date_end": 250,
+    "date_circa": true
   },
   {
     "id": 48,
@@ -625,7 +769,10 @@ const ART_DATA =
     "material": "Excavated tufa with fresco",
     "technique": "Rock-cut tunnels; buon fresco",
     "significance": "One of the oldest Christian catacombs in Rome; contains some of the earliest known images of the Virgin Mary and Christ; underground burial reflects Christian community cohesion and rejection of pagan cremation.",
-    "image_url": "images/048.jpg"
+    "image_url": "images/048.jpg",
+    "date_start": 200,
+    "date_end": 400,
+    "date_circa": true
   },
   {
     "id": 49,
@@ -638,7 +785,10 @@ const ART_DATA =
     "material": "Brick and stone with wooden roof",
     "technique": "Basilica plan construction",
     "significance": "One of the best-preserved early Christian basilicas; adapted Roman basilica form for Christian worship; nave, aisles, apse; wooden carved doors are among earliest surviving Christian carved panels; emphasizes spiritual ascent through architecture.",
-    "image_url": "images/049.jpg"
+    "image_url": "images/049.jpg",
+    "date_start": 422,
+    "date_end": 432,
+    "date_circa": true
   },
   {
     "id": 50,
@@ -651,7 +801,10 @@ const ART_DATA =
     "material": "Tempera, gold, and silver on purple vellum",
     "technique": "Manuscript illumination",
     "significance": "One of the earliest and finest surviving illustrated biblical manuscripts; purple vellum and silver ink signal imperial luxury; continuous narrative combines multiple scenes in one image; foundational for Byzantine manuscript tradition.",
-    "image_url": "images/050.jpg"
+    "image_url": "images/050.jpg",
+    "date_start": 500,
+    "date_end": 540,
+    "date_circa": true
   },
   {
     "id": 51,
@@ -664,7 +817,10 @@ const ART_DATA =
     "material": "Brick, marble, stone veneer; mosaic",
     "technique": "Octagonal centrally planned construction; gold-ground mosaic",
     "significance": "Masterpiece of Byzantine architecture and mosaic art; mosaic panels of Emperor Justinian and Empress Theodora establish imperial theology; gold backgrounds dematerialize figures; influential on Charlemagne's Palatine Chapel.",
-    "image_url": "images/051.jpg"
+    "image_url": "images/051.jpg",
+    "date_start": 526,
+    "date_end": 547,
+    "date_circa": true
   },
   {
     "id": 52,
@@ -677,7 +833,10 @@ const ART_DATA =
     "material": "Brick and ceramic elements with stone and mosaic veneer",
     "technique": "Pendentive dome construction",
     "significance": "Engineering marvel of the ancient world; massive dome (185 ft height) appears to float on ring of windows; 'radiant Byzantine' aesthetic; served as cathedral, mosque, and museum; remains one of the world's most significant buildings.",
-    "image_url": "images/052.jpg"
+    "image_url": "images/052.jpg",
+    "date_start": 532,
+    "date_end": 537,
+    "date_circa": true
   },
   {
     "id": 53,
@@ -690,7 +849,10 @@ const ART_DATA =
     "material": "Silver gilt with garnet and glass inlay",
     "technique": "Filigree metalwork and cloisonné inlay",
     "significance": "Demonstrates the sophisticated metalworking traditions of early medieval Europe; fibulae served as both functional clasps and status symbols; zoomorphic and interlace patterns reflect Germanic artistic traditions.",
-    "image_url": "images/053.jpg"
+    "image_url": "images/053.jpg",
+    "date_start": 530,
+    "date_end": 570,
+    "date_circa": true
   },
   {
     "id": 54,
@@ -703,7 +865,10 @@ const ART_DATA =
     "material": "Encaustic (pigmented wax) on wood panel",
     "technique": "Encaustic painting",
     "significance": "Among the oldest surviving icons; predates Iconoclasm; encaustic medium creates lifelike quality; Theotokos (God-bearer) flanked by military saints; angels look toward hand of God above; establishes conventions for Byzantine icon painting.",
-    "image_url": "images/054.jpg"
+    "image_url": "images/054.jpg",
+    "date_start": 500,
+    "date_end": 540,
+    "date_circa": true
   },
   {
     "id": 55,
@@ -716,7 +881,10 @@ const ART_DATA =
     "material": "Ink, pigments, and gold on vellum",
     "technique": "Manuscript illumination; interlace and carpet page design",
     "significance": "Masterpiece of Insular manuscript illumination; cross-carpet pages feature incredibly intricate knotwork and zoomorphic interlace; Evangelist portraits blend Mediterranean and Germanic traditions; symbol of the flowering of Christianity in the British Isles.",
-    "image_url": "images/055.jpg"
+    "image_url": "images/055.jpg",
+    "date_start": 700,
+    "date_end": 700,
+    "date_circa": true
   },
   {
     "id": 56,
@@ -729,7 +897,10 @@ const ART_DATA =
     "material": "Stone masonry",
     "technique": "Hypostyle hall with double-tiered arches (horseshoe and round)",
     "significance": "Iconic example of Umayyad architecture in al-Andalus; forest of 856 columns with striped red-and-white voussoir arches; the mihrab is extraordinarily ornate; later enclosed by a Gothic cathedral, embodying layers of religious history.",
-    "image_url": "images/056.jpg"
+    "image_url": "images/056.jpg",
+    "date_start": 785,
+    "date_end": 999,
+    "date_circa": true
   },
   {
     "id": 57,
@@ -742,7 +913,10 @@ const ART_DATA =
     "material": "Ivory",
     "technique": "Carved ivory in the round and low relief",
     "significance": "Ivory container made for al-Mughira, prince of Córdoba; intricate figural and vegetal relief carvings; may be a coming-of-age gift; demonstrates the luxury arts of the Umayyad court and the high value placed on ivory.",
-    "image_url": "images/057.jpg"
+    "image_url": "images/057.jpg",
+    "date_start": 968,
+    "date_end": 968,
+    "date_circa": true
   },
   {
     "id": 58,
@@ -755,7 +929,10 @@ const ART_DATA =
     "material": "Stone (church); gold, silver, gemstones, enamel over wood (reliquary)",
     "technique": "Ashlar construction with barrel vault; goldsmith work",
     "significance": "Key pilgrimage church on the route to Santiago de Compostela; elaborate Last Judgment tympanum over portal; the jewel-encrusted seated reliquary of Saint Foy is one of the finest medieval reliquaries surviving.",
-    "image_url": "images/058.jpg"
+    "image_url": "images/058.jpg",
+    "date_start": 860,
+    "date_end": 1130,
+    "date_circa": true
   },
   {
     "id": 59,
@@ -768,7 +945,10 @@ const ART_DATA =
     "material": "Wool embroidery on linen",
     "technique": "Laid-work and couching embroidery",
     "significance": "231-foot long narrative of the Norman Conquest of England (1066); one of the greatest secular narrative works of the Middle Ages; provides invaluable historical record of medieval warfare, clothing, and daily life.",
-    "image_url": "images/059.jpg"
+    "image_url": "images/059.jpg",
+    "date_start": 1066,
+    "date_end": 1080,
+    "date_circa": true
   },
   {
     "id": 60,
@@ -781,7 +961,10 @@ const ART_DATA =
     "material": "Limestone and stained glass",
     "technique": "Gothic construction: ribbed vaults, pointed arches, flying buttresses",
     "significance": "Best-preserved Gothic cathedral; flying buttresses allowed thinner walls and larger windows; famous for its 176 surviving medieval stained glass windows; Royal Portal retains original polychrome sculpture; UNESCO World Heritage Site.",
-    "image_url": "images/060.jpg"
+    "image_url": "images/060.jpg",
+    "date_start": 1145,
+    "date_end": 1220,
+    "date_circa": true
   },
   {
     "id": 61,
@@ -794,7 +977,10 @@ const ART_DATA =
     "material": "Ink, tempera, and gold leaf on vellum",
     "technique": "Gothic manuscript illumination with architectural framing",
     "significance": "Royal patronage illuminated manuscript; paired biblical scenes with moral commentary; architectural Gothic framing; Blanche of Castile appears as regent and patron; demonstrates the intersection of royal power, piety, and manuscript culture.",
-    "image_url": "images/061.jpg"
+    "image_url": "images/061.jpg",
+    "date_start": 1225,
+    "date_end": 1245,
+    "date_circa": true
   },
   {
     "id": 62,
@@ -807,7 +993,10 @@ const ART_DATA =
     "material": "Painted wood",
     "technique": "Carved and polychromed wood",
     "significance": "Intensely emotional depiction of the Virgin Mary holding Christ's tortured body; exaggerated wounds and grief intended to provoke compassionate meditation (devotio moderna); influential model for the Pietà type in later art.",
-    "image_url": "images/062.jpg"
+    "image_url": "images/062.jpg",
+    "date_start": 1300,
+    "date_end": 1325,
+    "date_circa": true
   },
   {
     "id": 63,
@@ -820,7 +1009,10 @@ const ART_DATA =
     "material": "Brick (architecture); fresco",
     "technique": "Buon fresco (wet plaster technique)",
     "significance": "Giotto's revolutionary fresco cycle marks the transition from Byzantine flatness to Renaissance naturalism; figures have weight, volume, and psychological depth; the Lamentation scene is a masterpiece of emotional composition; foundational to Western painting.",
-    "image_url": "images/063.jpg"
+    "image_url": "images/063.jpg",
+    "date_start": 1303,
+    "date_end": 1305,
+    "date_circa": true
   },
   {
     "id": 64,
@@ -833,7 +1025,10 @@ const ART_DATA =
     "material": "Pigments and gold leaf on vellum",
     "technique": "Burnished gold ground; Gothic manuscript illumination",
     "significance": "One of the finest surviving medieval Jewish manuscripts; Passover Haggadah with full-page narrative miniatures; gold backgrounds and Gothic style; demonstrates the sophisticated artistic culture of Sephardic Jews in medieval Spain.",
-    "image_url": "images/064.jpg"
+    "image_url": "images/064.jpg",
+    "date_start": 1320,
+    "date_end": 1320,
+    "date_circa": true
   },
   {
     "id": 65,
@@ -846,7 +1041,10 @@ const ART_DATA =
     "material": "Whitewashed adobe stucco, wood, ceramic tile, paint, gilding",
     "technique": "Muqarnas vaulting; geometric tile work (azulejo); carved stucco",
     "significance": "Pinnacle of Islamic palatial architecture in Europe; intricate geometric and arabesque decoration covers every surface; famous Court of the Lions; muqarnas (stalactite vaulting) transforms light; poem-inscribed walls; UNESCO World Heritage Site.",
-    "image_url": "images/065.jpg"
+    "image_url": "images/065.jpg",
+    "date_start": 1354,
+    "date_end": 1391,
+    "date_circa": true
   },
   {
     "id": 66,
@@ -859,7 +1057,10 @@ const ART_DATA =
     "material": "Oil on wood panel",
     "technique": "Oil painting on panel; disguised symbolism",
     "significance": "Pioneering use of oil paint; the Annunciation set in a middle-class Flemish domestic interior; everyday objects carry hidden religious meaning (disguised symbolism); donors depicted in left wing; naturalistic light and space.",
-    "image_url": "images/066.jpg"
+    "image_url": "images/066.jpg",
+    "date_start": 1427,
+    "date_end": 1432,
+    "date_circa": true
   },
   {
     "id": 67,
@@ -872,7 +1073,10 @@ const ART_DATA =
     "material": "Masonry (pietra serena and white plaster)",
     "technique": "Classical proportional system; pendentive dome",
     "significance": "Early Renaissance architecture based on classical Roman forms and mathematical proportion; use of pietra serena against white plaster creates rational visual order; applies Brunelleschi's system of linear perspective to architectural space.",
-    "image_url": "images/067.jpg"
+    "image_url": "images/067.jpg",
+    "date_start": 1429,
+    "date_end": 1461,
+    "date_circa": true
   },
   {
     "id": 68,
@@ -885,7 +1089,10 @@ const ART_DATA =
     "material": "Oil on wood panel",
     "technique": "Glazed oil painting; use of convex mirror reflection",
     "significance": "Masterpiece of Early Flemish painting; extraordinary detail achieved through oil glazes; the convex mirror on the back wall reflects the room and possibly van Eyck himself; inscription 'Johannes de Eyck fuit hic' (Jan van Eyck was here); debated as marriage certificate.",
-    "image_url": "images/068.jpg"
+    "image_url": "images/068.jpg",
+    "date_start": 1434,
+    "date_end": 1434,
+    "date_circa": true
   },
   {
     "id": 69,
@@ -898,7 +1105,10 @@ const ART_DATA =
     "material": "Bronze",
     "technique": "Lost-wax casting",
     "significance": "First freestanding nude male sculpture since antiquity; youthful, sensuous David contrasts with Goliath's severed head; ambiguously gendered; celebrates Florentine Republic's self-image; revolutionary revival of classical contrapposto.",
-    "image_url": "images/069.jpg"
+    "image_url": "images/069.jpg",
+    "date_start": 1440,
+    "date_end": 1460,
+    "date_circa": true
   },
   {
     "id": 70,
@@ -911,7 +1121,10 @@ const ART_DATA =
     "material": "Stone masonry",
     "technique": "Application of classical orders to palazzo facade",
     "significance": "First Renaissance palace facade to apply classical pilasters and entablatures in a rational system; three-story facade with Doric, Ionic, and Corinthian orders; demonstrates Alberti's theoretical principles applied to secular architecture.",
-    "image_url": "images/070.jpg"
+    "image_url": "images/070.jpg",
+    "date_start": 1450,
+    "date_end": 1450,
+    "date_circa": true
   },
   {
     "id": 71,
@@ -924,7 +1137,10 @@ const ART_DATA =
     "material": "Tempera on wood panel",
     "technique": "Tempera painting with landscape background",
     "significance": "Humanizing the divine: the Madonna appears as a real young woman, the Christ child is playful, and the mischievous angel is strikingly naturalistic; landscape visible through window; foreshadows High Renaissance treatment of sacred subjects.",
-    "image_url": "images/071.jpg"
+    "image_url": "images/071.jpg",
+    "date_start": 1465,
+    "date_end": 1465,
+    "date_circa": true
   },
   {
     "id": 72,
@@ -937,7 +1153,10 @@ const ART_DATA =
     "material": "Tempera on canvas",
     "technique": "Tempera on canvas; graceful linear style",
     "significance": "First large-scale mythological nude in Renaissance painting; Venus in the classical pose of Venus Pudica; Neoplatonic celebration of beauty as divine; commissioned by the Medici; signals shift toward classical subject matter in secular painting.",
-    "image_url": "images/072.jpg"
+    "image_url": "images/072.jpg",
+    "date_start": 1484,
+    "date_end": 1486,
+    "date_circa": true
   },
   {
     "id": 73,
@@ -950,7 +1169,10 @@ const ART_DATA =
     "material": "Tempera and oil on plaster (experimental technique)",
     "technique": "Experimental secco fresco on dry plaster",
     "significance": "Monumental wall painting depicting Christ's announcement of betrayal; one-point perspective converges on Christ's head; disciples arranged in groups of three; psychological complexity in each figure's reaction; masterpiece of High Renaissance composition.",
-    "image_url": "images/073.jpg"
+    "image_url": "images/073.jpg",
+    "date_start": 1494,
+    "date_end": 1498,
+    "date_circa": true
   },
   {
     "id": 74,
@@ -963,7 +1185,10 @@ const ART_DATA =
     "material": "Engraving on paper",
     "technique": "Copper engraving with fine hatching",
     "significance": "Dürer's attempt to define ideal human proportions using classical theory; Adam and Eve depicted with Italian Renaissance idealization in a Gothic northern forest setting; complex symbolic animals; demonstrates northern artist's engagement with Italian Renaissance ideals.",
-    "image_url": "images/074.jpg"
+    "image_url": "images/074.jpg",
+    "date_start": 1504,
+    "date_end": 1504,
+    "date_circa": true
   },
   {
     "id": 75,
@@ -976,7 +1201,10 @@ const ART_DATA =
     "material": "Fresco on plaster",
     "technique": "Buon fresco (true fresco) on wet plaster",
     "significance": "Supreme achievement of Renaissance fresco; ceiling depicts nine scenes from Genesis including the iconic Creation of Adam; Last Judgment on altar wall is a terrifying vision of divine judgment; Michelangelo's superhuman figures redefined the human body in art.",
-    "image_url": "images/075.jpg"
+    "image_url": "images/075.jpg",
+    "date_start": 1508,
+    "date_end": 1541,
+    "date_circa": true
   },
   {
     "id": 76,
@@ -989,7 +1217,10 @@ const ART_DATA =
     "material": "Fresco on plaster",
     "technique": "Buon fresco with one-point perspective",
     "significance": "Celebration of philosophy and the classical world; Plato and Aristotle at center; over 50 thinkers depicted including Socrates, Euclid, and a brooding Michelangelo as Heraclitus; one-point perspective draws eye to the center; high Renaissance ideal of harmony.",
-    "image_url": "images/076.jpg"
+    "image_url": "images/076.jpg",
+    "date_start": 1509,
+    "date_end": 1511,
+    "date_circa": true
   },
   {
     "id": 77,
@@ -1002,7 +1233,10 @@ const ART_DATA =
     "material": "Oil on wood panel",
     "technique": "Oil painting; multiple hinged panels with multiple configurations",
     "significance": "Created for a hospital treating skin diseases (St. Anthony's Fire); Christ's crucifixion depicted with grotesquely realistic wounds to provide solace to suffering patients; contrasts with joyful Nativity on inner panels; emotional peak of Northern Renaissance painting.",
-    "image_url": "images/077.jpg"
+    "image_url": "images/077.jpg",
+    "date_start": 1512,
+    "date_end": 1516,
+    "date_circa": true
   },
   {
     "id": 78,
@@ -1015,7 +1249,10 @@ const ART_DATA =
     "material": "Oil on wood panel",
     "technique": "Oil painting with Mannerist color and composition",
     "significance": "Key example of Mannerism; acid colors, ambiguous space, figures with no ground to stand on; emotional intensity without clear narrative resolution; breaks from High Renaissance balance and clarity; elongated, graceful figures in spiral composition.",
-    "image_url": "images/078.jpg"
+    "image_url": "images/078.jpg",
+    "date_start": 1525,
+    "date_end": 1528,
+    "date_circa": true
   },
   {
     "id": 79,
@@ -1028,7 +1265,10 @@ const ART_DATA =
     "material": "Woodcut and letterpress on paper",
     "technique": "Woodcut printing with text blocks",
     "significance": "Visual Protestant Reformation propaganda; left side (Law/Damnation) contrasted with right side (Gospel/Salvation); demonstrates how printmaking spread Reformation ideas; Cranach was Luther's close associate and visual propagandist.",
-    "image_url": "images/079.jpg"
+    "image_url": "images/079.jpg",
+    "date_start": 1530,
+    "date_end": 1530,
+    "date_circa": true
   },
   {
     "id": 80,
@@ -1041,7 +1281,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Venetian oil painting technique; warm tonal modeling",
     "significance": "Reclining nude gazes directly at viewer; rich Venetian color; domestic setting (servants in background) suggests real woman, not goddess; influenced Manet's Olympia; demonstrates Venetian painting's focus on sensory pleasure and color.",
-    "image_url": "images/080.jpg"
+    "image_url": "images/080.jpg",
+    "date_start": 1538,
+    "date_end": 1538,
+    "date_circa": true
   },
   {
     "id": 81,
@@ -1054,7 +1297,10 @@ const ART_DATA =
     "material": "Ink and color on paper",
     "technique": "Indigenous pictographic tradition with European influence",
     "significance": "Commissioned by Viceroy Mendoza for Charles V; depicts the founding of Tenochtitlan; blends indigenous pictographic conventions with European manuscript traditions; provides crucial record of Aztec history and colonial encounter.",
-    "image_url": "images/081.jpg"
+    "image_url": "images/081.jpg",
+    "date_start": 1541,
+    "date_end": 1542,
+    "date_circa": true
   },
   {
     "id": 82,
@@ -1067,7 +1313,10 @@ const ART_DATA =
     "material": "Brick, marble, fresco, and stucco",
     "technique": "Church design; illusionistic ceiling fresco (quadratura); stucco figures",
     "significance": "Mother church of the Jesuit order; the ceiling fresco by Gaulli shatters the boundary between painting and architecture — figures and clouds spill beyond the frame onto the vault; Jesuit propagandistic art serving the Counter-Reformation.",
-    "image_url": "images/082.jpg"
+    "image_url": "images/082.jpg",
+    "date_start": 1568,
+    "date_end": 1679,
+    "date_circa": true
   },
   {
     "id": 83,
@@ -1080,7 +1329,10 @@ const ART_DATA =
     "material": "Oil on wood panel",
     "technique": "Oil painting with atmospheric perspective",
     "significance": "January from a series of paintings depicting months/seasons; revolutionary landscape with genre figures; bird's-eye view perspective; captures the bleak beauty of winter; demonstrates Bruegel's encyclopedic interest in peasant life and natural world.",
-    "image_url": "images/083.jpg"
+    "image_url": "images/083.jpg",
+    "date_start": 1565,
+    "date_end": 1565,
+    "date_circa": true
   },
   {
     "id": 84,
@@ -1093,7 +1345,10 @@ const ART_DATA =
     "material": "Brick and stone",
     "technique": "Central dome on eight piers; four minarets",
     "significance": "Considered Sinan's masterpiece; the dome is larger than Hagia Sophia's; four slender minarets frame the structure; centralized interior unobstructed by columns; interior flooded with light from hundreds of windows; pinnacle of Ottoman mosque design.",
-    "image_url": "images/084.jpg"
+    "image_url": "images/084.jpg",
+    "date_start": 1568,
+    "date_end": 1575,
+    "date_circa": true
   },
   {
     "id": 85,
@@ -1106,7 +1361,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Chiaroscuro / tenebrism (extreme contrast of light and dark)",
     "significance": "Dramatic divine light invades a tavern scene; Matthew (a tax collector) is uncertain which figure is being called; Caravaggio revolutionized religious painting by setting sacred events in contemporary low-life settings; tenebrism influenced artists across Europe.",
-    "image_url": "images/085.jpg"
+    "image_url": "images/085.jpg",
+    "date_start": 1597,
+    "date_end": 1601,
+    "date_circa": true
   },
   {
     "id": 86,
@@ -1119,7 +1377,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Baroque oil painting; dynamic composition with mythological figures",
     "significance": "One of 21 large paintings celebrating Marie de' Medici's life; mythological figures (Cupid, Hymen, France) intermingle with historical ones; Rubens's dynamic color and form glorify the queen in a propagandistic visual biography.",
-    "image_url": "images/086.jpg"
+    "image_url": "images/086.jpg",
+    "date_start": 1621,
+    "date_end": 1625,
+    "date_circa": true
   },
   {
     "id": 87,
@@ -1132,7 +1393,10 @@ const ART_DATA =
     "material": "Etching on paper",
     "technique": "Etching (acid-biting into copper plate)",
     "significance": "Rembrandt's mastery of etching rivals his paintings; here he depicts himself with his wife Saskia; demonstrates the intimate, personal dimension of his self-portraiture; characteristic use of light and shadow achievable through etching techniques.",
-    "image_url": "images/087.jpg"
+    "image_url": "images/087.jpg",
+    "date_start": 1636,
+    "date_end": 1636,
+    "date_circa": true
   },
   {
     "id": 88,
@@ -1145,7 +1409,10 @@ const ART_DATA =
     "material": "Stone and stucco",
     "technique": "Undulating facade; oval centralized interior; coffered oval dome",
     "significance": "Borromini's first independent commission; undulating concave-convex facade creates dynamic movement; oval interior with complex geometric ceiling; small church demonstrates Borromini's rejection of Bernini's classicism in favor of radical spatial innovation.",
-    "image_url": "images/088.jpg"
+    "image_url": "images/088.jpg",
+    "date_start": 1638,
+    "date_end": 1646,
+    "date_circa": true
   },
   {
     "id": 89,
@@ -1158,7 +1425,10 @@ const ART_DATA =
     "material": "Marble (sculpture); stucco and gilt bronze (chapel)",
     "technique": "Marble carving; total architectural environment (Gesamtkunstwerk)",
     "significance": "Entire chapel is a unified theatrical artwork: marble sculpted figures in divine ecstasy on a stage-like aedicule, lit from hidden window above, with marble family members watching from opera-box reliefs; peak of Baroque synthesis of arts.",
-    "image_url": "images/089.jpg"
+    "image_url": "images/089.jpg",
+    "date_start": 1647,
+    "date_end": 1652,
+    "date_circa": true
   },
   {
     "id": 90,
@@ -1171,7 +1441,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Colonial Baroque oil painting; musketeer angel type",
     "significance": "From a series of angelic musketeers unique to colonial Andean art; combines European Baroque painting with indigenous Andean adaptation; angels in aristocratic military dress holding firearms are found nowhere else; reflects the cultural syncretism of colonial Latin America.",
-    "image_url": "images/090.jpg"
+    "image_url": "images/090.jpg",
+    "date_start": 600,
+    "date_end": 699,
+    "date_circa": true
   },
   {
     "id": 91,
@@ -1184,7 +1457,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Baroque oil painting; atmospheric perspective; complex mirror play",
     "significance": "One of Western art's most analyzed paintings; Velázquez depicts himself painting while the Infanta Margarita and her attendants (meninas) are at center; the king and queen appear in the mirror reflection; questions the nature of representation and the artist's status.",
-    "image_url": "images/091.jpg"
+    "image_url": "images/091.jpg",
+    "date_start": 1656,
+    "date_end": 1656,
+    "date_circa": true
   },
   {
     "id": 92,
@@ -1197,7 +1473,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Dutch interior genre painting; camera obscura influence; natural light",
     "significance": "A woman carefully balances an empty scale; behind her hangs a Last Judgment painting; the balanced scale symbolizes moral judgment; pearls and gold symbolize material wealth; Vermeer's meditative domestic interiors probe morality and the passage of time.",
-    "image_url": "images/092.jpg"
+    "image_url": "images/092.jpg",
+    "date_start": 1664,
+    "date_end": 1664,
+    "date_circa": true
   },
   {
     "id": 93,
@@ -1210,7 +1489,10 @@ const ART_DATA =
     "material": "Masonry, stone, wood, iron, gold leaf; marble and bronze (sculpture); formal gardens",
     "technique": "French Classical architecture; Hall of Mirrors; formal garden design",
     "significance": "Symbol of absolute monarchy; Louis XIV relocated the court here to control the nobility; Hall of Mirrors glorifies the Sun King; the formal French garden (by Le Nôtre) extends royal control over nature itself; influenced palaces across Europe.",
-    "image_url": "images/093.jpg"
+    "image_url": "images/093.jpg",
+    "date_start": 1669,
+    "date_end": 1669,
+    "date_circa": true
   },
   {
     "id": 94,
@@ -1223,7 +1505,10 @@ const ART_DATA =
     "material": "Tempera and resin on wood with shell inlay",
     "technique": "Lacquer-like technique (enconchado); folding screen format borrowed from Japan via Philippines",
     "significance": "Luxury colonial object reflecting global trade networks; biombos adapted Japanese screen format; shell inlay (enconchado) technique; scenes combine European historical events with local colonial interests; embodies the cosmopolitanism of New Spain.",
-    "image_url": "images/094.jpg"
+    "image_url": "images/094.jpg",
+    "date_start": 1697,
+    "date_end": 1701,
+    "date_circa": true
   },
   {
     "id": 95,
@@ -1236,7 +1521,10 @@ const ART_DATA =
     "material": "Oil on canvas on wood; mother-of-pearl inlay (enconchado)",
     "technique": "Enconchado (mother-of-pearl inlay) oil painting",
     "significance": "Depicts the miraculous apparition of the Virgin Mary to the indigenous convert Juan Diego; the tilma (cloak) image became the most important icon of Mexican Catholicism; shell inlay adds shimmering quality; blends indigenous and European traditions.",
-    "image_url": "images/095.jpg"
+    "image_url": "images/095.jpg",
+    "date_start": 1698,
+    "date_end": 1698,
+    "date_circa": true
   },
   {
     "id": 96,
@@ -1249,7 +1537,10 @@ const ART_DATA =
     "material": "Oil on wood",
     "technique": "Dutch still life oil painting; trompe l'oeil",
     "significance": "Ruysch was one of the most celebrated still life painters in Europe; extraordinary detail of flowers, fruit, insects, and birds' nests; vanitas undertones (life and decay in the same image); Dutch women artists faced barriers but Ruysch achieved international fame.",
-    "image_url": "images/096.jpg"
+    "image_url": "images/096.jpg",
+    "date_start": 1711,
+    "date_end": 1711,
+    "date_circa": true
   },
   {
     "id": 97,
@@ -1262,7 +1553,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Colonial oil painting; genre scene format",
     "significance": "One of a series of casta paintings that categorize racial mixing in colonial New Spain; approximately 16 racial categories depicted; reflects colonial racial hierarchy and anxiety about racial classification; important historical documents of colonial society.",
-    "image_url": "images/097.png"
+    "image_url": "images/097.png",
+    "date_start": 1715,
+    "date_end": 1715,
+    "date_circa": true
   },
   {
     "id": 98,
@@ -1275,7 +1569,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Oil painting; satirical narrative sequence",
     "significance": "Second painting in a six-part satirical series attacking arranged marriages among the aristocracy; biting social commentary through visual storytelling; both husband and wife have spent the night elsewhere; launched engravings that reached broad audiences; pioneered narrative picture series.",
-    "image_url": "images/098.jpg"
+    "image_url": "images/098.jpg",
+    "date_start": 1743,
+    "date_end": 1743,
+    "date_circa": true
   },
   {
     "id": 99,
@@ -1288,7 +1585,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Colonial Baroque portrait painting",
     "significance": "Depicts the celebrated Mexican poet, philosopher, and nun Sor Juana Inés de la Cruz; her library visible in the background; among the most important portraits of a colonial American intellectual; celebrates female scholarship in a patriarchal colonial society.",
-    "image_url": "images/099.jpg"
+    "image_url": "images/099.jpg",
+    "date_start": 1750,
+    "date_end": 1750,
+    "date_circa": true
   },
   {
     "id": 100,
@@ -1301,7 +1601,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Chiaroscuro oil painting; artificial light source",
     "significance": "Depicts the Enlightenment's spirit of scientific inquiry; the orrery (mechanical planetarium) replaces the sun as the light source in a Caravaggiesque composition; demonstrates how science became a new form of wonder; industrial Midlands context is significant.",
-    "image_url": "images/100.jpg"
+    "image_url": "images/100.jpg",
+    "date_start": 1763,
+    "date_end": 1765,
+    "date_circa": true
   },
   {
     "id": 101,
@@ -1314,7 +1617,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Rococo oil painting; feathery brushwork; soft pastel palette",
     "significance": "Quintessential Rococo painting of aristocratic pleasure and flirtation; a young woman on a swing kicks her shoe toward her lover hidden in the bushes below; playful, erotic, and artificial; painted for a nobleman as a private fantasy; symbol of pre-Revolutionary French aristocracy.",
-    "image_url": "images/101.jpg"
+    "image_url": "images/101.jpg",
+    "date_start": 1767,
+    "date_end": 1767,
+    "date_circa": true
   },
   {
     "id": 102,
@@ -1327,7 +1633,10 @@ const ART_DATA =
     "material": "Brick, glass, stone, and wood",
     "technique": "Palladian-influenced Neoclassical design; domestic architectural innovation",
     "significance": "Jefferson's personal home and lifelong architectural experiment; blends Palladian, French Neoclassical, and practical American elements; the dome and porticos reflect classical ideals of the new republic; enslaved labor built and maintained Monticello.",
-    "image_url": "images/102.jpg"
+    "image_url": "images/102.jpg",
+    "date_start": 1768,
+    "date_end": 1809,
+    "date_circa": true
   },
   {
     "id": 103,
@@ -1340,7 +1649,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Neoclassical oil painting; rigid composition and clear narrative",
     "significance": "Landmark of Neoclassicism; Roman story of three brothers pledging to fight for Rome; tense male figures contrast with swooning women; austere Greek/Roman setting; the painting's message of civic duty over personal loyalty resonated with pre-Revolutionary France.",
-    "image_url": "images/103.jpg"
+    "image_url": "images/103.jpg",
+    "date_start": 1784,
+    "date_end": 1784,
+    "date_circa": true
   },
   {
     "id": 104,
@@ -1353,7 +1665,10 @@ const ART_DATA =
     "material": "Marble",
     "technique": "Carving; life mask used for exact facial likeness",
     "significance": "Houdon used a life mask of Washington to ensure accuracy; Washington depicted in contemporary military dress rather than Roman toga, balancing heroic and democratic values; the plow and fasces reference civic virtue; considered the most authoritative portrait of Washington.",
-    "image_url": "images/104.jpg"
+    "image_url": "images/104.jpg",
+    "date_start": 1788,
+    "date_end": 1792,
+    "date_circa": true
   },
   {
     "id": 105,
@@ -1366,7 +1681,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Oil painting; confident self-presentation with palette",
     "significance": "One of many self-portraits in which Vigée Le Brun presents herself as a professional artist; shown with palette and brushes, dressed fashionably; her career as portrait painter to Marie Antoinette demonstrates exceptional skill and social navigation in a male-dominated field.",
-    "image_url": "images/105.jpg"
+    "image_url": "images/105.jpg",
+    "date_start": 1790,
+    "date_end": 1790,
+    "date_circa": true
   },
   {
     "id": 106,
@@ -1379,7 +1697,10 @@ const ART_DATA =
     "material": "Etching, drypoint, burin, and burnishing on paper",
     "technique": "Intaglio printmaking (etching and aquatint)",
     "significance": "Plate 15 of Goya's Disasters of War series documenting the Peninsular War (1808-1814); a man is executed while bound; the title's resignation is devastating; unpublished in Goya's lifetime; foundational anti-war imagery; profoundly influenced later protest art.",
-    "image_url": "images/106.jpg"
+    "image_url": "images/106.jpg",
+    "date_start": 1810,
+    "date_end": 1823,
+    "date_circa": true
   },
   {
     "id": 107,
@@ -1392,7 +1713,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Neoclassical oil painting with deliberate anatomical distortion",
     "significance": "Reclining odalisque with elongated spine (three extra vertebrae) and cool blue tonality; criticized by contemporaries for anatomical distortion; combines Neoclassical line with Romantic exoticism; raises questions about Western fantasies of the 'Orient' (Orientalism).",
-    "image_url": "images/107.jpg"
+    "image_url": "images/107.jpg",
+    "date_start": 1814,
+    "date_end": 1814,
+    "date_circa": true
   },
   {
     "id": 108,
@@ -1405,7 +1729,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Romantic oil painting; dramatic color; diagonal composition",
     "significance": "Allegorical depiction of the July Revolution of 1830; Liberty as a bare-breasted woman leads the people over the barricades; mixes allegorical figure with realistic people; became the preeminent symbol of French republican values; the basis for numerous later revolutionary images.",
-    "image_url": "images/108.jpg"
+    "image_url": "images/108.jpg",
+    "date_start": 1830,
+    "date_end": 1830,
+    "date_circa": true
   },
   {
     "id": 109,
@@ -1418,7 +1745,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Romantic landscape painting; panoramic perspective",
     "significance": "Dramatic contrast between wild, storm-tossed wilderness (left) and cultivated, sun-lit farmland (right); Cole includes himself as tiny figure in the middle; reflects Romantic anxieties about westward expansion and environmental transformation; Hudson River School's allegorical landscape.",
-    "image_url": "images/109.jpg"
+    "image_url": "images/109.jpg",
+    "date_start": 1836,
+    "date_end": 1836,
+    "date_circa": true
   },
   {
     "id": 110,
@@ -1431,7 +1761,10 @@ const ART_DATA =
     "material": "Silver-coated copper plate",
     "technique": "Daguerreotype process",
     "significance": "Among the earliest surviving photographs; demonstrates the daguerreotype process announced publicly in 1839; the careful arrangement of objects echoes the still life painting tradition; marks the beginning of photography's profound impact on art.",
-    "image_url": "images/110.jpg"
+    "image_url": "images/110.jpg",
+    "date_start": 1837,
+    "date_end": 1837,
+    "date_circa": true
   },
   {
     "id": 111,
@@ -1444,7 +1777,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Romantic landscape painting; atmospheric dissolution of form",
     "significance": "Depicts the horrific Zong massacre (1781) where enslaved people were thrown overboard; iron shackles and drowning figures visible in the swirling sea; Turner dissolves form in apocalyptic color; combines natural sublime with moral condemnation of the slave trade.",
-    "image_url": "images/111.jpg"
+    "image_url": "images/111.jpg",
+    "date_start": 1840,
+    "date_end": 1840,
+    "date_circa": true
   },
   {
     "id": 112,
@@ -1457,7 +1793,10 @@ const ART_DATA =
     "material": "Limestone and glass",
     "technique": "Gothic Revival construction",
     "significance": "Rebuilt after the 1834 fire in Gothic Revival style rather than classical; Pugin's interiors exemplify Victorian Gothic decoration; Big Ben clock tower; choice of Gothic style was ideological — connecting British democracy to medieval Christianity; UNESCO World Heritage Site.",
-    "image_url": "images/112.jpg"
+    "image_url": "images/112.jpg",
+    "date_start": 1840,
+    "date_end": 1870,
+    "date_circa": true
   },
   {
     "id": 113,
@@ -1470,7 +1809,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Realist oil painting; life-size scale",
     "significance": "Landmark of Realism; two laborers breaking stones depicted at life size without idealization or sentimentality; turned their backs to the viewer to deny easy sympathy; Courbet's political radicalism showed workers as worthy monumental subjects; shook the Salon establishment.",
-    "image_url": "images/113.jpg"
+    "image_url": "images/113.jpg",
+    "date_start": 1849,
+    "date_end": 1849,
+    "date_circa": true
   },
   {
     "id": 114,
@@ -1483,7 +1825,10 @@ const ART_DATA =
     "material": "Lithograph on paper",
     "technique": "Lithography",
     "significance": "Published in the satirical journal Le Boulevard; caricature of the famous photographer Nadar photographing Paris from a balloon; satirizes photography's claim to be art; the rooftops below are covered in photography studio signs; documents the photography boom and its rivalry with painting.",
-    "image_url": "images/114.jpg"
+    "image_url": "images/114.jpg",
+    "date_start": 1862,
+    "date_end": 1862,
+    "date_circa": true
   },
   {
     "id": 115,
@@ -1496,7 +1841,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Oil painting with flat modeling and direct gaze",
     "significance": "Deliberately challenges Titian's Venus of Urbino; the reclining nude is a real Parisian sex worker (not a goddess) who stares back defiantly at the viewer; a Black maid brings flowers from a client; caused a scandal for its frank sexuality and racial politics; pivotal in the transition to Modernism.",
-    "image_url": "images/115.jpg"
+    "image_url": "images/115.jpg",
+    "date_start": 1863,
+    "date_end": 1863,
+    "date_circa": true
   },
   {
     "id": 116,
@@ -1509,7 +1857,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Impressionist oil painting; capturing fleeting light and atmosphere",
     "significance": "One of 12 paintings of the Saint-Lazare train station; steam, glass roof, and industrial light dissolve into atmospheric color; Monet celebrates modernity rather than pastoral beauty; demonstrates the Impressionist method of capturing the transient effects of light.",
-    "image_url": "images/116.jpg"
+    "image_url": "images/116.jpg",
+    "date_start": 1877,
+    "date_end": 1877,
+    "date_circa": true
   },
   {
     "id": 117,
@@ -1522,7 +1873,10 @@ const ART_DATA =
     "material": "Albumen prints",
     "technique": "Sequential stop-motion photography with trip wires",
     "significance": "Commissioned to determine whether a galloping horse lifts all four feet simultaneously (it does); pioneered sequential photography and the analysis of motion; directly inspired the invention of cinema; reveals truths invisible to the human eye.",
-    "image_url": "images/117.jpg"
+    "image_url": "images/117.jpg",
+    "date_start": 1878,
+    "date_end": 1878,
+    "date_circa": true
   },
   {
     "id": 118,
@@ -1535,7 +1889,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Realist landscape oil painting; geological and botanical accuracy",
     "significance": "Velasco's sweeping Valley of Mexico landscapes became symbols of Mexican national identity; scientific accuracy of flora and geology reflects positivist Romanticism; the volcano Popocatépetl visible in the background; painted during a period of nation-building.",
-    "image_url": "images/118.jpg"
+    "image_url": "images/118.jpg",
+    "date_start": 1882,
+    "date_end": 1882,
+    "date_circa": true
   },
   {
     "id": 119,
@@ -1548,7 +1905,10 @@ const ART_DATA =
     "material": "Bronze",
     "technique": "Lost-wax casting; modeled surfaces",
     "significance": "Six burghers of Calais who surrendered to Edward III in 1347 to save the city; Rodin placed them at ground level (no pedestal) so viewers confront their humanity directly; each figure is individualized in grief; revolutionary approach to public monumental sculpture.",
-    "image_url": "images/119.png"
+    "image_url": "images/119.png",
+    "date_start": 1884,
+    "date_end": 1895,
+    "date_circa": true
   },
   {
     "id": 120,
@@ -1561,7 +1921,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Thick impasto brushwork; expressive color and pattern",
     "significance": "Painted while van Gogh was voluntarily in an asylum; the turbulent sky with swirling brushstrokes and the quiet village below express psychological states; the cypress (death) and stars (eternity) carry symbolic weight; among the most recognized paintings in the world.",
-    "image_url": "images/120.jpg"
+    "image_url": "images/120.jpg",
+    "date_start": 1889,
+    "date_end": 1889,
+    "date_circa": true
   },
   {
     "id": 121,
@@ -1574,7 +1937,10 @@ const ART_DATA =
     "material": "Drypoint and aquatint on paper",
     "technique": "Color aquatint and drypoint; Japanese woodblock influence",
     "significance": "Cassatt was deeply influenced by Japanese woodblock prints seen at a 1890 Paris exhibition; flat areas of color, unusual cropping, and mirror reflection; depicts an intimate female domestic moment; demonstrates how Japanese aesthetics transformed Western printmaking.",
-    "image_url": "images/121.jpg"
+    "image_url": "images/121.jpg",
+    "date_start": 1890,
+    "date_end": 1891,
+    "date_circa": true
   },
   {
     "id": 122,
@@ -1587,7 +1953,10 @@ const ART_DATA =
     "material": "Tempera and pastels on cardboard",
     "technique": "Expressionist painting; undulating lines; raw color",
     "significance": "The agonized figure beneath a blood-red sky (inspired by an actual sky event after the Krakatoa eruption) expresses modern existential anxiety; the swirling landscape mirrors internal emotional states; became the defining image of modern psychological anguish.",
-    "image_url": "images/122.jpg"
+    "image_url": "images/122.jpg",
+    "date_start": 1893,
+    "date_end": 1893,
+    "date_circa": true
   },
   {
     "id": 123,
@@ -1600,7 +1969,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Post-Impressionist oil painting with Symbolist content",
     "significance": "Gauguin's 'philosophical will and testament'; monumental work read right-to-left — birth, life, death; painted in Tahiti; the three questions express European existential crisis displaced onto Polynesian subjects; problematic primitivism reflects Western appropriation of non-Western cultures.",
-    "image_url": "images/123.jpg"
+    "image_url": "images/123.jpg",
+    "date_start": 1897,
+    "date_end": 1898,
+    "date_circa": true
   },
   {
     "id": 124,
@@ -1613,7 +1985,10 @@ const ART_DATA =
     "material": "Iron, steel, glass, and terra cotta",
     "technique": "Steel frame construction; ornamental terra cotta facade",
     "significance": "Sullivan's maxim 'form follows function' embodied in this department store; steel frame allows broad windows and open floors; the entrance features lush organic cast-iron ornament (Sullivan's signature) contrasting with the rational upper floors; influential on modern architecture.",
-    "image_url": "images/124.jpg"
+    "image_url": "images/124.jpg",
+    "date_start": 1899,
+    "date_end": 1903,
+    "date_circa": true
   },
   {
     "id": 125,
@@ -1626,7 +2001,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Constructivist brushstroke; geometric simplification of form",
     "significance": "Cézanne returned to this mountain view repeatedly; flattened the picture plane and organized nature into geometric planes; bridges Impressionism and Cubism; his approach profoundly influenced Picasso, Braque, and virtually all 20th-century art; 'the father of modern art.'",
-    "image_url": "images/125.jpg"
+    "image_url": "images/125.jpg",
+    "date_start": 1902,
+    "date_end": 1904,
+    "date_circa": true
   },
   {
     "id": 126,
@@ -1639,7 +2017,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Multiple viewpoints; African and Iberian mask-inspired faceting",
     "significance": "Revolutionary break with Western perspective; five women in a brothel depicted with multiple simultaneous viewpoints; the two right figures were repainted with African mask-like features after Picasso visited the Trocadéro ethnography museum; launched Cubism.",
-    "image_url": "images/126.jpg"
+    "image_url": "images/126.jpg",
+    "date_start": 1907,
+    "date_end": 1907,
+    "date_circa": true
   },
   {
     "id": 127,
@@ -1652,7 +2033,10 @@ const ART_DATA =
     "material": "Photogravure on paper",
     "technique": "Straight photography; formal geometric composition",
     "significance": "Considered by Stieglitz his finest work; depicts emigrants in the steerage section of a ship; formal elements (gangway, funnel, ropes) create geometric order; Stieglitz elevated photography to the level of fine art; this image defines the idea of the 'decisive moment.'",
-    "image_url": "images/127.jpg"
+    "image_url": "images/127.jpg",
+    "date_start": 1907,
+    "date_end": 1907,
+    "date_circa": true
   },
   {
     "id": 128,
@@ -1665,7 +2049,10 @@ const ART_DATA =
     "material": "Oil and gold leaf on canvas",
     "technique": "Gold leaf; Byzantine mosaic influence; Gesamtkunstwerk",
     "significance": "Icon of the Vienna Secession; lovers enveloped in gold, jeweled robes that merge them with the flower-covered ground; Klimt's 'Golden Phase'; the woman's face suggests ecstasy or surrender; Byzantine mosaics (Ravenna) and Japanese art visible in the flat, decorative approach.",
-    "image_url": "images/128.jpg"
+    "image_url": "images/128.jpg",
+    "date_start": 1907,
+    "date_end": 1908,
+    "date_circa": true
   },
   {
     "id": 129,
@@ -1678,7 +2065,10 @@ const ART_DATA =
     "material": "Stone (limestone or plaster versions)",
     "technique": "Direct carving (taille directe); geometric abstraction",
     "significance": "Two figures reduced to the absolute minimum — barely differentiated block with schematized faces and entwined arms; Brancusi's rejection of Rodin's expressionism in favor of primal simplicity; direct carving as philosophy; fundamentally rethinks what sculpture can be.",
-    "image_url": "images/129.jpg"
+    "image_url": "images/129.jpg",
+    "date_start": 1907,
+    "date_end": 1908,
+    "date_circa": true
   },
   {
     "id": 130,
@@ -1691,7 +2081,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Analytic Cubism; fragmented planes; limited palette",
     "significance": "Example of Analytic Cubism at its most radical; form shattered into small, shifting planes rendered in monochromatic brown-gray; words and numbers stenciled in (early collage element); the musician is barely recognizable; near total abstraction while retaining reference to subject.",
-    "image_url": "images/130.jpg"
+    "image_url": "images/130.jpg",
+    "date_start": 1911,
+    "date_end": 1911,
+    "date_circa": true
   },
   {
     "id": 131,
@@ -1704,7 +2097,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Fauvist oil painting; bold color; simplified form",
     "significance": "A goldfish bowl seen from multiple angles simultaneously; saturated colors, flat decorative patterns; influenced by Islamic art and African art; Matisse sought a 'art of balance, of purity and serenity'; contrasts with Cubist fragmentation through color and decorative richness.",
-    "image_url": "images/131.jpg"
+    "image_url": "images/131.jpg",
+    "date_start": 1912,
+    "date_end": 1912,
+    "date_circa": true
   },
   {
     "id": 132,
@@ -1717,7 +2113,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Non-objective painting; color as spiritual language",
     "significance": "Among the earliest purely non-objective (abstract) paintings; Kandinsky believed color and line could express spiritual reality like music; 'Improvisations' were spontaneous expressions of inner feelings; his book 'Concerning the Spiritual in Art' (1912) articulated the theoretical basis for abstraction.",
-    "image_url": "images/132.jpg"
+    "image_url": "images/132.jpg",
+    "date_start": 1912,
+    "date_end": 1912,
+    "date_circa": true
   },
   {
     "id": 133,
@@ -1730,7 +2129,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Expressionist oil painting; distorted form; harsh color",
     "significance": "Kirchner depicts himself in uniform with a severed stump where his painting hand should be; the nude model behind him is indifferent; painted while suffering a psychological breakdown from WWI service; Expressionism's power to externalize psychological trauma.",
-    "image_url": "images/133.jpg"
+    "image_url": "images/133.jpg",
+    "date_start": 1915,
+    "date_end": 1915,
+    "date_circa": true
   },
   {
     "id": 134,
@@ -1743,7 +2145,10 @@ const ART_DATA =
     "material": "Woodcut on paper",
     "technique": "Woodcut printing",
     "significance": "Karl Liebknecht was a communist leader murdered in 1919; workers file past the body to pay respects; rough woodcut style emphasizes grief and solidarity; Kollwitz consistently used art to advocate for workers, the poor, and the victims of war; one of the great socially committed artists.",
-    "image_url": "images/134.jpg"
+    "image_url": "images/134.jpg",
+    "date_start": 1919,
+    "date_end": 1920,
+    "date_circa": true
   },
   {
     "id": 135,
@@ -1756,7 +2161,10 @@ const ART_DATA =
     "material": "Reinforced concrete, glass",
     "technique": "Five Points of Architecture: pilotis, roof garden, free plan, horizontal windows, free facade",
     "significance": "Embodiment of Le Corbusier's 'Five Points of Architecture'; floats above the landscape on pilotis; machine-like white box; ramp winds through interior; the house as a 'machine for living'; enormously influential on international Modern architecture.",
-    "image_url": "images/135.jpg"
+    "image_url": "images/135.jpg",
+    "date_start": 1929,
+    "date_end": 1931,
+    "date_circa": true
   },
   {
     "id": 136,
@@ -1769,7 +2177,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Geometric abstraction; primary colors and black lines",
     "significance": "Mondrian's Neoplasticism reduces painting to primary colors, black, and white, organized by a grid of black lines; seeks the universal order beneath appearances; De Stijl movement connected painting, architecture, and design; influenced Bauhaus and graphic design.",
-    "image_url": "images/136.jpg"
+    "image_url": "images/136.jpg",
+    "date_start": 1930,
+    "date_end": 1930,
+    "date_circa": true
   },
   {
     "id": 137,
@@ -1782,7 +2193,10 @@ const ART_DATA =
     "material": "Photomontage printed in book",
     "technique": "Photomontage (cutting and arranging photographs)",
     "significance": "Soviet propaganda celebrating industrialization under Stalin's First Five-Year Plan; photomontage combines photographic 'truth' with political messaging; Constructivism believed design should serve the revolution; demonstrates art as instrument of state ideology.",
-    "image_url": "images/137.jpg"
+    "image_url": "images/137.jpg",
+    "date_start": 1932,
+    "date_end": 1932,
+    "date_circa": true
   },
   {
     "id": 138,
@@ -1795,7 +2209,10 @@ const ART_DATA =
     "material": "Fur-covered cup, saucer, and spoon (Chinese gazelle fur)",
     "technique": "Readymade transformation / surrealist object",
     "significance": "Fur-covered cup challenges the comfortable domestic object with the uncanny; triggers associations of mouth, fur, warmth, and disgust simultaneously; one of the most iconic Surrealist objects; questions gender and sexuality through the domestic/bodily conflation.",
-    "image_url": "images/138.jpg"
+    "image_url": "images/138.jpg",
+    "date_start": 1936,
+    "date_end": 1936,
+    "date_circa": true
   },
   {
     "id": 139,
@@ -1808,7 +2225,10 @@ const ART_DATA =
     "material": "Reinforced concrete, sandstone, steel, and glass",
     "technique": "Cantilever construction; organic integration with landscape",
     "significance": "Cantilevered terraces hover over the waterfall; dramatic integration of architecture with natural landscape (Wright's 'Organic Architecture'); the house is built into the rock and over the stream; considered one of the greatest works of American architecture.",
-    "image_url": "images/139.jpg"
+    "image_url": "images/139.jpg",
+    "date_start": 1936,
+    "date_end": 1939,
+    "date_circa": true
   },
   {
     "id": 140,
@@ -1821,7 +2241,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Oil painting; Surrealist symbolism; self-portraiture",
     "significance": "Painted in the year of her divorce from Rivera; two Fridas — European and Mexican — sit together, hearts exposed and connected; the European Frida's heart is cut, bleeding; explores dual cultural identity, pain, and the rupture of a relationship; pivotal feminist icon.",
-    "image_url": "images/140.jpg"
+    "image_url": "images/140.jpg",
+    "date_start": 1939,
+    "date_end": 1939,
+    "date_circa": true
   },
   {
     "id": 141,
@@ -1834,7 +2257,10 @@ const ART_DATA =
     "material": "Casein tempera on hardboard",
     "technique": "Flat color, geometric form; serial narrative painting",
     "significance": "Part of a 60-panel series documenting the Great Migration of African Americans from the South (1910-1930); bold flat colors and geometric forms; Panel 49 depicts physical conflict; Lawrence was the first African American artist to be represented by a major New York gallery.",
-    "image_url": "images/141.png"
+    "image_url": "images/141.png",
+    "date_start": 1940,
+    "date_end": 1941,
+    "date_circa": true
   },
   {
     "id": 142,
@@ -1847,7 +2273,10 @@ const ART_DATA =
     "material": "Gouache on paper mounted on canvas",
     "technique": "Surrealist painting; Afro-Cuban religious symbolism",
     "significance": "Dense, threatening jungle populated with hybrid figures blending African, Cuban, and Surrealist imagery; confronts Western viewers with the violence of colonial exploitation of the Caribbean; Lam's Afro-Cuban heritage and Surrealist training fuse into a unique anti-colonial visual language.",
-    "image_url": "images/142.jpg"
+    "image_url": "images/142.jpg",
+    "date_start": 1943,
+    "date_end": 1943,
+    "date_circa": true
   },
   {
     "id": 143,
@@ -1860,7 +2289,10 @@ const ART_DATA =
     "material": "Fresco",
     "technique": "Fresco mural; panoramic history painting",
     "significance": "Over 50 feet long; 400 years of Mexican history populated by over 150 historical and fictional figures; Rivera as a young boy stands with Frida Kahlo and the skeleton La Catrina; public mural accessible to all; Mexican muralism as a tool for popular national identity.",
-    "image_url": "images/143.jpg"
+    "image_url": "images/143.jpg",
+    "date_start": 1947,
+    "date_end": 1948,
+    "date_circa": true
   },
   {
     "id": 144,
@@ -1873,7 +2305,10 @@ const ART_DATA =
     "material": "Glazed sanitary china (urinal) with black paint",
     "technique": "Readymade (found object presented as art)",
     "significance": "A commercial urinal submitted to an unjuried exhibition under the pseudonym 'R. Mutt'; rejected by the exhibition committee; Duchamp argued that selection and context, not craft, determine art; most influential work of 20th-century art; raised enduring questions about art's definition.",
-    "image_url": "images/144.jpg"
+    "image_url": "images/144.jpg",
+    "date_start": 1950,
+    "date_end": 1950,
+    "date_circa": true
   },
   {
     "id": 145,
@@ -1886,7 +2321,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "Action painting; gestural brushwork",
     "significance": "Monumental, aggressive image of a woman created and destroyed over nearly two years; eyes taken from cigarette advertisements; simultaneously threatening and seductive; raises questions about representation of women; epitomizes Abstract Expressionism's embrace of process and struggle.",
-    "image_url": "images/145.jpg"
+    "image_url": "images/145.jpg",
+    "date_start": 1950,
+    "date_end": 1952,
+    "date_circa": true
   },
   {
     "id": 146,
@@ -1899,7 +2337,10 @@ const ART_DATA =
     "material": "Steel frame with glass curtain wall and bronze",
     "technique": "Steel and glass curtain wall; set back from street with plaza",
     "significance": "Mies's 'less is more' philosophy applied to corporate headquarters; bronze I-beams visually express the steel structure beneath glass; set back from Park Avenue creating a public plaza (novel for NYC); defines the aesthetic of the corporate glass tower; enormously influential.",
-    "image_url": "images/146.jpg"
+    "image_url": "images/146.jpg",
+    "date_start": 1954,
+    "date_end": 1958,
+    "date_circa": true
   },
   {
     "id": 147,
@@ -1912,7 +2353,10 @@ const ART_DATA =
     "material": "Oil, acrylic, and silkscreen enamel on canvas (two panels)",
     "technique": "Silkscreen printing on canvas; mass production aesthetic",
     "significance": "Created weeks after Marilyn Monroe's death; 50 repeated images in vivid color fade to black-and-white; questions celebrity, repetition, and death; silkscreen process critiques mass media's flattening of identity; Pop Art's challenge to Abstract Expressionism's seriousness.",
-    "image_url": "images/147.jpg"
+    "image_url": "images/147.jpg",
+    "date_start": 1962,
+    "date_end": 1962,
+    "date_circa": true
   },
   {
     "id": 148,
@@ -1925,7 +2369,10 @@ const ART_DATA =
     "material": "Mirror balls",
     "technique": "Installation art; mirrored reflective surfaces; participatory performance",
     "significance": "Kusama placed 1,500 mirror balls in the garden of the Italian Pavilion at the Venice Biennale; she attempted to sell them for $2 each (organizers stopped her); critiques the art market and celebrity; the infinite reflections relate to her obsessive dot motifs and her concept of 'self-obliteration.'",
-    "image_url": "images/148.jpg"
+    "image_url": "images/148.jpg",
+    "date_start": 1966,
+    "date_end": 1966,
+    "date_circa": false
   },
   {
     "id": 149,
@@ -1938,7 +2385,10 @@ const ART_DATA =
     "material": "Acrylic on canvas",
     "technique": "Soak-stain technique (poured thinned paint on raw canvas)",
     "significance": "Frankenthaler invented the soak-stain technique in 1952; thinned paint poured directly onto unprimed canvas becomes part of the fabric, not a surface; lyrical, atmospheric color fields evoke landscape without depicting it; influenced Rothko, Morris Louis, and Color Field painting.",
-    "image_url": "images/149.jpg"
+    "image_url": "images/149.jpg",
+    "date_start": 1963,
+    "date_end": 1963,
+    "date_circa": true
   },
   {
     "id": 150,
@@ -1951,7 +2401,10 @@ const ART_DATA =
     "material": "Cor-Ten steel, steel, aluminum, cast resin; painted with polyurethane enamel",
     "technique": "Large-scale fabricated sculpture; ironic monument",
     "significance": "Installed at Yale during the Vietnam War as a protest; a lipstick (femininity/sexuality) mounted on military tank treads; comments on the relationship between sex and war; Oldenburg's monumentalization of everyday objects challenges assumptions about public sculpture and power.",
-    "image_url": "images/150.jpg"
+    "image_url": "images/150.jpg",
+    "date_start": 1969,
+    "date_end": 1974,
+    "date_circa": true
   },
   {
     "id": 151,
@@ -1964,7 +2417,10 @@ const ART_DATA =
     "material": "Mud, precipitated salt crystals, rocks, water coil",
     "technique": "Earthwork construction; site-specific art",
     "significance": "A 1,500-foot spiral coil of black basalt and earth reaching into the hypersaline lake; visible only when lake levels drop; changes with seasons (currently vivid red-pink from microorganisms); art that cannot be collected; Smithson's engagement with entropy and deep geological time.",
-    "image_url": "images/151.jpg"
+    "image_url": "images/151.jpg",
+    "date_start": 1970,
+    "date_end": 1970,
+    "date_circa": true
   },
   {
     "id": 152,
@@ -1977,7 +2433,10 @@ const ART_DATA =
     "material": "Wood frame and stucco",
     "technique": "Postmodern design; historicist facade with ironic quotations",
     "significance": "Postmodern critique of Modernism's 'less is more' — Venturi championed 'less is a bore'; applies historical and symbolic references (arched window, peaked roof, decoration) with self-aware irony; democratizes architecture by embracing populist visual language.",
-    "image_url": "images/152.jpg"
+    "image_url": "images/152.jpg",
+    "date_start": 1978,
+    "date_end": 1983,
+    "date_circa": true
   },
   {
     "id": 153,
@@ -1990,7 +2449,10 @@ const ART_DATA =
     "material": "Stone; granite (Lanzón and sculpture); hammered gold alloy (jewelry)",
     "technique": "Stone masonry; labyrinthine interior galleries",
     "significance": "Major pre-Columbian ceremonial center; the Lanzón (great lance) is a massive carved granite stela in the central gallery; sound effects from labyrinthine galleries may have induced altered states; the Chavín horizon spread artistic conventions across a vast area of the Andes.",
-    "image_url": "images/153.jpg"
+    "image_url": "images/153.jpg",
+    "date_start": -900,
+    "date_end": -200,
+    "date_circa": true
   },
   {
     "id": 154,
@@ -2003,7 +2465,10 @@ const ART_DATA =
     "material": "Sandstone blocks with mortar",
     "technique": "Stone masonry in natural cliff alcoves",
     "significance": "Multi-story cliff dwellings of the Ancestral Puebloan people; Cliff Palace has 150 rooms; built and abandoned within a 100-year period; kivas (circular ceremonial rooms) central to communal life; UNESCO World Heritage Site.",
-    "image_url": "images/154.jpg"
+    "image_url": "images/154.jpg",
+    "date_start": 450,
+    "date_end": 1300,
+    "date_circa": true
   },
   {
     "id": 155,
@@ -2016,7 +2481,10 @@ const ART_DATA =
     "material": "Limestone",
     "technique": "Limestone construction; carved relief lintels",
     "significance": "Maya city in the Usumacinta River region; famous for elaborately carved limestone lintels; Lintel 25 depicts Lady Xoc performing a bloodletting ritual and vision-serpent conjuring; demonstrates Maya elite's ritual use of bloodletting and political propaganda.",
-    "image_url": "images/155.jpg"
+    "image_url": "images/155.jpg",
+    "date_start": 725,
+    "date_end": 725,
+    "date_circa": true
   },
   {
     "id": 156,
@@ -2029,7 +2497,10 @@ const ART_DATA =
     "material": "Earth",
     "technique": "Earthwork construction; landscape sculpture",
     "significance": "Largest surviving effigy mound in the world (1,370 feet long); the uncoiling serpent appears to swallow or emit an oval form (egg or sun); may align with astronomical events (solstice, eclipses); the largest pre-Columbian earthwork in North America; recently redated to c. 1070 C.E.",
-    "image_url": "images/156.jpg"
+    "image_url": "images/156.jpg",
+    "date_start": 1070,
+    "date_end": 1070,
+    "date_circa": true
   },
   {
     "id": 157,
@@ -2042,7 +2513,10 @@ const ART_DATA =
     "material": "Stone (temple); volcanic stone (Coyolxauhqui Stone); jadeite (Olmec mask); basalt (Calendar Stone)",
     "technique": "Stone masonry; pyramid temple construction; stone carving",
     "significance": "The symbolic center of the Aztec Empire and world; twin temples atop stepped pyramid dedicated to Tlaloc (rain) and Huitzilopochtli (sun/war); the circular Coyolxauhqui Stone at the base depicts the dismembered moon goddess; excavated in 1978 beneath Mexico City.",
-    "image_url": "images/157.jpg"
+    "image_url": "images/157.jpg",
+    "date_start": 1375,
+    "date_end": 1520,
+    "date_circa": true
   },
   {
     "id": 158,
@@ -2055,7 +2529,10 @@ const ART_DATA =
     "material": "Quetzal and cotinga feathers with gold",
     "technique": "Featherwork (amanteca); gold metalwork",
     "significance": "One of only two surviving pre-Columbian feather headdresses; quetzal feathers were among the most precious materials in Mesoamerica; may have belonged to Motecuhzoma II; demonstrates the extraordinary luxury arts of the Aztec elite; colonial object with contested repatriation history.",
-    "image_url": "images/158.jpg"
+    "image_url": "images/158.jpg",
+    "date_start": 1428,
+    "date_end": 1520,
+    "date_circa": true
   },
   {
     "id": 159,
@@ -2068,7 +2545,10 @@ const ART_DATA =
     "material": "Andesite (Inka); colonial building on Inka foundations",
     "technique": "Ashlar masonry without mortar; interlocking stones",
     "significance": "The Inka capital; Qorikancha (Temple of the Sun) is now overlaid by the Spanish colonial church of Santo Domingo — a literal layering of conquest; the Inka masonry at Saqsaywaman uses massive stones fitted together without mortar; demonstrates colonialism's destruction and reuse of indigenous sacred spaces.",
-    "image_url": "images/159.jpg"
+    "image_url": "images/159.jpg",
+    "date_start": 1440,
+    "date_end": 1650,
+    "date_circa": true
   },
   {
     "id": 160,
@@ -2081,7 +2561,10 @@ const ART_DATA =
     "material": "Sheet metal and metal alloys (gold and silver)",
     "technique": "Repoussé metalwork; lost-wax casting",
     "significance": "Life-size silver and gold representations of maize placed in sacred gardens and offerings; maize was central to Andean subsistence and ritual; the Inka's ability to reproduce the natural world in precious metal demonstrated cosmic power; part of the offering tradition (capacocha).",
-    "image_url": "images/160.jpg"
+    "image_url": "images/160.jpg",
+    "date_start": 1440,
+    "date_end": 1533,
+    "date_circa": true
   },
   {
     "id": 161,
@@ -2094,7 +2577,10 @@ const ART_DATA =
     "material": "Granite",
     "technique": "Dry stone masonry; terraced construction on mountain ridge",
     "significance": "Inka royal estate high in the Andes; preserved due to its abandonment before Spanish conquest; sophisticated hydraulics and agricultural terraces; Intihuatana (hitching post of the sun) astronomical alignment; UNESCO World Heritage Site; 'rediscovered' by Hiram Bingham in 1911.",
-    "image_url": "images/161.jpg"
+    "image_url": "images/161.jpg",
+    "date_start": 1450,
+    "date_end": 1540,
+    "date_circa": true
   },
   {
     "id": 162,
@@ -2107,7 +2593,10 @@ const ART_DATA =
     "material": "Camelid fiber (alpaca or vicuña) and cotton",
     "technique": "Tapestry weaving",
     "significance": "The entire surface covered with t'oqapu (geometric panels); each panel may have been a readable sign of identity, rank, or regional affiliation; the all-t'oqapu tunic was the highest status garment in the Inka empire; textiles were the most important medium of Andean artistic culture.",
-    "image_url": "images/162.jpg"
+    "image_url": "images/162.jpg",
+    "date_start": 1450,
+    "date_end": 1540,
+    "date_circa": true
   },
   {
     "id": 163,
@@ -2120,7 +2609,10 @@ const ART_DATA =
     "material": "Beadwork on leather or cloth",
     "technique": "Glass seed bead embroidery",
     "significance": "Bandolier bags were prestige objects worn across the shoulder; intricate floral beadwork patterns using European trade beads; demonstrates how indigenous artists incorporated new materials while maintaining traditional forms; expressions of cultural pride and identity in the face of displacement.",
-    "image_url": "images/163.jpg"
+    "image_url": "images/163.jpg",
+    "date_start": 1850,
+    "date_end": 1850,
+    "date_circa": true
   },
   {
     "id": 164,
@@ -2133,7 +2625,10 @@ const ART_DATA =
     "material": "Wood, paint, and string",
     "technique": "Carving, painting; mechanical hinge mechanism",
     "significance": "Transformation masks open during potlatch ceremonies to reveal an inner face; the outer animal (raven, eagle, or thunderbird) opens to show a human or supernatural face; demonstrates the Northwest Coast belief in the fluid boundary between human and animal realms.",
-    "image_url": "images/164.jpg"
+    "image_url": "images/164.jpg",
+    "date_start": 860,
+    "date_end": 899,
+    "date_circa": true
   },
   {
     "id": 165,
@@ -2146,7 +2641,10 @@ const ART_DATA =
     "material": "Painted elk hide",
     "technique": "Hide preparation and painting",
     "significance": "Plains narrative painting tradition depicting ceremonial and historical scenes; painted hides were prestige objects and records of important events; Cotsiogo's work was created partly for trade with outsiders; demonstrates Plains pictographic tradition and cultural continuity under reservation conditions.",
-    "image_url": "images/165.jpg"
+    "image_url": "images/165.jpg",
+    "date_start": 1890,
+    "date_end": 1900,
+    "date_circa": true
   },
   {
     "id": 166,
@@ -2159,7 +2657,10 @@ const ART_DATA =
     "material": "Blackware ceramic",
     "technique": "Coil building; polished surface; matte geometric design; reduction firing",
     "significance": "Maria Martínez revived and popularized black-on-black pottery inspired by excavated pre-Columbian ceramics; the matte geometric designs on polished black ground are distinctive; she signed vessels with her husband Julian, though she made the pots and he painted them; her fame brought economic renewal to San Ildefonso Pueblo.",
-    "image_url": "images/166.jpg"
+    "image_url": "images/166.jpg",
+    "date_start": 1930,
+    "date_end": 1970,
+    "date_circa": true
   },
   {
     "id": 167,
@@ -2172,7 +2673,10 @@ const ART_DATA =
     "material": "Coursed granite blocks (without mortar)",
     "technique": "Dry stone masonry",
     "significance": "Largest stone structure in sub-Saharan Africa; built without mortar; the conical tower's function is unknown (granary? symbol of royal power?); 'Zimbabwe' means 'stone houses'; colonial-era refusal to believe Africans built it was disproven; UNESCO World Heritage Site.",
-    "image_url": "images/167.jpg"
+    "image_url": "images/167.jpg",
+    "date_start": 1000,
+    "date_end": 1400,
+    "date_circa": true
   },
   {
     "id": 168,
@@ -2185,7 +2689,10 @@ const ART_DATA =
     "material": "Adobe (sun-dried mud brick) with organic wooden reinforcing rods (toron)",
     "technique": "Adobe construction; annual community replastering festival",
     "significance": "World's largest mud brick building; the protruding wooden rods serve as permanent scaffolding for annual replastering festival; UNESCO World Heritage Site; demonstrates the adaptation of Islamic architecture to local Sahelian materials and community participation.",
-    "image_url": "images/168.jpg"
+    "image_url": "images/168.jpg",
+    "date_start": 1200,
+    "date_end": 1200,
+    "date_circa": true
   },
   {
     "id": 169,
@@ -2198,7 +2705,10 @@ const ART_DATA =
     "material": "Cast brass",
     "technique": "Lost-wax casting (cire perdue)",
     "significance": "Hundreds of cast brass plaques adorned the Oba's palace; depict court ceremonies, warriors, animals, and Europeans; high-relief naturalistic figures; the Benin bronzes are among the finest examples of African court art; most were looted by the British in the 1897 Punitive Expedition.",
-    "image_url": "images/169.jpg"
+    "image_url": "images/169.jpg",
+    "date_start": 500,
+    "date_end": 599,
+    "date_circa": true
   },
   {
     "id": 170,
@@ -2211,7 +2721,10 @@ const ART_DATA =
     "material": "Gold over wood with cast-gold attachments",
     "technique": "Gold leaf and casting over carved wood core",
     "significance": "The most sacred object of the Ashanti; said to have descended from the sky and to contain the soul (sunsum) of the Ashanti nation; never to be sat upon; the British demand to sit on it sparked the War of the Golden Stool (1900); symbol of Ashanti sovereignty.",
-    "image_url": "images/170.jpg"
+    "image_url": "images/170.jpg",
+    "date_start": 1700,
+    "date_end": 1700,
+    "date_circa": true
   },
   {
     "id": 171,
@@ -2224,7 +2737,10 @@ const ART_DATA =
     "material": "Wood",
     "technique": "Carving",
     "significance": "Ndop figures are idealized royal portraits of Kuba kings (nyim); each king is identified by a personal emblem rather than facial likeness; stored near the king to capture his spirit; made to be touched by the blind to 'see' the king; embodies the concept of royal power lasting beyond individual rulers.",
-    "image_url": "images/171.jpg"
+    "image_url": "images/171.jpg",
+    "date_start": 1760,
+    "date_end": 1780,
+    "date_circa": true
   },
   {
     "id": 172,
@@ -2237,7 +2753,10 @@ const ART_DATA =
     "material": "Wood and metal (nails, blades, glass)",
     "technique": "Carving with accumulation of materials",
     "significance": "Each nail or blade driven into the figure activates a contract or oath, calls on the spirit (nkisi) to enforce the agreement; the figure accumulates power through use; the nails register communal history; misunderstood by Europeans as 'fetishes' — in fact highly complex juridical and spiritual instruments.",
-    "image_url": "images/172.png"
+    "image_url": "images/172.png",
+    "date_start": 860,
+    "date_end": 899,
+    "date_circa": true
   },
   {
     "id": 173,
@@ -2250,7 +2769,10 @@ const ART_DATA =
     "material": "Wood, fiber, pigment, and metal",
     "technique": "Carving and assemblage",
     "significance": "Pwo masks represent the ideal of female beauty and the ancestral feminine; worn by male dancers to channel female spiritual power; elegant facial features, fine scarification patterns, elaborate headdress; worn at initiation ceremonies to bless women with fertility and wellbeing.",
-    "image_url": "images/173.jpg"
+    "image_url": "images/173.jpg",
+    "date_start": 800,
+    "date_end": 840,
+    "date_circa": true
   },
   {
     "id": 174,
@@ -2263,7 +2785,10 @@ const ART_DATA =
     "material": "Wood and pigment",
     "technique": "Carving and polishing",
     "significance": "Mblo masks are individualized portraits of distinguished living people honoring their intelligence and charm; worn in entertainment dances by a skilled performer (not the subject); among the most naturalistic portrait traditions in Africa; Baule carving tradition is among the most refined in West Africa.",
-    "image_url": "images/174.png"
+    "image_url": "images/174.png",
+    "date_start": 1900,
+    "date_end": 1940,
+    "date_circa": true
   },
   {
     "id": 175,
@@ -2276,7 +2801,10 @@ const ART_DATA =
     "material": "Wood, cloth, and fiber",
     "technique": "Carving and assemblage",
     "significance": "Unique in Africa for being a mask owned and worn by women (Sande Society); the helmet mask represents ideal feminine beauty — high forehead, downcast eyes, elaborate coiffure, ringed neck (symbol of prosperity); used in initiations transforming girls into socially recognized women.",
-    "image_url": "images/175.jpg"
+    "image_url": "images/175.jpg",
+    "date_start": 800,
+    "date_end": 899,
+    "date_circa": true
   },
   {
     "id": 176,
@@ -2289,7 +2817,10 @@ const ART_DATA =
     "material": "Wood",
     "technique": "Carving",
     "significance": "Personal power object representing a man's chi (personal god) and his right hand (hand of achievement); ram horns on the figure embody aggression and achievement; owned by men of status; when goals are achieved offerings are made; when a man dies the ikenga is ritually split.",
-    "image_url": "images/176.jpg"
+    "image_url": "images/176.jpg",
+    "date_start": 800,
+    "date_end": 899,
+    "date_circa": true
   },
   {
     "id": 177,
@@ -2302,7 +2833,10 @@ const ART_DATA =
     "material": "Wood, beads, and metal",
     "technique": "Assemblage of beads and metal on carved wood",
     "significance": "A 'memory board' used by memory experts (bana balute) to recite royal genealogies, migrations, and sacred knowledge; the pattern of beads is read spatially, not linearly; each board is unique to its owner/community; demonstrates that writing is not the only form of stored knowledge.",
-    "image_url": "images/177.jpg"
+    "image_url": "images/177.jpg",
+    "date_start": 800,
+    "date_end": 899,
+    "date_circa": true
   },
   {
     "id": 178,
@@ -2315,7 +2849,10 @@ const ART_DATA =
     "material": "Wood, woven raffia, cloth, and beads",
     "technique": "Carving and textile assemblage",
     "significance": "Worn by members of the royal Kuosi society (wealthy elephant owners); the elephant's strength and tusks (ivory = wealth) symbolize royal power; elaborate beaded cloth panels hang from the mask; worn at funerals of kings and important festivals; embodies the wealth and power of the Cameroonian elite.",
-    "image_url": "images/178.jpg"
+    "image_url": "images/178.jpg",
+    "date_start": 800,
+    "date_end": 899,
+    "date_circa": true
   },
   {
     "id": 179,
@@ -2328,7 +2865,10 @@ const ART_DATA =
     "material": "Wood",
     "technique": "Carving; attachment to reliquary basket",
     "significance": "The byeri figure guarded a reliquary basket containing ancestral skulls and bones; formal features (large head, compact body, prominent navel, meditative expression) embody ideal balance between life forces; Fang art profoundly influenced early 20th-century Western avant-garde artists including Picasso.",
-    "image_url": "images/179.jpg"
+    "image_url": "images/179.jpg",
+    "date_start": 800,
+    "date_end": 899,
+    "date_circa": true
   },
   {
     "id": 180,
@@ -2341,7 +2881,10 @@ const ART_DATA =
     "material": "Wood and pigment",
     "technique": "Carving; polychrome paint",
     "significance": "Olowe of Ise was the most celebrated Yoruba carver of the early 20th century; commissioned by the king of Ikere; the king is depicted enthroned, his senior wife towering behind him (her spiritual importance conveyed by her height); Yoruba veranda posts support palace roofs while displaying royal narratives.",
-    "image_url": "images/180.jpg"
+    "image_url": "images/180.jpg",
+    "date_start": 1910,
+    "date_end": 1914,
+    "date_circa": true
   },
   {
     "id": 181,
@@ -2354,7 +2897,10 @@ const ART_DATA =
     "material": "Cut rock (rose-red sandstone)",
     "technique": "Rock-cut architecture",
     "significance": "The Treasury (Al-Khazneh) is Petra's most famous monument, carved directly into the rose-red sandstone cliff; Petra was the capital of the Nabataean kingdom controlling caravan trade; the synthesis of Hellenistic, Egyptian, and local architectural elements; UNESCO World Heritage Site.",
-    "image_url": "images/181.jpg"
+    "image_url": "images/181.jpg",
+    "date_start": -400,
+    "date_end": -400,
+    "date_circa": true
   },
   {
     "id": 182,
@@ -2367,7 +2913,10 @@ const ART_DATA =
     "material": "Cut rock with plaster and polychrome paint (destroyed)",
     "technique": "Rock-cut carving with applied plaster decoration",
     "significance": "Two colossal standing Buddha figures (the tallest 180 feet) carved into cliff faces; represented Gandharan synthesis of Indian Buddhist, Hellenistic, and Central Asian artistic traditions; destroyed by the Taliban in 2001 in a globally mourned act of cultural heritage destruction.",
-    "image_url": "images/182.jpg"
+    "image_url": "images/182.jpg",
+    "date_start": 400,
+    "date_end": 800,
+    "date_circa": true
   },
   {
     "id": 183,
@@ -2380,7 +2929,10 @@ const ART_DATA =
     "material": "Granite masonry covered with silk curtain (Kiswah) with gold and silver calligraphy",
     "technique": "Stone masonry; textile weaving; calligraphy",
     "significance": "The most sacred site in Islam; Muslims around the world pray toward the Kaaba (qibla); during Hajj pilgrims circumambulate it seven times (tawaf); the Black Stone (embedded in its corner) is kissed by pilgrims; it pre-dates Islam and was rededicated by Muhammad; center of the ummah (global Muslim community).",
-    "image_url": "images/183.jpg"
+    "image_url": "images/183.jpg",
+    "date_start": 631,
+    "date_end": 632,
+    "date_circa": true
   },
   {
     "id": 184,
@@ -2393,7 +2945,10 @@ const ART_DATA =
     "material": "Gilt metals with semiprecious stones, pearls, and paint; various offerings",
     "technique": "Metal casting and gilding; jewel encrustation",
     "significance": "The most sacred Buddhist image in Tibet; depicts Shakyamuni Buddha at age 12; said to have been brought by Princess Wencheng of the Tang Dynasty as dowry to the Tibetan king; the Jokhang Temple built around it is the spiritual center of Tibet; pilgrims travel vast distances to prostrate before it.",
-    "image_url": "images/184.jpg"
+    "image_url": "images/184.jpg",
+    "date_start": 641,
+    "date_end": 641,
+    "date_circa": true
   },
   {
     "id": 185,
@@ -2406,7 +2961,10 @@ const ART_DATA =
     "material": "Stone masonry with glazed ceramic tile, mosaics, gilt dome",
     "technique": "Octagonal centralized plan; dome on drum; mosaic and tile decoration",
     "significance": "Oldest surviving Islamic building; built over the rock from which Muhammad ascended to heaven; its octagonal plan and dome influenced by Byzantine architecture; the golden dome dominates the Jerusalem skyline; the inscriptions inside refute Christian doctrine and assert Islamic faith.",
-    "image_url": "images/185.jpg"
+    "image_url": "images/185.jpg",
+    "date_start": 691,
+    "date_end": 692,
+    "date_circa": true
   },
   {
     "id": 186,
@@ -2419,7 +2977,10 @@ const ART_DATA =
     "material": "Stone, brick, wood, plaster, and glazed ceramic tile",
     "technique": "Four-iwan plan; muqarnas vaulting; geometric tile mosaic",
     "significance": "The best example of how Iranian mosque architecture evolved over 1,200 years; the four-iwan courtyard plan became the dominant mosque form in Iran; extraordinary geometric tile decoration; UNESCO World Heritage Site; a palimpsest of successive Islamic dynasties.",
-    "image_url": "images/186.jpg"
+    "image_url": "images/186.jpg",
+    "date_start": 700,
+    "date_end": 1999,
+    "date_circa": true
   },
   {
     "id": 187,
@@ -2432,7 +2993,10 @@ const ART_DATA =
     "material": "Ink, color, and gold on parchment",
     "technique": "Kufic script; geometric decoration; gold illumination",
     "significance": "Early Qur'anic manuscripts in angular Kufic script are among the most beautiful Islamic objects; the word of God required the finest calligraphy (the highest art form in Islam); gold rosettes mark verse endings; horizontal format (mashaf format) and Kufic script are characteristic of this period.",
-    "image_url": "images/187.jpg"
+    "image_url": "images/187.jpg",
+    "date_start": 700,
+    "date_end": 799,
+    "date_circa": true
   },
   {
     "id": 188,
@@ -2445,7 +3009,10 @@ const ART_DATA =
     "material": "Brass inlaid with gold and silver",
     "technique": "Hammered brass with inlaid gold and silver",
     "significance": "Mamluk basin decorated with courtly scenes and inscriptions; Muhammad ibn al-Zain signed it six times (unprecedented); later used as a baptismal font for French royal family; demonstrates the extraordinary luxury metalwork of the Mamluk court and the complex life of objects across cultures.",
-    "image_url": "images/188.jpg"
+    "image_url": "images/188.jpg",
+    "date_start": 1320,
+    "date_end": 1340,
+    "date_circa": true
   },
   {
     "id": 189,
@@ -2458,7 +3025,10 @@ const ART_DATA =
     "material": "Ink and opaque watercolor, gold, and silver on paper",
     "technique": "Persian miniature painting; narrative illustration",
     "significance": "From the Great Mongol Shahnama (Book of Kings), the largest and most lavishly illustrated; the Il-Khanid Mongol rulers of Iran patronized Persian literary manuscripts; Mongol visual elements (landscape, armor) combine with Persian painting tradition; revolutionary in scale and ambition.",
-    "image_url": "images/189.jpg"
+    "image_url": "images/189.jpg",
+    "date_start": 1330,
+    "date_end": 1340,
+    "date_circa": true
   },
   {
     "id": 190,
@@ -2471,7 +3041,10 @@ const ART_DATA =
     "material": "Ink, opaque watercolor, and gold on paper",
     "technique": "Safavid miniature painting; gold margins; lapis lazuli ground",
     "significance": "From the Shah Tahmasp Shahnama, the greatest Persian manuscript ever produced; Sultan Muhammad's court scene integrates figures into a landscape of gold-leafed rocks; the first king Gayumars rules over paradise; considered the masterpiece of Persian miniature painting.",
-    "image_url": "images/190.jpg"
+    "image_url": "images/190.jpg",
+    "date_start": 1522,
+    "date_end": 1525,
+    "date_circa": true
   },
   {
     "id": 191,
@@ -2484,7 +3057,10 @@ const ART_DATA =
     "material": "Silk and wool",
     "technique": "Pile knotting (Persian knot); radial medallion design",
     "significance": "One of the oldest dated carpets in the world; the central medallion design creates an illusion of lamps hanging from a domed ceiling; the inscription dedicates it to the shrine of Shaykh Safi al-Din; over 300 knots per square inch; among the world's greatest examples of textile art.",
-    "image_url": "images/191.jpg"
+    "image_url": "images/191.jpg",
+    "date_start": 1539,
+    "date_end": 1540,
+    "date_circa": true
   },
   {
     "id": 192,
@@ -2497,7 +3073,10 @@ const ART_DATA =
     "material": "Stone masonry and sandstone",
     "technique": "Hemispherical masonry mound; carved sandstone gateways (torana)",
     "significance": "One of the oldest stone structures in India; stupas enshrine Buddhist relics; pilgrims circumambulate (pradakshina) the stupa along the railing; the four ornately carved gateways (toranas) depict scenes from the Buddha's life and Jataka tales without depicting the Buddha directly (aniconic tradition).",
-    "image_url": "images/192.jpg"
+    "image_url": "images/192.jpg",
+    "date_start": -300,
+    "date_end": -300,
+    "date_circa": true
   },
   {
     "id": 193,
@@ -2510,7 +3089,10 @@ const ART_DATA =
     "material": "Painted terra cotta",
     "technique": "Mold-made and hand-finished; originally painted",
     "significance": "Over 8,000 life-size terra cotta soldiers, horses, and chariots buried with Qin Shi Huang; each face is individualized; rediscovered in 1974 by farmers; demonstrates the belief in an afterlife requiring a real army; largest ceramic sculpture project in history.",
-    "image_url": "images/193.jpg"
+    "image_url": "images/193.jpg",
+    "date_start": -221,
+    "date_end": -209,
+    "date_circa": true
   },
   {
     "id": 194,
@@ -2523,7 +3105,10 @@ const ART_DATA =
     "material": "Painted silk",
     "technique": "Silk painting",
     "significance": "T-shaped silk banner found covering Lady Dai's innermost coffin; read from bottom to top: underworld, human world, heavenly realm with sun and moon; Lady Dai depicted ascending; among the finest early Chinese paintings; extraordinarily preserved due to burial conditions.",
-    "image_url": "images/194.jpg"
+    "image_url": "images/194.jpg",
+    "date_start": -180,
+    "date_end": -180,
+    "date_circa": true
   },
   {
     "id": 195,
@@ -2536,7 +3121,10 @@ const ART_DATA =
     "material": "Limestone",
     "technique": "Rock-cut carving of caves and figures",
     "significance": "Over 100,000 Buddhist figures carved into limestone cliffs; the Fengxian Temple (672–675 C.E.) has a 56-foot central Buddha figure flanked by attendants; Tang Empress Wu Zetian sponsored this complex; demonstrates how Tang China was the center of East Asian Buddhist art.",
-    "image_url": "images/195.jpg"
+    "image_url": "images/195.jpg",
+    "date_start": 493,
+    "date_end": 1127,
+    "date_circa": true
   },
   {
     "id": 196,
@@ -2549,7 +3137,10 @@ const ART_DATA =
     "material": "Gold sheet with jade (gogok) pendants and comma-shaped jade",
     "technique": "Cut and repousse gold sheet; hung jade ornaments",
     "significance": "The most spectacular of the Silla gold crowns; tree-branch and antler uprights covered in gold spangles; jade comma (gogok) pendants may be shamanic symbols; found in royal tumuli at Gyeongju; demonstrates the sophisticated goldworking tradition of the Silla kingdom.",
-    "image_url": "images/196.jpg"
+    "image_url": "images/196.jpg",
+    "date_start": 400,
+    "date_end": 499,
+    "date_circa": true
   },
   {
     "id": 197,
@@ -2562,7 +3153,10 @@ const ART_DATA =
     "material": "Bronze and wood (sculpture); wood with ceramic-tile roofing (architecture)",
     "technique": "Bronze casting; wood construction",
     "significance": "The world's largest wooden building (rebuilt); houses the Great Buddha (Daibutsu) — a 52-foot bronze Vairocana Buddha; built by Emperor Shomu as the head temple of Japan's provincial temple system; the two guardian kings (Nio) at the gate by the Kei school are among the finest Japanese sculptures.",
-    "image_url": "images/197.png"
+    "image_url": "images/197.png",
+    "date_start": 743,
+    "date_end": 743,
+    "date_circa": true
   },
   {
     "id": 198,
@@ -2575,7 +3169,10 @@ const ART_DATA =
     "material": "Volcanic stone masonry",
     "technique": "Stupa-shaped stepped pyramid; relief narrative carvings",
     "significance": "Largest Buddhist monument in the world; 9-story stepped pyramid with 2,672 relief panels and 504 Buddha statues; pilgrims ascend through levels of the cosmos from desire through form to formlessness; UNESCO World Heritage Site; recently restored after the 2006 Yogyakarta earthquake.",
-    "image_url": "images/198.jpg"
+    "image_url": "images/198.jpg",
+    "date_start": 750,
+    "date_end": 842,
+    "date_circa": true
   },
   {
     "id": 199,
@@ -2588,7 +3185,10 @@ const ART_DATA =
     "material": "Sandstone masonry",
     "technique": "Temple mountain construction; bas-relief galleries; moat and causeway",
     "significance": "Angkor Wat is the largest religious monument in the world; originally dedicated to Vishnu (later Buddhist); the temple mountain represents Mt. Meru; the bas-relief galleries (1,700 feet long) depict the Mahabharata, Ramayana, and historical scenes; UNESCO World Heritage Site.",
-    "image_url": "images/199.jpg"
+    "image_url": "images/199.jpg",
+    "date_start": 800,
+    "date_end": 1400,
+    "date_circa": true
   },
   {
     "id": 200,
@@ -2601,7 +3201,10 @@ const ART_DATA =
     "material": "Sandstone",
     "technique": "Nagara (northern Indian) temple style; carved exterior sculptures",
     "significance": "One of the Khajuraho group of temples; the exterior is covered with sculpture including the famous erotic (mithuna) figures which may express the energy of life, fertility, and the union of opposites; the towers (shikhara) rise like mountain peaks; UNESCO World Heritage Site.",
-    "image_url": "images/200.jpg"
+    "image_url": "images/200.jpg",
+    "date_start": 930,
+    "date_end": 950,
+    "date_circa": true
   },
   {
     "id": 201,
@@ -2614,7 +3217,10 @@ const ART_DATA =
     "material": "Ink and colors on silk",
     "technique": "Hanging scroll painting; monumental landscape format",
     "significance": "The greatest Northern Song landscape painting; a massive cliff fills nearly two-thirds of the composition, dwarfing the tiny travelers and their mules below; Fan Kuan's signature hidden among leaves; embodies the Song ideal that the human spirit finds its place within nature, not above it.",
-    "image_url": "images/201.jpg"
+    "image_url": "images/201.jpg",
+    "date_start": 1000,
+    "date_end": 1000,
+    "date_circa": true
   },
   {
     "id": 202,
@@ -2627,7 +3233,10 @@ const ART_DATA =
     "material": "Cast bronze",
     "technique": "Lost-wax casting (cire perdue)",
     "significance": "The most famous form of Shiva in Hindu iconography; Shiva dances within a ring of fire, creating and destroying the universe; four arms hold fire (destruction), drum (creation), gesture of protection, and point to the demon of ignorance underfoot; complex theological symbolism in perfect formal balance.",
-    "image_url": "images/202.jpg"
+    "image_url": "images/202.jpg",
+    "date_start": 1000,
+    "date_end": 1099,
+    "date_circa": true
   },
   {
     "id": 203,
@@ -2640,7 +3249,10 @@ const ART_DATA =
     "material": "Ink and color on paper",
     "technique": "Handscroll (emaki) painting; dramatic narrative sequence",
     "significance": "Dramatic handscroll depicting the 1159 attack on Emperor Go-Shirakawa's palace; figures and horses in dynamic motion; the diagonal composition creates sense of speed and chaos; fire and smoke fill the sky; a masterpiece of Kamakura period narrative painting depicting the warrior class.",
-    "image_url": "images/203.jpg"
+    "image_url": "images/203.jpg",
+    "date_start": 1250,
+    "date_end": 1300,
+    "date_circa": true
   },
   {
     "id": 204,
@@ -2653,7 +3265,10 @@ const ART_DATA =
     "material": "White porcelain with cobalt-blue underglaze",
     "technique": "Underglaze blue and white porcelain; cobalt pigment from Persia",
     "significance": "The inscriptions date them precisely to 1351; key documents for establishing the chronology of Chinese blue-and-white porcelain; the cobalt came from Persia via the Silk Road, demonstrating global trade connections; blue-and-white became the most influential ceramic tradition in world history.",
-    "image_url": "images/204.jpg"
+    "image_url": "images/204.jpg",
+    "date_start": 1351,
+    "date_end": 1351,
+    "date_circa": true
   },
   {
     "id": 205,
@@ -2666,7 +3281,10 @@ const ART_DATA =
     "material": "Ink and color on silk",
     "technique": "Korean court portrait painting; hanging scroll",
     "significance": "Joseon Dynasty official portrait of the scholar-statesman Sin Sukju; exemplifies the Korean court portrait tradition (gongsin do): precise rendering of official dress, rank insignia, and facial features; Korean portraits emphasize status and virtue; important for establishing the Joseon Dynasty's visual tradition.",
-    "image_url": "images/205.jpg"
+    "image_url": "images/205.jpg",
+    "date_start": 400,
+    "date_end": 499,
+    "date_circa": true
   },
   {
     "id": 206,
@@ -2679,7 +3297,10 @@ const ART_DATA =
     "material": "Stone masonry, marble, brick, wood, and ceramic tile",
     "technique": "Traditional Chinese palace architecture; axis and symmetry; bracketing (dougong)",
     "significance": "The world's largest palace complex (180 acres); 980 buildings; home to 24 emperors from 1420–1912; strict hierarchical organization reflects Confucian cosmology; the emperor at the center of the universe; yellow roof tiles signify imperial authority; UNESCO World Heritage Site.",
-    "image_url": "images/206.jpg"
+    "image_url": "images/206.jpg",
+    "date_start": 460,
+    "date_end": 499,
+    "date_circa": true
   },
   {
     "id": 207,
@@ -2692,7 +3313,10 @@ const ART_DATA =
     "material": "Raked white gravel and 15 moss-covered rocks",
     "technique": "Kare-sansui (dry rock garden) design",
     "significance": "Japan's most famous rock garden; 15 rocks arranged in raked white gravel; from any viewpoint on the veranda, only 14 rocks are visible (the 15th hidden); creates meditative contemplation; no garden interpretation is definitive; embodies the Zen aesthetic of ambiguity, impermanence, and mindfulness.",
-    "image_url": "images/207.jpg"
+    "image_url": "images/207.jpg",
+    "date_start": 700,
+    "date_end": 1480,
+    "date_circa": true
   },
   {
     "id": 208,
@@ -2705,7 +3329,10 @@ const ART_DATA =
     "material": "Watercolor, gold, and ink on paper",
     "technique": "Mughal miniature painting; multiple pictorial conventions combined",
     "significance": "Mughal allegorical painting; Jahangir sits on an hourglass throne (time/power) and presents a book to a Sufi saint, while two kings (the Ottoman sultan and James I of England) wait; European influence visible in cherubs and illusionistic border; asserts Mughal spiritual and political supremacy.",
-    "image_url": "images/208.jpg"
+    "image_url": "images/208.jpg",
+    "date_start": 1620,
+    "date_end": 1620,
+    "date_circa": true
   },
   {
     "id": 209,
@@ -2718,7 +3345,10 @@ const ART_DATA =
     "material": "White marble with inlay of precious and semiprecious stones; red sandstone",
     "technique": "Pietra dura (stone inlay); marble construction; charbagh (four-part garden)",
     "significance": "Built by Emperor Shah Jahan for his wife Mumtaz Mahal; perfectly symmetrical composition reflected in the pool; white marble changes color in different light; the charbagh (paradise garden) leads to the central tomb; considered the jewel of Mughal architecture; UNESCO World Heritage Site.",
-    "image_url": "images/209.jpg"
+    "image_url": "images/209.jpg",
+    "date_start": 1632,
+    "date_end": 1653,
+    "date_circa": true
   },
   {
     "id": 210,
@@ -2731,7 +3361,10 @@ const ART_DATA =
     "material": "Ink, watercolor, and gold leaf on paper",
     "technique": "Rinpa school decorative painting; gold leaf ground; stylized nature",
     "significance": "Pair of two-panel screens (byobu); each tree emerges from opposite edges with a stylized river between; decorative abstraction of natural forms; brilliant metallic ground; Korin was the greatest master of the Rinpa school, which created luxury decorative arts for the Edo period aristocracy.",
-    "image_url": "images/210.jpg"
+    "image_url": "images/210.jpg",
+    "date_start": 1710,
+    "date_end": 1716,
+    "date_circa": true
   },
   {
     "id": 211,
@@ -2744,7 +3377,10 @@ const ART_DATA =
     "material": "Polychrome woodblock print on paper",
     "technique": "Multi-block woodblock printing (nishiki-e); Prussian blue pigment",
     "significance": "The most internationally recognized image in Japanese art; a gigantic wave dwarfs fishing boats and Mt. Fuji in the background; uses Prussian blue (a Western import); Hokusai's series profoundly influenced European Impressionism and Post-Impressionism; the image defined japonisme.",
-    "image_url": "images/211.jpg"
+    "image_url": "images/211.jpg",
+    "date_start": 1830,
+    "date_end": 1833,
+    "date_circa": true
   },
   {
     "id": 212,
@@ -2757,7 +3393,10 @@ const ART_DATA =
     "material": "Color lithograph",
     "technique": "Mass-produced lithographic printing",
     "significance": "The original oil painting was reproduced over 900 million times during the Cultural Revolution; depicts young Mao striding heroically against the sky; Socialist Realist style combined with traditional Chinese elements; demonstrates how art was weaponized for political propaganda in Maoist China.",
-    "image_url": "images/212.jpg"
+    "image_url": "images/212.jpg",
+    "date_start": 1969,
+    "date_end": 1969,
+    "date_circa": true
   },
   {
     "id": 213,
@@ -2770,7 +3409,10 @@ const ART_DATA =
     "material": "Basalt boulders and prismatic columns",
     "technique": "Log-cabin style stacking of natural basalt columns",
     "significance": "A megalithic island city built on a coral reef; 92 artificial islets connected by canals; the largest archaeological site in the Pacific; the sacred precincts of Nan Douwas were used for the burial of Saudeleur kings; the means by which basalt columns were transported remain unknown; UNESCO World Heritage Site.",
-    "image_url": "images/213.jpg"
+    "image_url": "images/213.jpg",
+    "date_start": 700,
+    "date_end": 1600,
+    "date_circa": true
   },
   {
     "id": 214,
@@ -2783,7 +3425,10 @@ const ART_DATA =
     "material": "Volcanic tuff figures on basalt base platform",
     "technique": "Carved tuff; transported and erected",
     "significance": "Over 900 moai on Rapa Nui; most on ahu (ceremonial platforms) facing inland; represent ancestors embodying mana (spiritual power); the ahu Tongariki with 15 restored figures is the largest; the island's environmental collapse is linked to their construction; UNESCO World Heritage Site.",
-    "image_url": "images/214.jpg"
+    "image_url": "images/214.jpg",
+    "date_start": 1100,
+    "date_end": 1600,
+    "date_circa": true
   },
   {
     "id": 215,
@@ -2796,7 +3441,10 @@ const ART_DATA =
     "material": "Feathers and fiber",
     "technique": "Featherwork on woven fiber foundation",
     "significance": "Hawaiian feathered capes were among the most precious objects in Pacific cultures; thousands of small red and yellow feathers from rare birds were tied to fiber netting; only high chiefs (ali'i) could wear them; demonstrated extraordinary wealth and mana; many were exchanged with Captain Cook.",
-    "image_url": "images/215.jpg"
+    "image_url": "images/215.jpg",
+    "date_start": 760,
+    "date_end": 799,
+    "date_circa": true
   },
   {
     "id": 216,
@@ -2809,7 +3457,10 @@ const ART_DATA =
     "material": "Wood, tapa, fiber, and feathers",
     "technique": "Carving; wrapping in tapa cloth",
     "significance": "The staff god (to'o) of Tangaroa, the supreme creator deity of Polynesia; the central wooden spine is wrapped in tapa cloth with small wooden figures attached; kept wrapped and revealed only during rituals; embodies divine presence; one of the most important sacred objects brought to Europe.",
-    "image_url": "images/216.jpg"
+    "image_url": "images/216.jpg",
+    "date_start": 700,
+    "date_end": 740,
+    "date_circa": true
   },
   {
     "id": 217,
@@ -2822,7 +3473,10 @@ const ART_DATA =
     "material": "Wood",
     "technique": "Carving",
     "significance": "Extremely simplified, abstract female figure; among the most abstract sculptures in the Pacific; the extreme reduction of features (abstract face, simplified limbs) concentrates spiritual power; represents a deity of the Nukuoro pantheon; greatly admired by Western artists for its modernist-seeming reduction.",
-    "image_url": "images/217.jpg"
+    "image_url": "images/217.jpg",
+    "date_start": 700,
+    "date_end": 799,
+    "date_circa": true
   },
   {
     "id": 218,
@@ -2835,7 +3489,10 @@ const ART_DATA =
     "material": "Turtle shell, wood, fiber, feathers, and shell",
     "technique": "Turtle shell cutting, shaping, and assembly",
     "significance": "One of the most remarkable mask traditions in the Pacific; the sea turtle provides the primary material; elaborate headdress of feathers and shell; worn at initiation ceremonies; the distinctive regional culture of the Torres Strait blends Melanesian and Australian indigenous traditions.",
-    "image_url": "images/218.jpg"
+    "image_url": "images/218.jpg",
+    "date_start": 830,
+    "date_end": 870,
+    "date_circa": true
   },
   {
     "id": 219,
@@ -2848,7 +3505,10 @@ const ART_DATA =
     "material": "Tapa (bark cloth)",
     "technique": "Freehand painting on tapa",
     "significance": "Niue tapa (hiapo) is uniquely decorated with geometric freehand painting rather than stencils; complex, symmetrical patterns combine local and pan-Pacific visual traditions; tapa was essential for wrapping gifts, exchange, ceremonies, and clothing across Polynesia; this example shows extraordinary graphic invention.",
-    "image_url": "images/219.jpg"
+    "image_url": "images/219.jpg",
+    "date_start": 1850,
+    "date_end": 1900,
+    "date_circa": true
   },
   {
     "id": 220,
@@ -2861,7 +3521,10 @@ const ART_DATA =
     "material": "Oil on canvas",
     "technique": "European realist portrait painting",
     "significance": "Gottfried Lindauer was a Czech artist who painted Māori subjects with extraordinary detail and respect; depicts the important chief Tamati Waka Nene in full regalia including ta moko (facial tattoo) and korowai (feather cloak); important documentary and aesthetic record of 19th-century Māori culture.",
-    "image_url": "images/220.jpg"
+    "image_url": "images/220.jpg",
+    "date_start": 1890,
+    "date_end": 1890,
+    "date_circa": true
   },
   {
     "id": 221,
@@ -2874,7 +3537,10 @@ const ART_DATA =
     "material": "Wood and fiber (coconut palm ribs and pandanus fiber)",
     "technique": "Lashed stick construction; wave and island mapping",
     "significance": "Marshall Islands stick charts map ocean swell patterns and island locations; not maps to be read visually while sailing but teaching tools to memorize before voyages; the angles and intersections represent wave refraction and deflection around islands; embodies an extraordinarily sophisticated non-Western science.",
-    "image_url": "images/221.jpg"
+    "image_url": "images/221.jpg",
+    "date_start": 800,
+    "date_end": 840,
+    "date_circa": true
   },
   {
     "id": 222,
@@ -2887,7 +3553,10 @@ const ART_DATA =
     "material": "Wood, pigment, fiber, and shell",
     "technique": "Carving; polychrome painting; assemblage",
     "significance": "Malagan refers to both the elaborate funerary ceremonies and the objects made for them; intricate openwork carvings with intertwined figures; made to be displayed briefly at the ceremony and then abandoned; the making is more important than the keeping; one of the most complex visual traditions in Melanesia.",
-    "image_url": "images/222.jpg"
+    "image_url": "images/222.jpg",
+    "date_start": 1900,
+    "date_end": 1999,
+    "date_circa": true
   },
   {
     "id": 223,
@@ -2900,7 +3569,10 @@ const ART_DATA =
     "material": "Pandanus fiber mats; tapa cloth; costume; cosmetics; chant; movement",
     "technique": "Traditional Fijian ceremonial performance (i'sevusevu)",
     "significance": "Raises critical questions about what counts as art; this ceremony involves costumes, scent, movement, chant, and textile exchange; the photographic documentation is secondary to the living performance; challenges Western art categories; expands the AP Art History curriculum to include non-object-based traditions.",
-    "image_url": "images/223.jpg"
+    "image_url": "images/223.jpg",
+    "date_start": 1953,
+    "date_end": 1953,
+    "date_circa": true
   },
   {
     "id": 224,
@@ -2913,7 +3585,10 @@ const ART_DATA =
     "material": "7,503 vinyl gates with saffron-colored fabric panels",
     "technique": "Large-scale temporary installation",
     "significance": "7,503 saffron-colored gates along 23 miles of walkways in Central Park; visible for 16 days; entirely self-funded by the artists; no lasting alteration to the park; Christo's wrapped and environmental works question permanence, spectacle, and the experience of place.",
-    "image_url": "images/224.jpg"
+    "image_url": "images/224.jpg",
+    "date_start": 1979,
+    "date_end": 2005,
+    "date_circa": false
   },
   {
     "id": 225,
@@ -2926,7 +3601,10 @@ const ART_DATA =
     "material": "Black polished granite",
     "technique": "Land art; reflective surface; inscribed names",
     "significance": "Radical departure from traditional heroic monuments; two black granite walls descend into the earth, inscribed with 58,318 names of the fallen; visitors see their own reflection in the polished stone among the names; Maya Lin designed this as a 21-year-old architecture student; sparked intense controversy and debate.",
-    "image_url": "images/225.jpg"
+    "image_url": "images/225.jpg",
+    "date_start": 1982,
+    "date_end": 1982,
+    "date_circa": true
   },
   {
     "id": 226,
@@ -2939,7 +3617,10 @@ const ART_DATA =
     "material": "Acrylic and oil paintstick on three canvas panels",
     "technique": "Neo-Expressionist painting; graffiti-derived text and imagery",
     "significance": "Tribute to jazz musicians Charlie Parker and Dizzy Gillespie; Basquiat's signature style combines graffiti, text fragments, crown symbols, and raw figuration; addresses Black identity, genius, and mortality; Basquiat rose from NYC graffiti (SAMO) to international art star; died at 27.",
-    "image_url": "images/226.png"
+    "image_url": "images/226.png",
+    "date_start": 1983,
+    "date_end": 1983,
+    "date_circa": true
   },
   {
     "id": 227,
@@ -2952,7 +3633,10 @@ const ART_DATA =
     "material": "Ink on paper",
     "technique": "Korean ink painting (muninhwa tradition); spontaneous brushwork",
     "significance": "Demonstrates the continuation of the Korean ink painting tradition into contemporary practice; Song Su-nam was a key figure in the Minjung art movement; the trees are rendered with calligraphic, gestural brushwork; connects Korean cultural heritage to contemporary artistic identity.",
-    "image_url": "images/227.png"
+    "image_url": "images/227.png",
+    "date_start": 1983,
+    "date_end": 1983,
+    "date_circa": true
   },
   {
     "id": 228,
@@ -2965,7 +3649,10 @@ const ART_DATA =
     "material": "Burlap, resin, wood, nails, string",
     "technique": "Textile sculpture; assemblage",
     "significance": "Abakanowicz survived both Nazi and Soviet totalitarian rule in Poland; her headless, faceless figures in series suggest anonymous masses and the dehumanization of totalitarianism; rough burlap surfaces suggest organic decay; addresses human vulnerability and collective identity vs. individuality.",
-    "image_url": "images/228.jpg"
+    "image_url": "images/228.jpg",
+    "date_start": 1985,
+    "date_end": 1985,
+    "date_circa": true
   },
   {
     "id": 229,
@@ -2978,7 +3665,10 @@ const ART_DATA =
     "material": "Handmade books and ceiling/wall scrolls printed with invented Chinese characters",
     "technique": "Woodblock printing; installation art",
     "significance": "Xu Bing carved over 4,000 meaningless but convincingly Chinese-looking characters; printed books and scrolls fill the gallery; Chinese viewers are disoriented — everything looks legible but nothing can be read; addresses the relationship between language, culture, meaning, and authority.",
-    "image_url": "images/229.jpg"
+    "image_url": "images/229.jpg",
+    "date_start": 1987,
+    "date_end": 1991,
+    "date_circa": true
   },
   {
     "id": 230,
@@ -2991,7 +3681,10 @@ const ART_DATA =
     "material": "Glazed porcelain",
     "technique": "Porcelain casting and glazing",
     "significance": "A nude Playboy-style woman embraces the Pink Panther cartoon; kitsch, seduction, popular culture, and commodity aesthetics; Koons works in series (Banality); challenges distinctions between fine art and mass-produced objects; praised by some as a critique and dismissed by others as merely celebrating consumerism.",
-    "image_url": "images/230.jpg"
+    "image_url": "images/230.jpg",
+    "date_start": 1988,
+    "date_end": 1988,
+    "date_circa": true
   },
   {
     "id": 231,
@@ -3004,7 +3697,10 @@ const ART_DATA =
     "material": "Color photograph",
     "technique": "Staged photography; costume and make-up; self-portraiture",
     "significance": "Sherman photographs herself in elaborate costumes referencing Old Master portrait conventions; she is simultaneously photographer and subject, artist and artwork; questions authenticity, identity, gender representation, and the construction of the female image in Western art history.",
-    "image_url": "images/231.jpg"
+    "image_url": "images/231.jpg",
+    "date_start": 1990,
+    "date_end": 1990,
+    "date_circa": true
   },
   {
     "id": 232,
@@ -3017,7 +3713,10 @@ const ART_DATA =
     "material": "Acrylic on canvas, tie-dyed and pieced fabric border",
     "technique": "Quilt-making; narrative painting; handwritten text integration",
     "significance": "Story-quilt reimagining art history from a Black woman's perspective; inserts fictional Black women and children into the Louvre dancing before Leonardo's Mona Lisa; combines quilting (an African-American women's tradition) with painting and narrative text; first of twelve quilts in The French Collection series.",
-    "image_url": "images/232.jpg"
+    "image_url": "images/232.jpg",
+    "date_start": 1991,
+    "date_end": 1991,
+    "date_circa": true
   },
   {
     "id": 233,
@@ -3030,7 +3729,10 @@ const ART_DATA =
     "material": "Oil paint and mixed media on canvas; found objects (toy tomahawks, sports paraphernalia, consumer products)",
     "technique": "Collage; assemblage; triptych painting",
     "significance": "Created for the 1992 Columbus quincentenary; a counter-monument to 500 years of exploitative trade with Indigenous peoples; collages stereotypical Native American consumer goods onto a massive triptych; commodity kitsch objects hung above the canvas on a clothesline as if offered for trade.",
-    "image_url": "images/233.jpg"
+    "image_url": "images/233.jpg",
+    "date_start": 1992,
+    "date_end": 1992,
+    "date_circa": true
   },
   {
     "id": 234,
@@ -3043,7 +3745,10 @@ const ART_DATA =
     "material": "Synthetic polymer paint (acrylic) on canvas",
     "technique": "Dotting / stippling; all-over composition derived from awelye ceremonial body painting",
     "significance": "Monumental Aboriginal painting of the Dreaming; created at roughly age 80 by a senior Anmatyerre woman of the Utopia community; dense non-figurative layering of bright dabs evokes the desert after rain; rooted in awelye women's ceremonial tradition; at time of 2007 sale, the most expensive painting by a female Australian artist.",
-    "image_url": "images/234.jpg"
+    "image_url": "images/234.jpg",
+    "date_start": 1994,
+    "date_end": 1994,
+    "date_circa": true
   },
   {
     "id": 235,
@@ -3056,7 +3761,10 @@ const ART_DATA =
     "material": "Ink on gelatin silver print",
     "technique": "Staged photography; calligraphic ink overlay on photograph",
     "significance": "Black-and-white self-portrait bisected by a rifle barrel; exposed skin covered in Farsi calligraphic poetry by Tahereh Saffarzadeh; confronts stereotypes of Muslim women as victim or martyr post-Iranian Islamic Revolution; from the Women of Allah series (1993–1997); Neshat is a diasporic Iranian artist.",
-    "image_url": "images/235.jpg"
+    "image_url": "images/235.jpg",
+    "date_start": 1994,
+    "date_end": 1994,
+    "date_circa": true
   },
   {
     "id": 236,
@@ -3069,7 +3777,10 @@ const ART_DATA =
     "material": "Mixed media (found objects, furniture, plastic flowers, TV monitors, video)",
     "technique": "Immersive mixed-media installation; community intervention",
     "significance": "Reconstructs a hyperdecorated Puerto Rican barbershop (Nuyorican Baroque style); TV monitors loop videos of Latino men weeping; confronts machismo and taboos of male emotion in Puerto Rican culture; intentionally placed in a community storefront rather than a museum.",
-    "image_url": "images/236.jpg"
+    "image_url": "images/236.jpg",
+    "date_start": 1994,
+    "date_end": 1994,
+    "date_circa": true
   },
   {
     "id": 237,
@@ -3082,7 +3793,10 @@ const ART_DATA =
     "material": "Flattened corned-beef tin cans, steel",
     "technique": "Assemblage; welding; riveting",
     "significance": "Life-sized bull assembled from flattened corned-beef cans; critiques the replacement of traditional Pacific foods by imported processed foods and the ecological damage of cattle introduced by colonial powers; pisupo (from pea soup) became Samoan slang for all canned food; title means 'corned beef 2000.'",
-    "image_url": "images/237.jpg"
+    "image_url": "images/237.jpg",
+    "date_start": 1994,
+    "date_end": 1994,
+    "date_circa": true
   },
   {
     "id": 238,
@@ -3095,7 +3809,10 @@ const ART_DATA =
     "material": "336 cathode-ray televisions, custom electronics, neon, steel, wood",
     "technique": "Multi-channel video installation; neon sign fabrication",
     "significance": "Map of the US built from 336 TVs and neon state outlines; 51 channels of state-specific video loops (Wizard of Oz for Kansas, civil-rights footage for Alabama, etc.); Paik coined 'electronic superhighway' in 1974 to predict a global network; made on the verge of mass internet adoption; father of video art.",
-    "image_url": "images/238.jpg"
+    "image_url": "images/238.jpg",
+    "date_start": 1995,
+    "date_end": 1995,
+    "date_circa": true
   },
   {
     "id": 239,
@@ -3108,7 +3825,10 @@ const ART_DATA =
     "material": "Two-channel color video projection, amplified stereo sound",
     "technique": "Slow-motion video projection; back-to-back double-screen installation",
     "significance": "Man consumed by fire on one screen and engulfed by water on the other; elemental diptych on death, purification, and rebirth; draws on Christian mysticism, Sufi poetry, and Zen Buddhism; Viola is a pioneer of large-scale, devotional video installation; thunderous soundtrack amplifies the body's response.",
-    "image_url": "images/239.jpg"
+    "image_url": "images/239.jpg",
+    "date_start": 1996,
+    "date_end": 1996,
+    "date_circa": true
   },
   {
     "id": 240,
@@ -3121,7 +3841,10 @@ const ART_DATA =
     "material": "Titanium, glass, and limestone",
     "technique": "Deconstructivist design using CAD (Catia aerospace software); curvilinear titanium shingle cladding",
     "significance": "Flagship of Deconstructivist architecture; origin of the 'Bilbao Effect' (signature architecture driving urban revival); ~33,000 titanium shingles respond to weather and light; drew over 1 million tourists in its first year; commissioned by the Basque regional government as part of an urban-renewal program.",
-    "image_url": "images/240.png"
+    "image_url": "images/240.png",
+    "date_start": 1997,
+    "date_end": 1997,
+    "date_circa": true
   },
   {
     "id": 241,
@@ -3134,7 +3857,10 @@ const ART_DATA =
     "material": "Cibachrome photograph laminated on glass",
     "technique": "Digital composite photography; CGI character integration; large-format cibachrome printing",
     "significance": "Mori casts herself as Kichijoten (Japanese goddess of fortune) floating above the Dead Sea surrounded by alien bodhisattva musicians; blends Pure Land Buddhism, Japanese anime aesthetics, and science fiction; still-photograph companion to the Nirvana 3-D video installation.",
-    "image_url": "images/241.jpg"
+    "image_url": "images/241.jpg",
+    "date_start": 1998,
+    "date_end": 1998,
+    "date_circa": true
   },
   {
     "id": 242,
@@ -3147,7 +3873,10 @@ const ART_DATA =
     "material": "Ink and pencil on paper",
     "technique": "Large-format figural drawing; contour line with tonal shading",
     "significance": "Life-sized nude woman reclining peacefully with a wolf, reversing the predator-prey narrative of Red Riding Hood; evokes St. Genevieve who was said to tame wolves; feminist reimagining of the female body and its relationship to nature and the 'beast'; drawn on joined sheets of Nepalese paper.",
-    "image_url": "images/242.jpg"
+    "image_url": "images/242.jpg",
+    "date_start": 2001,
+    "date_end": 2001,
+    "date_circa": true
   },
   {
     "id": 243,
@@ -3160,7 +3889,10 @@ const ART_DATA =
     "material": "Cut paper silhouettes (adhered with wax), colored gel overhead projectors",
     "technique": "Paper cutting; projection installation",
     "significance": "Room-sized tableau of antebellum Southern violence in black paper silhouettes bathed in lurid colored light; colored projectors cast viewers' own shadows into the scene, implicating them; Walker weaponizes the genteel Victorian silhouette tradition to confront suppressed histories of slavery, rape, and racism.",
-    "image_url": "images/243.jpg"
+    "image_url": "images/243.jpg",
+    "date_start": 2001,
+    "date_end": 2001,
+    "date_circa": true
   },
   {
     "id": 244,
@@ -3173,7 +3905,10 @@ const ART_DATA =
     "material": "Life-size fiberglass mannequin, Dutch wax printed cotton textile, swing, artificial foliage",
     "technique": "3-D installation; appropriation of a 2-D Rococo painting",
     "significance": "Headless mannequin remake of Fragonard's 1767 Rococo painting The Swing; dressed in Dutch wax printed fabric (a textile with Indonesian origins, manufactured in Europe, marketed as authentically African); postcolonial critique of aristocratic European culture and the entangled histories of colonial trade; headlessness evokes the Reign of Terror.",
-    "image_url": "images/244.jpg"
+    "image_url": "images/244.jpg",
+    "date_start": 2001,
+    "date_end": 2001,
+    "date_circa": true
   },
   {
     "id": 245,
@@ -3186,7 +3921,10 @@ const ART_DATA =
     "material": "Aluminum (flattened liquor-bottle caps and labels) and copper wire",
     "technique": "Assemblage; communal workshop fabrication; flexible metal textile installation",
     "significance": "Shimmering 'metal cloth' of flattened liquor-bottle caps references West African Kente cloth and the transatlantic slave trade (European liquor was exchanged for enslaved Africans); made communally with apprentices, echoing Akan cloth-making traditions; installs differently each time — never the same twice.",
-    "image_url": "images/245.jpg"
+    "image_url": "images/245.jpg",
+    "date_start": 2003,
+    "date_end": 2003,
+    "date_circa": true
   },
   {
     "id": 246,
@@ -3199,7 +3937,10 @@ const ART_DATA =
     "material": "Ink and acrylic on canvas",
     "technique": "Layered ink drawing over acrylic-and-silica ground; projected architectural plans traced in ink then sealed and painted over",
     "significance": "Monumental abstract painting overlaying global stadium architectural plans with exploding flags, logos, and confetti; meditates on nationalism, sport, mass spectacle, political rallies, and acts of terror; influenced by Russian Constructivism; one panel of a commissioned 2004 triptych.",
-    "image_url": "images/246.jpg"
+    "image_url": "images/246.jpg",
+    "date_start": 2004,
+    "date_end": 2004,
+    "date_circa": true
   },
   {
     "id": 247,
@@ -3212,7 +3953,10 @@ const ART_DATA =
     "material": "Mixed media on Mylar (ink, acrylic, magazine cutouts, photographs)",
     "technique": "Mixed-media collage on translucent Mylar",
     "significance": "Afrofuturist collage of a hybrid female figure reclining on Kuba-cloth patterned blanket holding a snake; body parts collaged from multiple sources; critiques European colonial imagery of African women and the Western reclining nude tradition; title puns 'praying mantis' on 'preying mantra.'",
-    "image_url": "images/247.jpg"
+    "image_url": "images/247.jpg",
+    "date_start": 2006,
+    "date_end": 2006,
+    "date_circa": true
   },
   {
     "id": 248,
@@ -3225,7 +3969,10 @@ const ART_DATA =
     "material": "Concrete and steel (cast fissure in existing floor)",
     "technique": "Subtractive sculpture; industrial concrete casting; site-specific installation",
     "significance": "A jagged crack 548 feet long running through the Tate Modern floor; memorial to the exclusion of immigrants and racial minorities from Western modernity; steel mesh inside the crack evokes border fences; title is a biblical word used to identify and execute outsiders; permanent repair scar left after the exhibition closed.",
-    "image_url": "images/248.jpg"
+    "image_url": "images/248.jpg",
+    "date_start": 2007,
+    "date_end": 2008,
+    "date_circa": true
   },
   {
     "id": 249,
@@ -3238,7 +3985,10 @@ const ART_DATA =
     "material": "Glass, steel, and reinforced concrete",
     "technique": "Deconstructivist design using CAD; board-formed concrete; non-rectilinear curvilinear volumes",
     "significance": "Italy's first major publicly funded contemporary-art institution; designed by Zaha Hadid, the first woman to win the Pritzker Prize; flowing non-rectilinear corridors blur interior and exterior; won Stirling Prize 2010; Hadid described it as a 'campus for art' rather than an object container.",
-    "image_url": "images/249.jpg"
+    "image_url": "images/249.jpg",
+    "date_start": 2009,
+    "date_end": 2010,
+    "date_circa": true
   },
   {
     "id": 250,
@@ -3251,7 +4001,9 @@ const ART_DATA =
     "material": "Sculpted and hand-painted porcelain",
     "technique": "Traditional Chinese porcelain handcraft at mass scale; carpet installation",
     "significance": "Over 100 million hand-painted porcelain sunflower seeds carpeting the Tate Turbine Hall; made by ~1,600 artisans in Jingdezhen (China's imperial porcelain city); sunflowers reference Maoist propaganda (Mao as sun, people as sunflowers); each seed unique yet part of an overwhelming mass — a metaphor for individual vs. collective identity under a homogenizing state.",
-    "image_url": "images/250.jpg"
+    "image_url": "images/250.jpg",
+    "date_start": 2010,
+    "date_end": 2011,
+    "date_circa": true
   }
-]
-;
+];

@@ -11,6 +11,33 @@ function tlNorm(s) {
     .trim();
 }
 
+/**
+ * Score a user's date entry against an artwork's numeric date range.
+ * Uses date_start / date_end for range-aware grading, falls back to text match.
+ */
+function tlScoreDates(userText, art) {
+  if (!userText.trim()) return 'miss';
+
+  // --- numeric path ---
+  const isBce = /bce|b\.c\.e\.|bc\b/i.test(userText);
+  const numM  = userText.match(/[\d,]+/);
+  if (numM) {
+    const year = parseInt(numM[0].replace(/,/g, ''), 10) * (isBce ? -1 : 1);
+    const lo = Math.min(art.date_start, art.date_end);
+    const hi = Math.max(art.date_start, art.date_end);
+    if (year >= lo && year <= hi) return 'got-it';
+
+    // Tolerance: larger for ancient / circa works
+    const span = Math.max(Math.abs(hi - lo), 1);
+    const mag  = Math.max(Math.abs(lo), Math.abs(hi), 1);
+    const tol  = art.date_circa ? Math.max(span, Math.round(mag * 0.05)) : Math.max(span, 10);
+    if (year >= lo - tol && year <= hi + tol) return 'close';
+  }
+
+  // --- text fallback ---
+  return tlAutoScore(userText, art.dates || '');
+}
+
 function tlAutoScore(userText, correctText) {
   if (!userText.trim()) return 'miss';
   const u = tlNorm(userText), c = tlNorm(correctText);
@@ -57,7 +84,9 @@ const TimelineApp = {
   },
 
   _pickRound() {
-    const sorted = [...ART_DATA].sort((a, b) => a.id - b.id);
+    const sorted = [...ART_DATA].sort((a, b) =>
+      (a.date_start + a.date_end) / 2 - (b.date_start + b.date_end) / 2
+    );
     const n = sorted.length;
     return Array.from({ length: 8 }, (_, b) => {
       const start = Math.floor(b * n / 8);
@@ -167,6 +196,13 @@ const TimelineApp = {
         badge.textContent = '✓';
         card.appendChild(badge);
       }
+      if (art.date_circa) {
+        const circa = document.createElement('span');
+        circa.className = 'tl-circa-badge';
+        circa.textContent = '~';
+        circa.title = 'Approximate date';
+        card.appendChild(circa);
+      }
       wrap.appendChild(card);
 
       // Number label below image
@@ -272,10 +308,25 @@ const TimelineApp = {
     this._syncOrderStatus();
   },
 
+  _datesOverlap(a, b) {
+    return a.date_start <= b.date_end && b.date_start <= a.date_end;
+  },
+
   _syncOrderStatus() {
-    const n = this._arrangement.filter((v, i) => v === i).length;
-    document.getElementById('tl-correct-count').textContent = n;
-    document.getElementById('btn-continue').disabled = n < 8;
+    let correct = 0;
+    for (let pos = 0; pos < this._arrangement.length; pos++) {
+      const roundIdx = this._arrangement[pos];
+      if (roundIdx === pos) {
+        correct++;
+      } else if (Math.abs(roundIdx - pos) === 1) {
+        // Card is one slot off — accept if its date range overlaps the card that belongs here
+        if (this._datesOverlap(this._round[roundIdx], this._round[pos])) {
+          correct++;
+        }
+      }
+    }
+    document.getElementById('tl-correct-count').textContent = correct;
+    document.getElementById('btn-continue').disabled = correct < 8;
   },
 
   // ── Recall screen ──────────────────────────────────────────────
@@ -322,6 +373,12 @@ const TimelineApp = {
           else document.getElementById('btn-tl-check').click();
         });
         fields.appendChild(inp);
+        if (key === 'dates' && art.date_circa) {
+          const hint = document.createElement('span');
+          hint.className   = 'tl-circa-hint';
+          hint.textContent = '~ approximate date';
+          fields.appendChild(hint);
+        }
       });
 
       row.appendChild(fields);
@@ -342,7 +399,7 @@ const TimelineApp = {
 
   _checkAnswers() {
     this._scores = this._round.map((art, i) => ({
-      dates:  tlAutoScore(this._answers[i].dates,  art.dates                || ''),
+      dates:  tlScoreDates(this._answers[i].dates, art),
       period: tlAutoScore(this._answers[i].period, art.period_culture_style || ''),
     }));
     this._showReview(false);
