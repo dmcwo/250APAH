@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AP Art History — Period, Culture &amp; Style</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="has-filter">
+
+  <!-- ── Header ────────────────────────────────────────────────── -->
+  <header class="app-header">
+    <div class="header-left">
+      <a href="index.html" class="header-home-link">AP Art History</a>
+      <span class="app-mode">Period &amp; Culture</span>
+    </div>
+    <div class="header-right">
+      <div class="stat-pill">
+        <span class="stat-label">Session Score</span>
+        <span class="stat-value" id="pcs-hdr-score">0</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Studied</span>
+        <span class="stat-value"><span id="pcs-hdr-studied">0</span> areas</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Theme filter bar ─────────────────────────────────────── -->
+  <div class="filter-bar" id="filter-bar"></div>
+  <div id="filter-warn" class="filter-warn"></div>
+
+  <!-- ── Screen: Question ──────────────────────────────────────── -->
+  <main id="screen-pcs-question" class="screen active">
+    <div class="theme-question-layout">
+
+      <!-- Left: period context + representative artwork -->
+      <div class="theme-info-panel">
+        <div class="theme-badge-wrap">
+          <span class="pcs-period-badge" id="pcs-period-name">Early Europe</span>
+        </div>
+        <p class="theme-definition" id="pcs-period-desc"></p>
+        <div class="theme-featured-frame">
+          <div class="theme-featured-img-wrap">
+            <img id="pcs-representative-img" class="theme-featured-img" src="" alt="Representative artwork">
+          </div>
+          <div class="theme-featured-caption" id="pcs-featured-caption"></div>
+        </div>
+      </div>
+
+      <!-- Right: recall inputs -->
+      <div class="theme-recall-panel">
+        <div class="form-header">
+          <h2 class="prompt-text">Name works from this period or culture.</h2>
+          <p class="prompt-sub" id="pcs-count-hint">Loading…</p>
+        </div>
+
+        <div class="theme-inputs-container" id="pcs-inputs-container">
+          <!-- Populated dynamically by period_style_app.js -->
+        </div>
+
+        <div class="form-footer">
+          <button id="btn-pcs-learn" class="btn btn-ghost">Learn this</button>
+          <button id="btn-pcs-check" class="btn btn-primary">Check Answers</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Screen: Review ────────────────────────────────────────── -->
+  <main id="screen-pcs-review" class="screen">
+    <div class="theme-review-layout">
+
+      <!-- Sidebar -->
+      <aside class="theme-review-sidebar">
+
+        <div class="theme-review-badge-wrap">
+          <span class="pcs-period-badge pcs-period-badge--sm" id="pcs-r-period-name"></span>
+        </div>
+
+        <div class="score-card">
+          <div class="score-card-label">Your Answers</div>
+          <div class="score-card-value" id="pcs-r-correct-count">0 / 8</div>
+          <div class="score-bar-track">
+            <div class="score-bar-fill" id="pcs-score-bar-fill"></div>
+          </div>
+        </div>
+
+        <div class="score-card score-card--session">
+          <div class="score-card-label">Session Total</div>
+          <div class="score-card-value" id="pcs-review-session-score">0 pts</div>
+        </div>
+
+        <!-- User answer list -->
+        <div class="theme-answer-list" id="pcs-answer-list">
+          <!-- Injected by period_style_app.js -->
+        </div>
+
+        <!-- Shown instead of scores in learn mode -->
+        <div class="learn-mode-note">
+          <p>Click any work to learn about it.</p>
+        </div>
+
+        <button id="btn-pcs-next" class="btn btn-primary btn-next">Next Area →</button>
+
+      </aside>
+
+      <!-- Main: full mosaic -->
+      <div class="theme-review-main">
+        <div class="theme-mosaic-header">
+          <span class="theme-mosaic-title">All works in this content area</span>
+          <span class="theme-mosaic-count" id="pcs-r-total"></span>
+        </div>
+        <div class="theme-mosaic" id="pcs-mosaic">
+          <!-- Thumbnails injected by period_style_app.js -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="pcs-mosaic-tooltip" class="mosaic-tooltip-portal" aria-hidden="true"></div>
+
+  <div id="pcs-artwork-modal" class="artwork-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="artwork-modal-backdrop"></div>
+    <div class="artwork-modal-panel">
+      <button class="artwork-modal-close" id="pcs-artwork-modal-close" aria-label="Close">✕</button>
+      <div class="artwork-modal-body">
+        <div class="artwork-modal-img-wrap">
+          <img id="pcs-artwork-modal-img" src="" alt="">
+        </div>
+        <div class="artwork-modal-info">
+          <div id="pcs-artwork-modal-period-badge" class="pcs-period-badge pcs-period-badge--sm"></div>
+          <h2 class="artwork-modal-title" id="pcs-artwork-modal-title"></h2>
+          <dl class="artwork-modal-meta" id="pcs-artwork-modal-meta"></dl>
+          <p class="artwork-modal-significance" id="pcs-artwork-modal-significance"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/themes_data.js"></script>
+  <script src="js/deck.js"></script>
+  <script src="js/filter_bar.js"></script>
+  <script src="js/period_style_app.js"></script>
+</body>
+</html>

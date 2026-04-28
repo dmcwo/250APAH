@@ -65,10 +65,40 @@ const TimelineApp = {
   _scores: [],       // [{dates, period}] 'got-it'|'close'|'miss'|'learn'
   _sessionScore: 0,
   _roundsDone: 0,
+  _filterThemeKeys: new Set(), // theme keys active in filter bar (empty = All Works)
 
   init() {
+    FilterBar.init('filter-bar', (keys) => this._onFilterChange(keys));
     this._bindStatic();
     this._newRound();
+  },
+
+  _onFilterChange(keys) {
+    this._filterThemeKeys = keys;
+    this._newRound();
+  },
+
+  _getFilteredPool() {
+    if (this._filterThemeKeys.size === 0) return ART_DATA;
+    const ids = new Set();
+    for (const key of this._filterThemeKeys) {
+      for (const id of (THEMES_DATA[key]?.artworks || [])) ids.add(id);
+    }
+    const pool = ART_DATA.filter(art => ids.has(art.id));
+    if (pool.length < 16) {
+      this._showFilterWarning();
+      return ART_DATA;
+    }
+    return pool;
+  },
+
+  _showFilterWarning() {
+    const el = document.getElementById('filter-warn');
+    if (!el) return;
+    el.textContent = 'Too few works for this filter — using all works.';
+    el.classList.add('filter-warn--visible');
+    clearTimeout(this._warnTimer);
+    this._warnTimer = setTimeout(() => el.classList.remove('filter-warn--visible'), 4000);
   },
 
   // ── Round lifecycle ────────────────────────────────────────────
@@ -84,7 +114,8 @@ const TimelineApp = {
   },
 
   _pickRound() {
-    const sorted = [...ART_DATA].sort((a, b) =>
+    const pool   = this._getFilteredPool();
+    const sorted = [...pool].sort((a, b) =>
       (a.date_start + a.date_end) / 2 - (b.date_start + b.date_end) / 2
     );
     const n = sorted.length;

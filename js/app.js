@@ -291,19 +291,42 @@ const Fuzzy = (() => {
 // App state
 // ══════════════════════════════════════════════════════════════
 const App = {
-  deck:             null,
-  sessionScore:     0,
-  fieldResults:     [],   // [{field, userAnswer, correct, status, pts}]
-  _isLearning:      false,
-  _artworkThemes:   {},   // {artId: [themeKey, ...]}
-  _selectedThemes:  null, // Set of currently toggled theme keys
+  deck:              null,
+  sessionScore:      0,
+  fieldResults:      [],   // [{field, userAnswer, correct, status, pts}]
+  _isLearning:       false,
+  _artworkThemes:    {},   // {artId: [themeKey, ...]}
+  _selectedThemes:   null, // Set of theme keys selected on the current card's pill UI
+  _filterThemeKeys:  new Set(), // Set of theme keys active in the filter bar (empty = All Works)
 
   // ── Initialise ────────────────────────────────────────────
 
   init() {
     this._artworkThemes = buildArtworkThemes();
-    this.deck = new Deck(weightedShuffle(ART_DATA, buildWeightMap()), true);
+    FilterBar.init('filter-bar', (keys) => this._onFilterChange(keys));
+    this._buildDeck();
     this._bindEvents();
+    this._showQuestion();
+  },
+
+  _buildDeck() {
+    const pool = this._getFilteredPool();
+    this.deck = new Deck(weightedShuffle(pool, buildWeightMap()), true);
+  },
+
+  _getFilteredPool() {
+    if (this._filterThemeKeys.size === 0) return ART_DATA;
+    const ids = new Set();
+    for (const key of this._filterThemeKeys) {
+      for (const id of (THEMES_DATA[key]?.artworks || [])) ids.add(id);
+    }
+    return ART_DATA.filter(art => ids.has(art.id));
+  },
+
+  _onFilterChange(keys) {
+    this._filterThemeKeys = keys;
+    this.sessionScore = 0;
+    this._buildDeck();
     this._showQuestion();
   },
 

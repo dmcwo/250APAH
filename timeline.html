@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="has-filter">
 
   <header class="app-header">
     <div class="header-left">
@@ -27,6 +27,10 @@
       </div>
     </div>
   </header>
+
+  <!-- ── Theme filter bar ─────────────────────────────────────── -->
+  <div class="filter-bar" id="filter-bar"></div>
+  <div id="filter-warn" class="filter-warn"></div>
 
   <!-- ── Screen 1: Order ─────────────────────────────────────── -->
   <main id="screen-order" class="screen active">
@@ -108,6 +112,8 @@
   </main>
 
   <script src="js/data.js"></script>
+  <script src="js/themes_data.js"></script>
+  <script src="js/filter_bar.js"></script>
   <script src="js/timeline_app.js"></script>
 </body>
 </html>
