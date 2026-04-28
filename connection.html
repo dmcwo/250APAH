@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connection — AP Art History</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="conn-body">
+
+  <!-- ── Header ───────────────────────────────────────────────── -->
+  <header class="app-header">
+    <div class="header-left">
+      <a href="index.html" class="app-back-link" aria-label="Back to study modes">←</a>
+      <span class="app-title">AP Art History</span>
+      <span class="app-mode">Connection</span>
+    </div>
+    <div class="header-right conn-header-stats">
+      <span class="conn-stat">
+        <span class="conn-stat-label">Score</span>
+        <span class="conn-stat-value" id="conn-hdr-score">0</span>
+      </span>
+      <span class="conn-stat-sep" aria-hidden="true">·</span>
+      <span class="conn-stat">
+        <span class="conn-stat-label">Links</span>
+        <span class="conn-stat-value" id="conn-hdr-chain">0</span>
+      </span>
+      <span class="conn-stat-sep" aria-hidden="true">·</span>
+      <span class="conn-stat">
+        <span class="conn-stat-label">Cycles</span>
+        <span class="conn-stat-value" id="conn-hdr-cycles">0</span>
+      </span>
+    </div>
+  </header>
+
+  <!-- ── Chain bar ─────────────────────────────────────────────── -->
+  <div class="conn-chain-bar" id="conn-chain-bar" aria-label="Chain of linked artworks">
+    <div class="conn-chain-track" id="conn-chain-track"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- PLAY SCREEN                                               -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div id="screen-conn-play" class="conn-screen active">
+    <main class="conn-layout">
+
+      <!-- Left: current artwork display -->
+      <section class="conn-work-panel" aria-label="Current artwork">
+        <div class="conn-artwork-img-wrap">
+          <img id="conn-artwork-img" class="conn-artwork-img" src="" alt="">
+        </div>
+        <div class="conn-artwork-info">
+          <h2 id="conn-artwork-title" class="conn-artwork-title"></h2>
+          <dl id="conn-artwork-meta" class="conn-artwork-meta"></dl>
+        </div>
+      </section>
+
+      <!-- Right: link controls -->
+      <section class="conn-link-panel" aria-label="Choose a connection">
+
+        <h3 class="conn-link-heading">Choose a connection type:</h3>
+
+        <!-- 5 type chips -->
+        <div class="conn-type-row" id="conn-type-row" role="group" aria-label="Connection types"></div>
+
+        <!-- Theme sub-selection (shown when Theme selected and artwork has 2+ themes) -->
+        <div class="conn-theme-sub-row" id="conn-theme-sub-row" hidden></div>
+
+        <!-- Cycle progress dots -->
+        <div class="conn-cycle-dots" id="conn-cycle-dots" aria-label="Cycle progress"></div>
+
+        <!-- Challenge + answer area (shown after type chosen) -->
+        <div class="conn-challenge-area" id="conn-challenge-area" hidden>
+          <p class="conn-challenge" id="conn-challenge"></p>
+          <p class="conn-pool-hint" id="conn-pool-hint"></p>
+          <div class="conn-input-row">
+            <input
+              id="conn-input"
+              class="conn-input"
+              type="text"
+              placeholder="Type an artwork title…"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Artwork title"
+            >
+            <button id="btn-conn-link" type="button" class="btn btn-primary conn-link-btn">
+              Link it →
+            </button>
+          </div>
+          <div class="conn-feedback" id="conn-feedback" aria-live="polite"></div>
+        </div>
+
+        <!-- End chain button -->
+        <div class="conn-give-up-wrap">
+          <button id="btn-conn-give-up" type="button" class="btn-conn-give-up">
+            End chain
+          </button>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- END SCREEN                                                -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div id="screen-conn-end" class="conn-screen">
+    <main class="conn-end-wrap">
+
+      <div class="conn-end-header">
+        <h2 class="conn-end-title" id="conn-end-links">Chain of 0 links</h2>
+        <div class="conn-end-score-block">
+          <span class="conn-end-score-label">Final Score</span>
+          <span class="conn-end-score-value" id="conn-end-score">0</span>
+        </div>
+        <p class="conn-end-cycles" id="conn-end-cycles">0 cycles completed</p>
+      </div>
+
+      <div class="conn-achievement-list" id="conn-achievement-list"></div>
+
+      <section class="conn-replay-section">
+        <h3 class="conn-replay-heading">Your chain</h3>
+        <div class="conn-replay-scroll">
+          <div class="conn-replay-track" id="conn-replay-track"></div>
+        </div>
+      </section>
+
+      <button id="btn-conn-restart" type="button" class="btn btn-primary conn-restart-btn">
+        New Chain →
+      </button>
+
+    </main>
+  </div>
+
+  <!-- ── Artwork detail modal (chain node click) ───────────────── -->
+  <div id="conn-modal" class="artwork-modal" aria-hidden="true" role="dialog"
+       aria-modal="true" aria-labelledby="conn-modal-title">
+    <div class="artwork-modal-backdrop"></div>
+    <div class="artwork-modal-panel">
+      <button id="conn-modal-close" class="artwork-modal-close" aria-label="Close">✕</button>
+      <div class="artwork-modal-body">
+        <div class="artwork-modal-img-wrap">
+          <img id="conn-modal-img" src="" alt="" class="conn-modal-img">
+          <span id="conn-modal-badge" class="pcs-period-badge pcs-period-badge--sm conn-modal-badge"></span>
+        </div>
+        <div class="artwork-modal-info">
+          <h2 id="conn-modal-title" class="artwork-modal-title"></h2>
+          <dl id="conn-modal-meta" class="artwork-modal-meta"></dl>
+          <p id="conn-modal-sig" class="artwork-modal-significance"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts (no deck.js needed) -->
+  <script src="js/data.js"></script>
+  <script src="js/themes_data.js"></script>
+  <script src="js/connection_app.js"></script>
+
+</body>
+</html>
