@@ -4,6 +4,7 @@
 
 function tlNorm(s) {
   return String(s).toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip diacritics
     .replace(/\bc\.?\s*/g, '')
     .replace(/\b(ce|bce|ad|bc)\b/g, '')
     .replace(/[^a-z0-9\s]/g, ' ')

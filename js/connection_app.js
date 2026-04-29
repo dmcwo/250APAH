@@ -21,6 +21,7 @@ const CONN_STOP = new Set([
 
 function connNorm(s) {
   return s.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip diacritics (ö→o, à→a)
     .replace(/[''"""]/g, '')
     .replace(/[^a-z0-9\s]/g, ' ')
     .replace(/\s+/g, ' ')
@@ -29,15 +30,22 @@ function connNorm(s) {
 function connWords(s) {
   return connNorm(s).split(' ').filter(w => w.length >= 2 && !CONN_STOP.has(w));
 }
-function connMatchScore(userInput, artTitle) {
+function _connScoreRaw(userInput, title) {
   const uw = connWords(userInput);
-  const tw = connWords(artTitle);
+  const tw = connWords(title);
   if (!uw.length || !tw.length) return 0;
   let hits = 0;
   for (const u of uw) {
     if (tw.some(t => t === u || t.startsWith(u) || u.startsWith(t))) hits++;
   }
   return hits / Math.max(uw.length, Math.ceil(tw.length * 0.4));
+}
+function connMatchScore(userInput, artTitle) {
+  // Also score against the title with parenthetical subtitle stripped,
+  // so "The Oxbow" matches "The Oxbow (View from Mount Holyoke, ...)"
+  const short = artTitle.replace(/\s*\(.*?\)/g, '').trim();
+  const s1 = _connScoreRaw(userInput, artTitle);
+  return short === artTitle ? s1 : Math.max(s1, _connScoreRaw(userInput, short));
 }
 function connBestRaw(userText, artworks, usedIds) {
   if (!userText.trim()) return 0;
@@ -69,16 +77,38 @@ function connFindBest(userText, artworks, usedIds) {
 // ── Data parsers ───────────────────────────────────────────────────────────────
 
 const MAT_STOP = new Set(['and','or','with','on','in','the','a','an','of','from','by','its','as','into']);
-const PLACE_SKIP = new Set(['near','modern','formerly','now','ancient','currently','once','former']);
+const PLACE_SKIP = new Set([
+  // Temporal qualifiers
+  'near', 'modern', 'formerly', 'now', 'ancient', 'currently', 'once', 'former',
+  // Generic place-type words (cause cross-region false positives)
+  'city', 'province', 'valley', 'region', 'district', 'county', 'town', 'village',
+  // Articles / conjunctions that slip through comma-splitting
+  'the', 'and', 'between', 'from', 'for', 'with',
+  // Cardinal directions (too generic without their accompanying proper noun)
+  'north', 'south', 'east', 'west', 'northern', 'southern', 'eastern', 'western', 'central',
+  // Common adjectives that modify but don't identify location
+  'new', 'great', 'upper', 'lower', 'old', 'minor',
+  // Institution words (Global Contemporary works list museum names as their place)
+  'museum', 'art', 'national', 'gallery', 'institute', 'collection', 'collections',
+  'park', 'memorial', 'studio',
+]);
+
+// Terms that all represent the same material family; any one of them adds 'ceramic'
+const CERAMIC_TOKENS = new Set(['clay','cotta','porcelain','stoneware','earthenware','faience','ceramic']);
 
 function parseMaterials(str) {
   if (!str) return [];
-  return str
+  const tokens = str
     .replace(/\(.*?\)/g, '')
     .split(/[;,]/)
     .flatMap(s => s.trim().split(/\s+/))
     .map(w => w.toLowerCase().replace(/[^a-z]/g, ''))
     .filter(w => w.length > 2 && !MAT_STOP.has(w));
+  // Add shared 'ceramic' token so terra-cotta, clay, porcelain, etc. all connect
+  if (tokens.some(w => CERAMIC_TOKENS.has(w)) && !tokens.includes('ceramic')) {
+    tokens.push('ceramic');
+  }
+  return tokens;
 }
 
 function parsePlaceNouns(str) {
@@ -87,8 +117,22 @@ function parsePlaceNouns(str) {
     .replace(/\s*\(.*?\)/g, '')
     .split(',')
     .flatMap(s => s.trim().split(/\s+/))
-    .map(w => w.toLowerCase().replace(/[^a-z]/g, ''))
+    .map(w => w.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z]/g, ''))
     .filter(w => w.length > 2 && !PLACE_SKIP.has(w));
+}
+
+// ── Geographic region overlay ──────────────────────────────────────────────────
+// Some content areas contain isolated artworks whose specific place nouns
+// don't overlap with any other artwork (e.g., Rapa Nui, Zimbabwe, Mali).
+// We inject a shared region token so these artworks can still connect via Place.
+
+const AREA_REGION_TOKEN = {
+  'Africa':  'africa',
+  'Pacific': 'pacific',
+};
+
+function getRegionToken(art) {
+  return AREA_REGION_TOKEN[getPeriodLeft(art)] || null;
 }
 
 function getPeriodLeft(art) {
@@ -130,12 +174,17 @@ function getPeriodPool(art, visitedIds) {
 }
 
 function getPlacePool(art, visitedIds) {
-  const nouns = parsePlaceNouns(art.place || '');
-  if (!nouns.length) return [];
-  return ART_DATA.filter(a =>
-    !visitedIds.has(a.id) &&
-    parsePlaceNouns(a.place || '').some(n => nouns.includes(n))
-  );
+  const nouns  = parsePlaceNouns(art.place || '');
+  const region = getRegionToken(art);
+  const augNouns = region ? [...nouns, region] : nouns;
+  if (!augNouns.length) return [];
+  return ART_DATA.filter(a => {
+    if (visitedIds.has(a.id)) return false;
+    const anouns  = parsePlaceNouns(a.place || '');
+    const aregion = getRegionToken(a);
+    const aAug    = aregion ? [...anouns, aregion] : anouns;
+    return augNouns.some(n => aAug.includes(n));
+  });
 }
 
 function getMaterialPool(art, visitedIds) {
@@ -147,6 +196,15 @@ function getMaterialPool(art, visitedIds) {
   );
 }
 
+// Scale fallback expansion windows by era — older works need wider windows
+// because chronological precision matters less for prehistoric / ancient art.
+function _dateFallbackWindows(mid) {
+  if (mid < -5000) return [1000, 3000, 10000];  // Deep prehistory
+  if (mid <     0) return [300,   700,  2000];   // Ancient world (BCE)
+  if (mid <  1000) return [150,   400,  1000];   // Early CE
+  return [100, 200, 500];                        // Modern era (default)
+}
+
 function getDatePool(art, visitedIds) {
   // Primary window: the source artwork's own date range (overlap check)
   const lo0 = art.date_start, hi0 = art.date_end;
@@ -156,9 +214,9 @@ function getDatePool(art, visitedIds) {
   );
   if (pool.length >= 3) return { pool, lo: lo0, hi: hi0 };
 
-  // Fallback: expand outward from midpoint until ≥ 3 matches
+  // Fallback: expand outward from midpoint with era-scaled windows
   const mid = Math.round((art.date_start + art.date_end) / 2);
-  for (const win of [100, 200, 500]) {
+  for (const win of _dateFallbackWindows(mid)) {
     const lo = mid - win, hi = mid + win;
     pool = ART_DATA.filter(a =>
       !visitedIds.has(a.id) &&
@@ -225,6 +283,7 @@ const ConnectionApp = {
     this._selectedThemeKey = null;
     this._currentPool     = [];
     this._dateRange       = null;
+    this._hintLevel       = 0;   // 0=none, 1=metadata shown, 2=gallery shown
 
     document.getElementById('screen-conn-play').classList.add('active');
     document.getElementById('screen-conn-end').classList.remove('active');
@@ -245,6 +304,10 @@ const ConnectionApp = {
       .addEventListener('click', () => this._endGame());
     document.getElementById('btn-conn-restart')
       .addEventListener('click', () => this._startChain());
+    document.getElementById('btn-conn-hint-meta')
+      .addEventListener('click', () => this._showHint(1));
+    document.getElementById('btn-conn-hint-gallery')
+      .addEventListener('click', () => this._showHint(2));
 
     const inp = document.getElementById('conn-input');
     inp.addEventListener('input', () => {
@@ -500,8 +563,8 @@ const ConnectionApp = {
     this._selectedThemeKey = null;
     this._currentPool     = [];
     this._dateRange       = null;
-    this._renderTypeChips();
-    this._hideChallengeArea();
+    this._hideChallengeArea();  // hide first, before chips render (prevents stale text flash-then-hide)
+    this._renderTypeChips();   // may auto-resolve theme → _selectTheme → _renderChallenge
 
     if (typeKey !== 'theme') {
       // Compute pool immediately
@@ -544,6 +607,20 @@ const ConnectionApp = {
     document.getElementById('conn-challenge-area').hidden = true;
     document.getElementById('conn-input').value = '';
     document.getElementById('conn-feedback').textContent = '';
+    // Reset hint state so it's fresh for the next type selection
+    this._hintLevel = 0;
+    const hintWrap = document.getElementById('conn-hint-wrap');
+    if (hintWrap) {
+      hintWrap.hidden = true;
+      document.getElementById('conn-hint-panel').innerHTML = '';
+      const btnMeta = document.getElementById('btn-conn-hint-meta');
+      btnMeta.textContent = '💡 Metadata hint';
+      btnMeta.disabled = false;
+      const btnGal = document.getElementById('btn-conn-hint-gallery');
+      btnGal.hidden = true;
+      btnGal.textContent = '🖼 Show images';
+      btnGal.disabled = false;
+    }
   },
 
   _renderChallenge() {
@@ -563,8 +640,18 @@ const ConnectionApp = {
         challengeHTML = `Enter a work from <strong>${this._esc(getPeriodLeft(art))}</strong>.`;
         break;
       case 'place': {
-        const nouns = parsePlaceNouns(art.place || '').join(', ');
-        challengeHTML = `Enter a work from one of the following places: <strong>${this._esc(nouns || art.place)}</strong>.`;
+        const nouns  = parsePlaceNouns(art.place || '');
+        const region = getRegionToken(art);
+        let placeLabel;
+        if (nouns.length) {
+          placeLabel = nouns.join(', ');
+          if (region && !nouns.includes(region)) placeLabel += `, or anywhere in ${region.charAt(0).toUpperCase() + region.slice(1)}`;
+        } else if (region) {
+          placeLabel = region.charAt(0).toUpperCase() + region.slice(1);
+        } else {
+          placeLabel = art.place || '';
+        }
+        challengeHTML = `Enter a work from one of the following places: <strong>${this._esc(placeLabel)}</strong>.`;
         break;
       }
       case 'material': {
@@ -581,9 +668,73 @@ const ConnectionApp = {
     document.getElementById('conn-pool-hint').textContent =
       `${pool.length} work${pool.length !== 1 ? 's' : ''} qualify (not yet in your chain).`;
 
+    // Hint availability: show button when pool is small (≤ 10)
+    this._hintLevel = 0;
+    const hintWrap = document.getElementById('conn-hint-wrap');
+    const hintPanel = document.getElementById('conn-hint-panel');
+    const btnGallery = document.getElementById('btn-conn-hint-gallery');
+    hintWrap.hidden = pool.length > 10 || pool.length === 0;
+    hintPanel.innerHTML = '';
+    btnGallery.hidden = true;
+
     document.getElementById('conn-input').value = '';
     document.getElementById('conn-feedback').textContent = '';
     document.getElementById('conn-input').focus();
+  },
+
+  // ── Hint system ────────────────────────────────────────────
+
+  _showHint(level) {
+    if (level <= this._hintLevel) return;
+    this._hintLevel = level;
+    const panel    = document.getElementById('conn-hint-panel');
+    const btnMeta  = document.getElementById('btn-conn-hint-meta');
+    const btnGal   = document.getElementById('btn-conn-hint-gallery');
+
+    if (level === 1) {
+      // Metadata hint: show artist, date, and period of up to 3 random pool works
+      // (titles and images deliberately withheld)
+      const picks = [...this._currentPool].sort(() => Math.random() - 0.5).slice(0, 3);
+      panel.innerHTML = '';
+      const intro = document.createElement('p');
+      intro.className = 'conn-hint-intro';
+      intro.textContent = `Showing metadata for ${picks.length} matching work${picks.length > 1 ? 's' : ''} (no titles):`;
+      panel.appendChild(intro);
+      picks.forEach(a => {
+        const card = document.createElement('div');
+        card.className = 'conn-hint-card';
+        card.innerHTML = `
+          <dl class="conn-hint-meta">
+            <dt>Artist</dt><dd>${this._esc(a.artist || 'Unknown')}</dd>
+            <dt>Date</dt><dd>${this._esc(a.dates || '')}</dd>
+            <dt>Period</dt><dd>${this._esc(getPeriodLeft(a))}</dd>
+          </dl>`;
+        panel.appendChild(card);
+      });
+      btnMeta.textContent = '💡 Hint shown';
+      btnMeta.disabled = true;
+      btnGal.hidden = false;
+
+    } else if (level === 2) {
+      // Gallery hint: show thumbnail images of all pool works (no titles)
+      const intro = document.createElement('p');
+      intro.className = 'conn-hint-intro';
+      intro.textContent = `Visual gallery — ${this._currentPool.length} qualifying work${this._currentPool.length > 1 ? 's' : ''}:`;
+      panel.appendChild(intro);
+      const grid = document.createElement('div');
+      grid.className = 'conn-hint-gallery';
+      this._currentPool.forEach(a => {
+        const img = document.createElement('img');
+        img.src = a.image_url;
+        img.alt = '';   // intentionally blank — title is the puzzle
+        img.className = 'conn-hint-thumb';
+        img.title = '';
+        grid.appendChild(img);
+      });
+      panel.appendChild(grid);
+      btnGal.textContent = '🖼 Images shown';
+      btnGal.disabled = true;
+    }
   },
 
   // ── Live feedback ──────────────────────────────────────────
@@ -678,7 +829,13 @@ const ConnectionApp = {
     switch (type) {
       case 'theme':    return THEMES_DATA[this._selectedThemeKey].label;
       case 'period':   return getPeriodLeft(art);
-      case 'place':    return (art.place || '').replace(/\s*\(.*?\)/g, '').trim();
+      case 'place': {
+        const nouns  = parsePlaceNouns(art.place || '');
+        const region = getRegionToken(art);
+        if (nouns.length) return nouns.slice(0, 2).join(', ');
+        if (region) return region.charAt(0).toUpperCase() + region.slice(1);
+        return (art.place || '').replace(/\s*\(.*?\)/g, '').trim();
+      }
       case 'material': return parseMaterials(art.material || '').slice(0, 2).join(', ');
       case 'date':     return `${formatYear(this._dateRange.lo)}–${formatYear(this._dateRange.hi)}`;
     }

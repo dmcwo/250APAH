@@ -1442,8 +1442,8 @@ const ART_DATA =
     "technique": "Colonial Baroque oil painting; musketeer angel type",
     "significance": "From a series of angelic musketeers unique to colonial Andean art; combines European Baroque painting with indigenous Andean adaptation; angels in aristocratic military dress holding firearms are found nowhere else; reflects the cultural syncretism of colonial Latin America.",
     "image_url": "images/090.jpg",
-    "date_start": 600,
-    "date_end": 699,
+    "date_start": 1600,
+    "date_end": 1699,
     "date_circa": true
   },
   {
@@ -2626,8 +2626,8 @@ const ART_DATA =
     "technique": "Carving, painting; mechanical hinge mechanism",
     "significance": "Transformation masks open during potlatch ceremonies to reveal an inner face; the outer animal (raven, eagle, or thunderbird) opens to show a human or supernatural face; demonstrates the Northwest Coast belief in the fluid boundary between human and animal realms.",
     "image_url": "images/164.jpg",
-    "date_start": 860,
-    "date_end": 899,
+    "date_start": 1860,
+    "date_end": 1900,
     "date_circa": true
   },
   {
@@ -2706,8 +2706,8 @@ const ART_DATA =
     "technique": "Lost-wax casting (cire perdue)",
     "significance": "Hundreds of cast brass plaques adorned the Oba's palace; depict court ceremonies, warriors, animals, and Europeans; high-relief naturalistic figures; the Benin bronzes are among the finest examples of African court art; most were looted by the British in the 1897 Punitive Expedition.",
     "image_url": "images/169.jpg",
-    "date_start": 500,
-    "date_end": 599,
+    "date_start": 1500,
+    "date_end": 1599,
     "date_circa": true
   },
   {
@@ -2754,8 +2754,8 @@ const ART_DATA =
     "technique": "Carving with accumulation of materials",
     "significance": "Each nail or blade driven into the figure activates a contract or oath, calls on the spirit (nkisi) to enforce the agreement; the figure accumulates power through use; the nails register communal history; misunderstood by Europeans as 'fetishes' — in fact highly complex juridical and spiritual instruments.",
     "image_url": "images/172.png",
-    "date_start": 860,
-    "date_end": 899,
+    "date_start": 1860,
+    "date_end": 1900,
     "date_circa": true
   },
   {
@@ -2770,8 +2770,8 @@ const ART_DATA =
     "technique": "Carving and assemblage",
     "significance": "Pwo masks represent the ideal of female beauty and the ancestral feminine; worn by male dancers to channel female spiritual power; elegant facial features, fine scarification patterns, elaborate headdress; worn at initiation ceremonies to bless women with fertility and wellbeing.",
     "image_url": "images/173.jpg",
-    "date_start": 800,
-    "date_end": 840,
+    "date_start": 1860,
+    "date_end": 1920,
     "date_circa": true
   },
   {
@@ -2802,8 +2802,8 @@ const ART_DATA =
     "technique": "Carving and assemblage",
     "significance": "Unique in Africa for being a mask owned and worn by women (Sande Society); the helmet mask represents ideal feminine beauty — high forehead, downcast eyes, elaborate coiffure, ringed neck (symbol of prosperity); used in initiations transforming girls into socially recognized women.",
     "image_url": "images/175.jpg",
-    "date_start": 800,
-    "date_end": 899,
+    "date_start": 1800,
+    "date_end": 1980,
     "date_circa": true
   },
   {
@@ -2818,8 +2818,8 @@ const ART_DATA =
     "technique": "Carving",
     "significance": "Personal power object representing a man's chi (personal god) and his right hand (hand of achievement); ram horns on the figure embody aggression and achievement; owned by men of status; when goals are achieved offerings are made; when a man dies the ikenga is ritually split.",
     "image_url": "images/176.jpg",
-    "date_start": 800,
-    "date_end": 899,
+    "date_start": 1800,
+    "date_end": 1980,
     "date_circa": true
   },
   {
@@ -2834,8 +2834,8 @@ const ART_DATA =
     "technique": "Assemblage of beads and metal on carved wood",
     "significance": "A 'memory board' used by memory experts (bana balute) to recite royal genealogies, migrations, and sacred knowledge; the pattern of beads is read spatially, not linearly; each board is unique to its owner/community; demonstrates that writing is not the only form of stored knowledge.",
     "image_url": "images/177.jpg",
-    "date_start": 800,
-    "date_end": 899,
+    "date_start": 1800,
+    "date_end": 1980,
     "date_circa": true
   },
   {
@@ -2850,8 +2850,8 @@ const ART_DATA =
     "technique": "Carving and textile assemblage",
     "significance": "Worn by members of the royal Kuosi society (wealthy elephant owners); the elephant's strength and tusks (ivory = wealth) symbolize royal power; elaborate beaded cloth panels hang from the mask; worn at funerals of kings and important festivals; embodies the wealth and power of the Cameroonian elite.",
     "image_url": "images/178.jpg",
-    "date_start": 800,
-    "date_end": 899,
+    "date_start": 1800,
+    "date_end": 1980,
     "date_circa": true
   },
   {
@@ -2866,8 +2866,8 @@ const ART_DATA =
     "technique": "Carving; attachment to reliquary basket",
     "significance": "The byeri figure guarded a reliquary basket containing ancestral skulls and bones; formal features (large head, compact body, prominent navel, meditative expression) embody ideal balance between life forces; Fang art profoundly influenced early 20th-century Western avant-garde artists including Picasso.",
     "image_url": "images/179.jpg",
-    "date_start": 800,
-    "date_end": 899,
+    "date_start": 1800,
+    "date_end": 1980,
     "date_circa": true
   },
   {
@@ -3282,8 +3282,8 @@ const ART_DATA =
     "technique": "Korean court portrait painting; hanging scroll",
     "significance": "Joseon Dynasty official portrait of the scholar-statesman Sin Sukju; exemplifies the Korean court portrait tradition (gongsin do): precise rendering of official dress, rank insignia, and facial features; Korean portraits emphasize status and virtue; important for establishing the Joseon Dynasty's visual tradition.",
     "image_url": "images/205.jpg",
-    "date_start": 400,
-    "date_end": 499,
+    "date_start": 1400,
+    "date_end": 1499,
     "date_circa": true
   },
   {
@@ -3298,8 +3298,8 @@ const ART_DATA =
     "technique": "Traditional Chinese palace architecture; axis and symmetry; bracketing (dougong)",
     "significance": "The world's largest palace complex (180 acres); 980 buildings; home to 24 emperors from 1420–1912; strict hierarchical organization reflects Confucian cosmology; the emperor at the center of the universe; yellow roof tiles signify imperial authority; UNESCO World Heritage Site.",
     "image_url": "images/206.jpg",
-    "date_start": 460,
-    "date_end": 499,
+    "date_start": 1406,
+    "date_end": 1420,
     "date_circa": true
   },
   {
@@ -3314,8 +3314,8 @@ const ART_DATA =
     "technique": "Kare-sansui (dry rock garden) design",
     "significance": "Japan's most famous rock garden; 15 rocks arranged in raked white gravel; from any viewpoint on the veranda, only 14 rocks are visible (the 15th hidden); creates meditative contemplation; no garden interpretation is definitive; embodies the Zen aesthetic of ambiguity, impermanence, and mindfulness.",
     "image_url": "images/207.jpg",
-    "date_start": 700,
-    "date_end": 1480,
+    "date_start": 1480,
+    "date_end": 1780,
     "date_circa": true
   },
   {
@@ -3442,8 +3442,8 @@ const ART_DATA =
     "technique": "Featherwork on woven fiber foundation",
     "significance": "Hawaiian feathered capes were among the most precious objects in Pacific cultures; thousands of small red and yellow feathers from rare birds were tied to fiber netting; only high chiefs (ali'i) could wear them; demonstrated extraordinary wealth and mana; many were exchanged with Captain Cook.",
     "image_url": "images/215.jpg",
-    "date_start": 760,
-    "date_end": 799,
+    "date_start": 1760,
+    "date_end": 1800,
     "date_circa": true
   },
   {
@@ -3458,8 +3458,8 @@ const ART_DATA =
     "technique": "Carving; wrapping in tapa cloth",
     "significance": "The staff god (to'o) of Tangaroa, the supreme creator deity of Polynesia; the central wooden spine is wrapped in tapa cloth with small wooden figures attached; kept wrapped and revealed only during rituals; embodies divine presence; one of the most important sacred objects brought to Europe.",
     "image_url": "images/216.jpg",
-    "date_start": 700,
-    "date_end": 740,
+    "date_start": 1760,
+    "date_end": 1830,
     "date_circa": true
   },
   {
@@ -3474,8 +3474,8 @@ const ART_DATA =
     "technique": "Carving",
     "significance": "Extremely simplified, abstract female figure; among the most abstract sculptures in the Pacific; the extreme reduction of features (abstract face, simplified limbs) concentrates spiritual power; represents a deity of the Nukuoro pantheon; greatly admired by Western artists for its modernist-seeming reduction.",
     "image_url": "images/217.jpg",
-    "date_start": 700,
-    "date_end": 799,
+    "date_start": 1700,
+    "date_end": 1899,
     "date_circa": true
   },
   {
@@ -3490,8 +3490,8 @@ const ART_DATA =
     "technique": "Turtle shell cutting, shaping, and assembly",
     "significance": "One of the most remarkable mask traditions in the Pacific; the sea turtle provides the primary material; elaborate headdress of feathers and shell; worn at initiation ceremonies; the distinctive regional culture of the Torres Strait blends Melanesian and Australian indigenous traditions.",
     "image_url": "images/218.jpg",
-    "date_start": 830,
-    "date_end": 870,
+    "date_start": 1830,
+    "date_end": 1900,
     "date_circa": true
   },
   {
@@ -3538,8 +3538,8 @@ const ART_DATA =
     "technique": "Lashed stick construction; wave and island mapping",
     "significance": "Marshall Islands stick charts map ocean swell patterns and island locations; not maps to be read visually while sailing but teaching tools to memorize before voyages; the angles and intersections represent wave refraction and deflection around islands; embodies an extraordinarily sophisticated non-Western science.",
     "image_url": "images/221.jpg",
-    "date_start": 800,
-    "date_end": 840,
+    "date_start": 1800,
+    "date_end": 1920,
     "date_circa": true
   },
   {

@@ -8,6 +8,7 @@ const STOP = new Set(['the','a','an','of','and','or','in','on','at','to','for',
 
 function normTitle(s) {
   return s.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip diacritics
     .replace(/[''"""]/g, '')
     .replace(/[^a-z0-9\s]/g, ' ')
     .replace(/\s+/g, ' ')

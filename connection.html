@@ -76,6 +76,19 @@
         <div class="conn-challenge-area" id="conn-challenge-area" hidden>
           <p class="conn-challenge" id="conn-challenge"></p>
           <p class="conn-pool-hint" id="conn-pool-hint"></p>
+          <!-- Hint system (shown when pool ≤ 10) -->
+          <div class="conn-hint-wrap" id="conn-hint-wrap" hidden>
+            <div class="conn-hint-panel" id="conn-hint-panel"></div>
+            <div class="conn-hint-btns">
+              <button id="btn-conn-hint-meta" type="button" class="conn-hint-btn">
+                💡 Metadata hint
+              </button>
+              <button id="btn-conn-hint-gallery" type="button" class="conn-hint-btn conn-hint-btn--gallery" hidden>
+                🖼 Show images
+              </button>
+            </div>
+          </div>
+
           <div class="conn-input-row">
             <input
               id="conn-input"
